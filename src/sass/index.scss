@@ -1,2 +1,10 @@
-@import './common';
-@import './example';
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/common';
+@import './utils/container';
+@import './utils/reset';
+
+@import './components/header';
+@import './components/footer';
+@import './components/gallery_films';
+@import './components/modal_film_card';
