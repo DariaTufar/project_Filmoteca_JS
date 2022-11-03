@@ -1,0 +1,32 @@
+//------------- media breakpoints (перші два універсальні) -------------//
+@mixin minBreakpoints($typeScreen) {
+  @media screen and (min-width: #{$typeScreen}) {
+    @content;
+  }
+}
+
+@mixin maxBreakpoints($typeScreen) {
+  @media screen and (max-width: #{$typeScreen}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (min-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+//------------- grid -------------//

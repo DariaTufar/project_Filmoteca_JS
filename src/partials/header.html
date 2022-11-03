@@ -1,0 +1,49 @@
+<header>
+  <div class="container header__container">
+
+
+    <div class="navigation">
+        <a class="logo header__logo  js-logo" href="./index.html">
+            <svg width= '20px' height="20px"  >
+            <use class="icon logo__icon" href="./images/icons.svg#icon-film">
+            </use> </button>
+            </svg>
+         </a>
+        <div class="header__menu">
+            <ul class=" header__menu-list">
+                <li class=" header__menu-item header__home js-menu-home">
+                    <a href="#home" data-menu-home class="link header__menu-link"> home</a>
+                </li>
+
+                <li class=" header__menu-item  header__my-library js-menu-my-library">
+                    <a href="./myLibrary.html" data-menu-my-library  class="link header__menu-link">
+                        my library</a>
+                </li>
+            </ul>
+        <div class="header__menu--underline-home"></div> <!-- //red line under active home button -->
+        
+      </div>
+    </div>
+
+    <div class="movie-search__form">
+         <form class="js-search-form " id="js-search-form">
+        <input
+        class="search__form-input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Movie search"
+        />
+
+  <button type="submit" class="js-submit__search_btn search__button  ">
+      <svg class="icon icon-search" width='8px' height="8px" >
+        <use  href="./images/icons.svg#icon-search">
+      </use> </button>
+</form>
+    </div>
+    <div class="form__search-not-succuessful">
+        <p> Search result not successful. Enter the correct movie name and </p>
+
+    </div>
+  </div>
+</header>

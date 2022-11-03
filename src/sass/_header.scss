@@ -1,0 +1,125 @@
+.header__container {
+  padding: 0;
+  background-image: url('./../images/abstract-background-with-red-lines_1x_mob.png');
+
+  @include tablet {
+    background-image: url('./../images/abstract-background-with-red-lines_1x_tab.png');
+  }
+
+  @include desktop {
+    background-image: url('./../images/abstract-background-with-red-lines_1x_desktop.png');
+  }
+  display: flex;
+  flex-direction: column;
+}
+  .icon {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  padding: 0 20px;
+
+  justify-content: space-between;
+}
+
+.header__logo{
+  margin-top: 45px;
+  margin-left: 12px;
+}
+
+.logo__icon {
+  flex-direction: row;
+  width: 20px;
+  height: 20px;
+  color: $bg-primary-light-color;
+  fill: none;
+  padding-top: 40px;
+  
+  .icon {
+  display: inline-block;
+ 
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+}
+
+.header__menu-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+  list-style: none
+}
+
+
+.li {
+  text-decoration: none;
+ 
+}
+
+.header__menu-item {
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  /* identical to box height */
+
+  text-transform: uppercase;
+  color: $text-color-light;
+
+  padding-top: 44px;
+   text-decoration: none;
+}
+.header__home {
+  margin-right: 40px;
+}
+
+.movie-search__form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.search__form-input{
+background-color: transparent;
+    
+    
+    border: none;
+}
+.search__form-input::placeholder {
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.143;
+  color: $text-color-light;
+
+  padding-top: 56px;
+}
+
+.icon-search {
+  width: 8px;
+  height: 8px;
+  color: $bg-primary-light-color;
+   
+  padding-top: 40px;
+  
+
+}
+
+
+.form__search-not-succuessful {
+  font-family: $font-primary;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.143;
+  color: $accent-color-secondary;
+}
