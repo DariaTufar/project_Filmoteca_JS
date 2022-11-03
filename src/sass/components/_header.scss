@@ -49,7 +49,7 @@
 }
 }
 
-.menu__header-list {
+.header__menu-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -63,7 +63,7 @@
  
 }
 
-.menu__header-item {
+.header__menu-item {
   font-family: $font-primary;
   font-style: normal;
   font-weight: 500;
@@ -80,7 +80,8 @@
 .header__home {
   margin-right: 40px;
 }
-.movie-search-form {
+
+.movie-search__form {
   display: flex;
   flex-direction: row;
   align-items: center;
