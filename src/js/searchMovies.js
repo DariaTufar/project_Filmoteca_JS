@@ -28,17 +28,8 @@ export async function getMovieId() {
   console.log(posterUrl);
   return movieId;
 }
-
-// const urlById = `${BASE_URL}/movie/${movieId}?api_key=${KEY}&language=en-US`;
-// console.log(urlById);
-//api.themoviedb.org/3/movie/409531?api_key=e994a62a86f0219af0993364e0b8b3fc&language=en-US
-// const responseById = await axios.get(urlById)
-// console.log(responseById)
-
+ 
 getMovieId();
 
 console.log(movieId);
-// function getMovieDetail() {
-
-// }
-// getMovieDetail();
+ 
