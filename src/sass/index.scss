@@ -1,2 +1,21 @@
-@import './common';
-@import './example';
+@import './utils/variables';
+@import './utils/mixins';
+@import './utils/common';
+@import './utils/container';
+@import './utils/reset';
+
+@import './components/header';
+@import './components/headerMyLibrary';
+
+@import './components/containerMainPage';
+@import './components/containerMyLibrary';
+ @import './components/galleryFilms';
+
+@import './components/modalCardFilmAnna';
+
+@import './components/modalTeam';
+@import './components/movieCardModalAndriy';
+
+@import './components/paginationPage';
+@import './components/spinner';
+@import './components/footer';

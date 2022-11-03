@@ -1,0 +1,50 @@
+/*----------------------- font -----------------------*/
+$font-primary: 'Roboto', sans-serif;
+// $font-secondary: ;
+
+/*-------- breakpoints -----------------------*/
+$mobile: 320px;
+$tablet: 768px;
+$desktop: 1200px;
+$breakpointsType: $mobile, $tablet, $desktop;
+
+/*----------- text colors -----------------------*/
+
+$light-color-primary: rgba(255, 255, 255, 1); // ????  
+
+$accent-color-primary: rgba(255, 107, 8, 1); // orange  genre name in gallery,  accent in pagination. heart
+ 
+$accent-color-secondary: rgb(10, 2, 3); // red;  for header  
+$accent-color-light: rgba(247, 247, 247, 1); //  grey background in pagination , footer
+
+$text-color-primary: rgba(0, 0, 0, 1); // black     gallery name movie // pagination
+$text-color-light: rgba(255, 255, 255, 1); // white 
+$text-color-accent:  rgba(255, 107, 8, 1); // orange
+$text-color-secondary: rgba(84, 84, 84, 1); // grey footer
+
+/*----------------------- background colors ----------------*/
+$bg-secondary-color: rgba(247, 247, 247, 1); // grey accent  in footer and pagination
+$bg-primary-light-color: rgba(255, 255, 255, 1); // white
+
+$film-card-text-light-color: rgba(140, 140, 140, 1); // grey in card of film
+
+/*----------------------- btn colors -----------------------*/
+// $btn-primary-accent-color: ;
+// $btn-secondary-accent-color: ;
+// $btn-primary-light-color: ;
+// $btn-secondary-light-color: ;
+// $btn-accent-hover-color: ;
+
+// /*----------------------- radius -----------------------*/
+// $btn-radius: 22px;
+// $btn-small-radius: 20px;
+// $card-radius: 24px;
+// $gallery-primary-img-radius: 20px;
+// $gallery-secondary-img-radius: 8px;
+// $review-img-radius: 44px;
+
+// /*----------------------- shadow -----------------------*/
+// $card-shadow: 0px 8px 30px rgba(212, 20, 67, 0.1);
+
+// /*----------------------- animations -----------------------*/
+// $animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
