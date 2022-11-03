@@ -4,28 +4,32 @@
     
 
     <div class="navigation">
-        <a class="logo header__logo  js-logo" href="#header">
-            <svg class="icon logo__icon">
-            <use href="./images/icons.svg#icon-search">
+        <a class="logo header__logo  js-logo" href="./index.html">
+            <svg width= '20px' height="20px"  >
+            <use class="icon logo__icon" href="./images/icons.svg#icon-film">
             </use> </button>
             </svg>
          </a>
+        <div class="menu__header">
+            <ul class=" menu__header-list">
+                <li class=" menu__header-item header__home js-menu-home">
+                    <a href="#home" data-menu-home class="link menu__header-link"> home</a>
+                </li>
 
-      <ul class=" menu__header">
-        <li class=" menu__header-item header__home js-menu-home">
-            <a href="#home" data-menu-home> home</a>
-        </li>
-
-        <li class=" menu__header-item  header__my-library js-menu-my-library">
-            <a href="#my-library" data-menu-my-library >
-                my library</a>
-        </li>
-      </ul>
+                <li class=" menu__header-item  header__my-library js-menu-my-library">
+                    <a href="./my_library.html" data-menu-my-library  class="link menu__header-link">
+                        my library</a>
+                </li>
+            </ul>
+        <div class="menu__header--underline-home"></div> <!-- //red line under active home button -->
+        
+      </div>
     </div>
 
     <div class="movie-search-form">
-         <form class="js-search-form search__form-input" id="js-search-form">
+         <form class="js-search-form " id="js-search-form">
         <input
+        class="search__form-input"
         type="text"
         name="searchQuery"
         autocomplete="off"
@@ -33,8 +37,8 @@
         />
 
   <button type="submit" class="js-submit__search_btn search__button  ">
-      <svg class="icon icon-search">
-        <use href="./images/icons.svg#icon-search">
+      <svg class="icon icon-search" width='8px' height="8px" >
+        <use  href="./images/icons.svg#icon-search">
       </use> </button>
 </form>
     </div>

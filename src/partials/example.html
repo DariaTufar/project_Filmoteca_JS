@@ -1,37 +1,79 @@
-<article class="example" id="uk">
-  <h1>HTML-partials</h1>
 
-  <!--
-    ❗️❗️❗️ The path to images from the HTML partial
-    is the same as from the index.html file
-  -->
-  <img src="images/logo.png" alt="" width="320" />
 
-  <p>
-    The
-    <a
-      href="https://github.com/posthtml/posthtml-include"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      posthtml-include
+<!-- CreateMarkupHomePage      -->
+
+<li class="gallery__item">
+    <a href="" class="gallery__item-link">
+      <img src="" alt="" class="gallery__item-poster">  // poster     - 1x,  2x,
+    <div class=" gallery__item-descr-wrap">
+      <h2 class="gallery__item-title" >  </h2> // movie name   
+      <h3 class="gallery__item-genre" >  </h3> // genres,  |  year
+    </div>
     </a>
-    plugin allows you to add code from other HTML files (fragments) to HTML page
-    files. Fragments are stored in the <code>src/partials</code> folder. The
-    addition occurs when compiling page files, such as <code>index.html</code>.
-  </p>
+  </li>
 
-  <p>
-    This <code>example.html</code> file is an example of such a snippet, with
-    the markup of a certain part of the main page. This is very convenient for
-    team development on student projects, when several people write in one HTML
-    file at once.
-  </p>
 
-  <p>
-    The syntax for adding a fragment to the main file is:
-    <code> &lt;include src="./partials/filename.html"&gt;&lt;/include&gt;</code>
-  </p>
 
-  <div class="background"></div>
-</article>
+<!--  CreateMarkupMyLibrary-->
+
+<li class="gallery__item">
+    <a href="" class="gallery__item-link">
+      <img src="" alt="" class="gallery__item-poster">  // poster     - 1x,  2x,
+    <div class=" gallery__item-descr-wrap">
+      <h2 class="gallery__item-title" >  </h2> // movie name   
+      <h3 class="gallery__item-genre" >  </h3> // genres,  |  year
+      <div class="gallery__item-rate-wrap">
+        <p class="gallery__item-rate"></p>
+      </div>
+    </div>
+    </a>
+  </li>
+
+  <!-- CreateMarkupMovieCard -->
+  <div class="movie__card">
+    <div class="icon movie__icon-close"> X </div>    // insert svg close icon!
+    <img src="" alt=""> // poster 1x, 2x retina
+    <h2> </h2> // movie title
+
+    <ul class="movie__details">
+
+      <div class="movie__details-wrap">
+        <ul class="movie__details-list">
+          <li class="movie__details-item">
+            <div class="movie__details-desc"> Vote / Votes</div>
+            <div class="movie__details-value details--accent"></div> / vote average
+            <div class="movie__details-desc"> / </div> /symbol
+            <div class="movie__details-value"> </div> / total votes
+          </li>
+
+          <li class="movie__details-item">
+            <div class="movie__details-desc">Popularity</div>
+            <div class="movie__details-value" > </div>  // Popularity value
+          </li>
+
+          <li>
+            <div class="movie__details-desc">Original Title</div>
+            <div class="movie__details-value value--capitalized" > </div>  // Original Title
+          </li>
+
+          <li>
+            <div class="movie__details-desc">Genre</div>
+            <div class="movie__details-value value--lowercase" > </div>  // genre
+          </li>
+        </ul>
+      </div>
+
+      <div class="movie__about">
+        <h3 class="movie__about-title"> ABOUT </h3>
+        <p class="movie__about-text"></p>  /  overview
+      </div>
+
+    <ul class="buttons__list">
+      <li class="button  button__list-item btn__add-to-watched btn--accent-orange"> <button>ADD TO WATCHED</button></li> 
+      <li class="button button__list-item btn__add-to-queue  btn--no-accent" ><button>ADD TO QUEUE</button></li>
+    </ul>
+
+       
+
+     
+</div>

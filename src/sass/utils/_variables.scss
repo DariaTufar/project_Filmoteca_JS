@@ -10,21 +10,24 @@ $breakpointsType: $mobile, $tablet, $desktop;
 
 /*----------------------- text colors -----------------------*/
 
-$secondary-color: rgba(247, 247, 247, 1); // ???;
-$accent-color-primary: rgba(255, 107, 8, 1); // orange
-$accent-color-primary2: rgba(255, 107, 1, 1); // orange
-$accent-color-secondary: rgba(255, 0, 27, 1); // red;
-$primary-light-color: rgba(255, 255, 255, 1);
+$light-color-primary: rgba(255, 255, 255, 1); // ????  
 
-$text-color-primary: rgba(0, 0, 0, 1); // black
-$text-color-light: rgba(255, 255, 255, 1); // white
+$accent-color-primary: rgba(255, 107, 8, 1); // orange  genre name in gallery,  accent in pagination. heart
+$accent-color-primary2: rgba(255, 107, 1, 1); // orange   watched and queue  buttons   and in modal - description
+$accent-color-secondary: rgba(255, 0, 27, 1); // red;  for header  
+$accent-color-light: rgba(247, 247, 247, 1); //  grey background in pagination , footer
+
+
+
+$text-color-primary: rgba(0, 0, 0, 1); // black     gallery name movie // pagination
+$text-color-light: rgba(255, 255, 255, 1); // white 
 
 $text-color-accent: rgba(255, 107, 1, 1); // orange
 $text-color-accent-secondary: rgba(255, 107, 8, 1); // orange
 $text-color-secondary: rgba(84, 84, 84, 1); // grey footer
 
 /*----------------------- background colors ----------------*/
-$bg-secondary-color: rgba(247, 247, 247, 1); // grey accent
+$bg-secondary-color: rgba(247, 247, 247, 1); // grey accent  in footer and pagination
 $bg-primary-light-color: rgba(255, 255, 255, 1); // white
 
 $film-card-text-light-color: rgba(140, 140, 140, 1); // grey in card of film
