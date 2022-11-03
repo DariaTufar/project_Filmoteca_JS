@@ -2,28 +2,24 @@
 $font-primary: 'Roboto', sans-serif;
 // $font-secondary: ;
 
-/*----------------------- breakpoints -----------------------*/
+/*-------- breakpoints -----------------------*/
 $mobile: 320px;
 $tablet: 768px;
 $desktop: 1200px;
 $breakpointsType: $mobile, $tablet, $desktop;
 
-/*----------------------- text colors -----------------------*/
+/*----------- text colors -----------------------*/
 
 $light-color-primary: rgba(255, 255, 255, 1); // ????  
 
 $accent-color-primary: rgba(255, 107, 8, 1); // orange  genre name in gallery,  accent in pagination. heart
-$accent-color-primary2: rgba(255, 107, 1, 1); // orange   watched and queue  buttons   and in modal - description
-$accent-color-secondary: rgba(255, 0, 27, 1); // red;  for header  
+ 
+$accent-color-secondary: rgb(10, 2, 3); // red;  for header  
 $accent-color-light: rgba(247, 247, 247, 1); //  grey background in pagination , footer
-
-
 
 $text-color-primary: rgba(0, 0, 0, 1); // black     gallery name movie // pagination
 $text-color-light: rgba(255, 255, 255, 1); // white 
-
-$text-color-accent: rgba(255, 107, 1, 1); // orange
-$text-color-accent-secondary: rgba(255, 107, 8, 1); // orange
+$text-color-accent:  rgba(255, 107, 8, 1); // orange
 $text-color-secondary: rgba(84, 84, 84, 1); // grey footer
 
 /*----------------------- background colors ----------------*/

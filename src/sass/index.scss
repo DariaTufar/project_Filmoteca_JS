@@ -6,6 +6,16 @@
 
 @import './components/header';
 @import './components/header_my-library';
+
+@import './components/container_main_page';
+@import './components/container_my_library';
+@import './components/container_my_library';
+
+@import './components/modal_card_film_anna';
+
+@import './components/modalTeam';
+@import './components/_movie_card_modal_andriy';
+
+@import './components/pagination_page';
+@import './components/spinner';
 @import './components/footer';
-@import './components/gallery_films';
-@import './components/modal_film_card';
