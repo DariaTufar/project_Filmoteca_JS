@@ -31,5 +31,5 @@ export async function getMovieId() {
  
 getMovieId();
 
-console.log(movieId);
+ 
  
