@@ -8,11 +8,6 @@ h6 {
   margin: 0;
 }
 
-ul {
-  margin: 0;
-  padding-left: 0;
-}
-
 a {
   color: currentColor;
 }
@@ -40,4 +35,15 @@ body {
 
   color: $text-color-primary;
   background-color: #ffffff;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

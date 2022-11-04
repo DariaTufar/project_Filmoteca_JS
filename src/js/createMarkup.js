@@ -1,46 +1,40 @@
 //   in example.html -  example of markup
 
-
-
-
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // import axios from "axios";
-import { KEY } from "./constants";
+import { KEY } from './constants';
 
-import ServerRequest from "./serverRequest";
+import ServerRequest from './serverRequest';
 
 const refs = {
-    galleryList: document.querySelector('.gallery__list'),
+  galleryList: document.querySelector('.gallery_main-page'),
 };
-
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDING = 'trending/movie/week';
-const GENRES_LIST = 'genre/movie/list'
+const GENRES_LIST = 'genre/movie/list';
 const BASE_URL_IMG = 'https://image.tmdb.org/t/p/w500';
 
 const configDefault = {
-    params: {
-        api_key: KEY,
-        page: 1,
-        language: 'en-US',
-    }
+  params: {
+    api_key: KEY,
+    page: 1,
+    language: 'en-US',
+  },
 };
 
 const movieAPI = new ServerRequest(BASE_URL, configDefault);
 console.log(movieAPI);
 
-
-// movieAPI.page(35);
 // console.log(movieAPI);
 movieAPI
-    .getMovies()
-    .then(({ results }) => {
-        renderMovieCards(results)
-        console.log(results);
-    })
-    .catch(console.log);
+  .getMovies()
+  .then(({ results }) => {
+    renderMovieCards(results);
+    console.log(results);
+  })
+  .catch(console.log);
 
 // getMovies(TRENDING).then(
 //     ({ results }) => {
@@ -49,20 +43,17 @@ movieAPI
 //     }
 // ).catch(console.log);
 
-
-
-
 async function renderMovieCards(movies) {
-    const genres = await movieAPI.getGenres();
-    // const genres = await getGenres();
+  const genres = await movieAPI.getGenres();
+  // const genres = await getGenres();
 
-    const markup = movies.map(({ title, poster_path, release_date, genre_ids
-    }) => {
-        const genresName = genres
-            .filter(genre => genre_ids.includes(genre.id))
-            .map(el => el.name);
+  const markup = movies.map(
+    ({ title, poster_path, release_date, genre_ids }) => {
+      const genresName = genres
+        .filter(genre => genre_ids.includes(genre.id))
+        .map(el => el.name);
 
-        return `<li class="gallery__item">
+      return `<li class="gallery__item">
                     <a href="" class="gallery__item-link">
                         <img src="${BASE_URL_IMG}${poster_path}" alt="${title}" class="gallery__item-poster">
                         <div class=" gallery__item-descr-wrap">
@@ -71,10 +62,11 @@ async function renderMovieCards(movies) {
                         </div>
                     </a>
                 </li>`;
-    })
-    console.log(markup);
+    }
+  );
+  console.log(markup);
 
-    refs.galleryList.innerHTML = markup.join('');
+  refs.galleryList.innerHTML = markup.join('');
 }
 
 // async function getMovies(details) {
