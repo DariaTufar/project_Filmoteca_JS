@@ -33,3 +33,11 @@ address {
 .link {
   text-decoration: none;
 }
+
+body {
+  font-family: $font-primary;
+  font-weight: 500;
+
+  color: $text-color-primary;
+  background-color: #ffffff;
+}
