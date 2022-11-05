@@ -1,0 +1,44 @@
+//  Katerina already done it
+//  .gallery__item {
+//     display: flex;
+// }
+// .gallery__item-poster {
+//   width: 280px;
+//   height: 402px;
+//   border-radius: 5px;
+// }
+// .gallery__item-descr-wrap {
+//   display: flex;
+//   flex-direction: column;
+//   margin-top: 10px;
+// }
+// .gallery__item-title {
+//   font-family: $font-primary;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 1.17;
+//   color: $text-color-primary;
+//   text-transform: uppercase;
+// }
+
+// .gallery__item-genre {
+//   font-family: $font-primary;
+//   font-weight: 500;
+//   font-size: 12px;
+//   line-height: 1.17;
+//   color: $text-color-accent;
+// }
+
+// ======radiobuttons for my-library-buttons  Queue  Watched
+.my-library__filter-btn{
+  display: inline-block;
+  background: grey;
+  min-width: 100px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  color: white;
+  
+}
