@@ -14,8 +14,8 @@
   font-weight: 400;
   text-align: center;
 
-//   transition: createTransitionFor('color');
-@include minBreakpoints ('tablet'){
+
+@include tablet {
     display: flex;
 
     justify-content: center;
@@ -23,7 +23,7 @@
     line-height: 1.17;
   }
   
-  @include minBreakpoints ('desktop'){
+  @include desktop {
     display: flex;
 
     justify-content: center;
@@ -34,7 +34,7 @@
 
 .footer-section__text {
   display: block;
-  @include maxBreakpoints ('mobile') {
+  @include maxBreakpoints (tablet) {
     margin-bottom: 10px;
   }
 }
@@ -56,10 +56,13 @@
 .footer-section__icon {
   margin-left: 10px;
   margin-right: 10px;
-//   width: 14px;
-//   height: 13px;
-  transform: scale(2);
-  animation: pulse 2s linear infinite;
+  animation: beat 0.4s infinite alternate;
+  transform-origin: center;
+}
+@keyframes beat {
+    to {
+        transform: scale(1.3);
+    }
 }
 
 .footer-section__secondary {
