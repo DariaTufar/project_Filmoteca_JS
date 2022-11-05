@@ -38,7 +38,16 @@ export default class ServerRequest { // При ініціалізації мож
     }
 
     reset() {
+        this.config.params.query = null;
         this.config.params.page = 1; // Скидає параметр сторінки в конфігурації запиту 
+    }
+
+    get query() {
+        return this.config.params.query;
+    }
+
+    set query(newQuery) {
+        this.config.params.query = newQuery;
     }
 
     async getMovies() { //
