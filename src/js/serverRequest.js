@@ -2,8 +2,8 @@ import axios from "axios";
 import { KEY } from "./constants";
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
-const TRENDING = 'trending/movie/week';
-
+const TRENDING_LIST = 'trending/movie/week';
+const GENRES_LIST = 'genre/movie/list';
 
 const configDefault = {
     params: {
@@ -13,12 +13,11 @@ const configDefault = {
     }
 };
 
-
 export default class ServerRequest {
-    BASE_URL = 'https://api.themoviedb.org/3/';
+    BASE_URL;
 
     constructor(url = BASE_URL, config = configDefault) {
-        this.BASE_URL,
+        this.BASE_URL = BASE_URL,
             this.url = url;
         this.config = config;
     }
@@ -31,19 +30,27 @@ export default class ServerRequest {
         this.config.params.page = newPage;
     }
 
+    incrementPage() {
+        this.config.params.page += 1;
+    }
+
+    decrementPage() {
+        this.config.params.page -= 1;
+    }
+
     reset() {
         this.config.params.page = 1;
     }
 
-    async getMovies(details = TRENDING) {
+    async getMovies(details = TRENDING_LIST) {
         this.url = this.BASE_URL + details;
         const response = await axios.get(this.url, this.config);
 
         return response.data;
     }
 
-    async getGenres() {
-        const response = await axios.get(`${this.BASE_URL}genre/movie/list`, this.config);
+    async getGenres(details = GENRES_LIST) {
+        const response = await axios.get(`${this.BASE_URL}${GENRES_LIST}`, this.config);
 
         return response.data.genres;
     }
