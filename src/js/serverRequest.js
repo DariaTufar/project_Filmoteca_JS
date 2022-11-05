@@ -14,12 +14,11 @@ const configDefault = {
 };
 
 export default class ServerRequest { // При ініціалізації можна передавати базову урлу, та обєкт конфігурацій
-    BASE_URL;
+    BASE_URL = BASE_URL; // Базова урла
 
-    constructor(url = BASE_URL, config = configDefault) {
-        this.BASE_URL = BASE_URL,
-            this.url = url;
-        this.config = config;
+    constructor(details = TRENDING_LIST, config = configDefault) {
+        this.details = details; // Детальна приставка до базової урли
+        this.config = config; // Переданий файл з конфігураціями для запиту
     }
 
     get page() {
@@ -39,18 +38,28 @@ export default class ServerRequest { // При ініціалізації мож
     }
 
     reset() {
+        this.config.params.query = null;
         this.config.params.page = 1; // Скидає параметр сторінки в конфігурації запиту 
     }
 
-    async getMovies(details = TRENDING_LIST) {
-        this.url = this.BASE_URL + details; // Тут додає ться базова урла і більш детальний шлях
-        const response = await axios.get(this.url, this.config); // Запит на АРІ
+    get query() {
+        return this.config.params.query;
+    }
+
+    set query(newQuery) {
+        this.config.params.query = newQuery;
+    }
+
+    async getMovies() { //
+        const url = this.BASE_URL + this.details; // Тут додає ться базова урла і більш детальний шлях
+        const response = await axios.get(url, this.config); // Запит на АРІ
 
         return response.data; // Повертає проміс із даними
     }
 
     async getGenres() {
-        const response = await axios.get(`${this.BASE_URL}${GENRES_LIST}`, this.config); // Запит на АРІ за жанрами
+        const url = this.BASE_URL + GENRES_LIST; // Тут додає ться базова урла і більш детальний шлях
+        const response = await axios.get(url, this.config); // Запит на АРІ за жанрами
 
         return response.data.genres; // Повертає проміс із жанрами
     }
