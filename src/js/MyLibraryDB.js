@@ -75,7 +75,7 @@ export class MyLibraryDB {
 
   // =====================
 
-  getFilm({ id }) {
+  getMovie({ id }) {
     const moviesList = this.#getLibData();
 
     if (!moviesList) {
@@ -89,7 +89,7 @@ export class MyLibraryDB {
 
   // =====================
 
-  getFilms({ isWatched, isQueued }) {
+  getMovies({ isWatched, isQueued }) {
     let result = [];
 
     const moviesList = this.#getLibData();
