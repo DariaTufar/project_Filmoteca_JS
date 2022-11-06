@@ -63,7 +63,7 @@ function onModalClick(event) {
   }
   if (target.nodeName === 'BUTTON') {
     // add to queued or watched
-    console.log(currentMovie);
+
     if (currentMovie.isWatched) {
       currentMovie.isQueued = true;
       currentMovie.isWatched = false;
