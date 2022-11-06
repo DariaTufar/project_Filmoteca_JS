@@ -13,7 +13,10 @@ renderPageMovies(movieAPI); // В цю функцію потрібно кину�
 
 export async function renderPageMovies(requestAPI = movieAPI) { // Робить запит та рендерить розмітку даних
   try {
-    const { results } = await requestAPI.getMovies(); // Повертає масив фільмів з АРІ
+    const { results, total_pages, total_results } = await requestAPI.getMovies(); // Повертає масив фільмів з АРІ
+
+    requestAPI.totalPages = total_pages;
+    requestAPI.totalMovies = total_results;
 
     const markup = await renderMovieCards(results); // Рендерить розмітку для карток
 
@@ -23,7 +26,7 @@ export async function renderPageMovies(requestAPI = movieAPI) { // Робить 
   }
 }
 
-export async function renderMovieCards(movies) {
+async function renderMovieCards(movies) {
   const genres = await movieAPI.getGenres(); // Повертає жанри з АРІ
   // Масив розмітки всіх карток фільмів що прийшли з АРІ
   return movies.map(({ title, poster_path, release_date, genre_ids, id }) => {
