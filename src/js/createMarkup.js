@@ -26,7 +26,7 @@ export async function renderPageMovies(requestAPI = movieAPI) { // Робить 
   }
 }
 
-async function renderMovieCards(movies) {
+export async function renderMovieCards(movies) {
   const genres = await movieAPI.getGenres(); // Повертає жанри з АРІ
   // Масив розмітки всіх карток фільмів що прийшли з АРІ
   return movies.map(({ title, poster_path, release_date, genre_ids, id }) => {
