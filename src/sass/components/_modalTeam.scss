@@ -2,11 +2,43 @@
   text-align: center;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 500;
+  color: orange;
+  font-weight: 600;
   font-size: 30px;
   line-height: 35px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  padding-top: 15px;
 }
+
+.backdrop__title::before {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Lesser_Coat_of_Arms_of_Ukraine.svg/225px-Lesser_Coat_of_Arms_of_Ukraine.svg.png');
+  content: '';
+  // background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Stamp_of_Ukraine_s1985.jpg/1280px-Stamp_of_Ukraine_s1985.jpg');
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  inset: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.backdrop__title:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.team_name {
+  padding-left: 10px;
+}
+
+.team_position {
+  text-align: center;
+  margin-top: 5px;
+}
+
 .command-list {
   padding: 0;
   display: flex;
@@ -61,7 +93,7 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  border-radius: 0 50% 50% 50%;
+  // border-radius: 0 50% 50% 50%;
 }
 .modal-open {
   overflow: hidden;
@@ -85,17 +117,13 @@
 }
 
 .modals {
-  //   background: linear-gradient(
-  //     175deg,
-  //     #0052d4,
-  //     #4364f7,
-  //     #6fb1fc,
-  //     #fffc50,
-  //     #fffc00,
-  //     #ffe000
-  //   );
-  background-size: 300% 300%;
-  animation: gradient 3s ease infinite;
+  background: linear-gradient(
+    0,
+    rgba(255, 215, 0, 1) 0%,
+    rgba(255, 215, 0, 1) 50%,
+    rgba(0, 87, 183, 1) 50%,
+    rgba(0, 87, 183, 1) 100%
+  );
   position: absolute;
   left: 50%;
   top: 50%;
@@ -128,17 +156,7 @@
     width: 900px;
   }
 }
-@keyframes gradient {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
+
 .is-hiddens {
   visibility: hidden;
   opacity: 0;
