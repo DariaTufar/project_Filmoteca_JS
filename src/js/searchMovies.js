@@ -2,15 +2,16 @@ import Notiflix from "notiflix";
 import { KEY } from "./constants";
 import { refs } from "./refs";
 import ServerRequest from './serverRequest';
-import { renderMovieCards } from "./createMarkup";
+import { markupMovieCards } from './markupMovieCards';
+// import { renderMovieCards } from "./createMarkup";
 
 Notiflix.Notify.init({
-// успіх
+  // успіх
   // success: {
   //   background: 'rgba(255, 107, 8, 1)',
   // },
-// попередження
-  warning: {     
+  // попередження
+  warning: {
     background: 'rgba(255, 107, 8, 1)',
   },
 });
@@ -26,7 +27,7 @@ const configDefault = {
     query: null,
     language: 'en-US',
   },
-  }
+}
 const searchAPI = new ServerRequest('search/movie', configDefault);
 
 refs.formSearch.addEventListener('submit', onSearchForm);
@@ -45,20 +46,20 @@ async function onSearchForm(evt) {
 
   //await renderPageMovies(searchAPI);
 
-  const { results } = await searchAPI.getMovies(); 
+  const { results } = await searchAPI.getMovies();
+  const genres = await searchAPI.getGenres(); // Повертає жанри з АРІ
+  const markup = await markupMovieCards(results, genres);
 
-    const markup = await renderMovieCards(results); 
+  refs.galleryList.innerHTML = markup.join('');
 
-    refs.galleryList.innerHTML = markup.join(''); 
-  
   try {
     if (results.length > 0) {
-        Notiflix.Notify.success(MESSAGE_SUCCESS);
-      }
-      else {
-        Notiflix.Notify.warning(MESSAGE_INFO);
+      Notiflix.Notify.success(MESSAGE_SUCCESS);
+    }
+    else {
+      Notiflix.Notify.warning(MESSAGE_INFO);
     }
   } catch (error) {
     console.log(error.message);
-   }
+  }
 }

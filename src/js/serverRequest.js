@@ -15,10 +15,14 @@ const configDefault = {
 
 export default class ServerRequest { // При ініціалізації можна передавати базову урлу, та обєкт конфігурацій
     BASE_URL = BASE_URL; // Базова урла
+    totalPages;
+    totalMovies;
 
     constructor(details = TRENDING_LIST, config = configDefault) {
         this.details = details; // Детальна приставка до базової урли
         this.config = config; // Переданий файл з конфігураціями для запиту
+        this.totalPages = null; // Загальна кількість сторінок
+        this.totalMovies = 0; // Загальна кількість фільмів
     }
 
     get page() {
@@ -38,8 +42,10 @@ export default class ServerRequest { // При ініціалізації мож
     }
 
     reset() {
-        this.config.params.query = null;
+        this.config.params.query = null; // Скидає параметр пошуку в конфігурації запиту
         this.config.params.page = 1; // Скидає параметр сторінки в конфігурації запиту 
+        this.totalPages = null; // Скидає загальну кількість сторінок
+        this.totalMovies = 0; // Скидає загальну кількість фільмів
     }
 
     get query() {
@@ -48,6 +54,22 @@ export default class ServerRequest { // При ініціалізації мож
 
     set query(newQuery) {
         this.config.params.query = newQuery;
+    }
+
+    get totalMovies() {
+        return this.totalMovies;
+    }
+
+    set totalMovies(total) {
+        this.totalMovies = total;
+    }
+
+    get totalPages() {
+        return this.totalPages;
+    }
+
+    set totalPages(total) {
+        this.totalPages = total;
     }
 
     async getMovies() { //
