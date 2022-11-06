@@ -4,3 +4,6 @@ import './js/pagination';
 
 import './js/searchMovies';
 
+import './js/modalTeam';
+
+import './js/movieCardModalAndriy';
