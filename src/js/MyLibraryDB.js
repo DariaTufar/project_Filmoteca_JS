@@ -22,7 +22,7 @@ export class MyLibraryDB {
     }
 
     const movie = {
-      id,
+      id: String(id),
       isWatched,
       isQueued,
       movieDetails,
@@ -34,7 +34,9 @@ export class MyLibraryDB {
       moviesList = [];
     }
 
-    const foundMovie = moviesList.find(movie => movie.id === id);
+    const foundMovie = moviesList.find(
+      movie => String(movie.id) === String(id)
+    );
     if (!foundMovie) {
       // Movie not found
       if (!movieDetails) {
@@ -65,7 +67,9 @@ export class MyLibraryDB {
       return null;
     }
 
-    const foundIndex = moviesList.findIndex(movie => movie.id === id);
+    const foundIndex = moviesList.findIndex(
+      movie => String(movie.id) === String(id)
+    );
     const removedMovie = moviesList.splice(foundIndex, 1);
     if (!this.#saveLibData(moviesList)) {
       return null;
@@ -82,7 +86,7 @@ export class MyLibraryDB {
       return null;
     }
 
-    const found = moviesList.find(movie => movie.id === id);
+    const found = moviesList.find(movie => String(movie.id) === String(id));
 
     return found ?? null;
   }
