@@ -5,7 +5,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 
 
 async function findMovieByID() {
-  params = {
+ const params = {
     baseUrl: 'https://api.themoviedb.org/3/',
     fotoUrl: 'https://image.tmdb.org/t/p/w500',
     movie_id: 88,
