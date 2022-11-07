@@ -1,7 +1,7 @@
 import { KEY } from './constants';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
-import 'basicLightbox/src/styles/main.scss';
+import 'basiclightbox/dist/basicLightbox.min.css';
 
 
 async function findMovieByID() {
