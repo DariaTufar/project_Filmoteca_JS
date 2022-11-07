@@ -39,7 +39,37 @@
 }
 
 .modal_description {
-  width: 300px;
+  width: 600px;
   background-color: white;
   padding: 40px;
+}
+.js-modal-form {
+  .button {
+    display: inline-block;
+    min-width: 135px;
+    padding: 14px 10px;
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    color: #000000;
+    font-family: 'Roboto';
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+
+  .modal-form__input:checked + .modal-form__text,
+  .button:hover {
+    background-color: #ff6b01;
+    border: 1px solid #ff6b01;
+    color: white;
+  }
+  .modal-form__input {
+    display: none;
+  }
 }
