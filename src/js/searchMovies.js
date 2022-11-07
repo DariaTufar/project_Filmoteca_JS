@@ -39,7 +39,7 @@ async function onSearchForm(evt) {
     return;
   }
 
-  showSpinner();
+  showSpinner(refs.iconSearch, refs.spinner);
 
   searchAPI.query = inputText;
 
@@ -56,6 +56,6 @@ async function onSearchForm(evt) {
     Notiflix.Notify.failure(error.message);
   }
 
-  hideSpinner();
+   hideSpinner(refs.spinner, refs.iconSearch);
 }
 

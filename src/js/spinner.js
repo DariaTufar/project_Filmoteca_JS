@@ -1,12 +1,9 @@
-import { refs } from "./refs"
-
-export function showSpinner() {
-    refs.iconSearch.classList.add('is-hidden');
-    refs.spinner.classList.remove('is-hidden');
+export function showSpinner(refs1, refs2) {
+    refs1.classList.add('is-hidden');
+    refs2.classList.remove('is-hidden');
 }
 
-export function hideSpinner() {
-    refs.spinner.classList.add('is-hidden');
-    refs.iconSearch.classList.remove('is-hidden');
+export function hideSpinner(refs3, refs4) {
+    refs3.classList.add('is-hidden');
+    refs4.classList.remove('is-hidden');
 }
-
