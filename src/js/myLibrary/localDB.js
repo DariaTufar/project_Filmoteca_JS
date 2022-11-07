@@ -1,7 +1,31 @@
-export class MyLibraryDB {
+export let db;
+
+class LocalDB {
   KEY = 'movies';
+  #cachedMovie;
 
   // =====================
+
+  get cachedMovie() {
+    return this.#cachedMovie;
+  }
+
+  // =====================
+
+  set cachedMovie(movieDetails) {
+    const foundMovie = this.getMovie({ id: movieDetails.id });
+
+    this.#cachedMovie = {
+      id: String(movieDetails.id),
+      isWatched: false,
+      isQueued: false,
+      movieDetails,
+    };
+    if (foundMovie) {
+      this.#cachedMovie.isQueued = foundMovie.isQueued;
+      this.#cachedMovie.isWatched = foundMovie.isWatched;
+    }
+  }
 
   addMovie({ id, isQueued, isWatched, movieDetails }) {
     // id is required
@@ -153,3 +177,5 @@ export class MyLibraryDB {
     }
   }
 }
+
+db = new LocalDB();
