@@ -1,49 +1,96 @@
-<header>
+<header class="header">
   <div class="container header__container">
+    <div class="header__menu">
+      <nav class="navigation">
+        <a class="logo header__logo js-logo" href="./index.html">
+          <img
+            class="icon logo__icon"
+            width="24"
+            height="24"
+            src="./images/film.svg"
+          />
+          <span class="logo__title">filmoteka</span>
+        </a>
 
+        <ul class="header__menu-list">
+          <li class="header__menu-item header__home js-menu-home">
+            <a
+              href="./index.html"
+              data-menu="home"
+              class="link header__menu-link is-active"
+            >
+              home</a
+            >
+          </li>
 
-    <div class="navigation">
-        <a class="logo header__logo  js-logo" href="./index.html">
-            <svg width= '20px' height="20px"  >
-            <use class="icon logo__icon" href="./images/icons.svg#icon-film">
-            </use> </button>
-            </svg>
-         </a>
-        <div class="header__menu">
-            <ul class=" header__menu-list">
-                <li class=" header__menu-item header__home js-menu-home">
-                    <a href="#home" data-menu-home class="link header__menu-link"> home</a>
-                </li>
-
-                <li class=" header__menu-item  header__my-library js-menu-my-library">
-                    <a href="./myLibrary.html" data-menu-my-library  class="link header__menu-link">
-                        my library</a>
-                </li>
-            </ul>
-        <div class="header__menu--underline-home"></div> <!-- //red line under active home button -->
-        
+          <li class="header__menu-item header__my-library js-menu-my-library">
+            <a
+              href="./myLibrary.html"
+              data-menu="my-library"
+              class="link header__menu-link"
+            >
+              my library</a
+            >
+          </li>
+        </ul>
+        <!-- <div class="header__menu--underline-home"></div> -->
+        <!-- //red line under active home button -->
+      </nav>
+      <div class="setting-box">
+        <ul class="theme-toggle">
+          <li class="night-item">
+            <button type="button" class="night-btn" data-sign="night">
+              night
+            </button>
+          </li>
+          <li class="day-item">
+            <button type="button" class="day-btn" data-sign="day">day</button>
+          </li>
+        </ul>
+        <ul class="sign-list">
+          <li class="sign-item">
+            <button type="button" class="signin-btn" data-sign="in">
+              sign in
+            </button>
+          </li>
+          <li class="sign-item">
+            <button type="button" class="signup-btn" data-sign="up">
+              sign up
+            </button>
+          </li>
+          <li class="sign-item">
+            <button type="button" class="signout-btn is-hidden" data-sign="out">
+              sign out
+            </button>
+          </li>
+          <li class="sign-item">
+            <button type="button" class="owner-btn is-hidden" data-sign="owner">
+              owner
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="movie-search__form">
-         <form class="js-search-form " id="js-search-form">
-        <input
+    <form class="movie-search__form js-search-form" id="js-search-form">
+      <input
         class="search__form-input"
         type="text"
         name="searchQuery"
         autocomplete="off"
         placeholder="Movie search"
+      />
+      <button type="submit" class="js-submit__search_btn search__button">
+        <img
+          src="./images/search.svg"
+          class="icon icon-search"
+          width="24px"
+          height="24px"
         />
-
-  <button type="submit" class="js-submit__search_btn search__button  ">
-      <svg class="icon icon-search" width='8px' height="8px" >
-        <use  href="./images/icons.svg#icon-search">
-      </use> </button>
-</form>
-    </div>
+      </button>
+    </form>
     <div class="form__search-not-succuessful">
-        <p> Search result not successful. Enter the correct movie name and </p>
-
+      <p>Search result not successful. Enter the correct movie name and</p>
     </div>
   </div>
 </header>

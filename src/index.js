@@ -7,3 +7,5 @@ import './js/searchMovies';
 import './js/modalTeam';
 
 import './js/movieCardModalAndriy';
+
+import './js/header';
