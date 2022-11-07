@@ -141,6 +141,57 @@
   align-items: center;
 }
 
+//dark theme*****
+body.dark {
+  background-color: #292c35;
+}
+
+.chenge-theme-togle{
+  margin-right: 60px;
+  margin-top: 20px;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: $accent-color-primary;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.icon-sun {
+  fill: yellow;
+}
+
+.icon-moon {
+  fill: $light-color-primary
+}
+
 //
 //=================================
 // .header__menu-list {
