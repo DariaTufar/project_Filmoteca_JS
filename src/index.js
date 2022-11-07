@@ -9,3 +9,5 @@ import './js/modalTeam';
 import './js/movieCardModalAndriy';
 
 import './js/header';
+
+import './js/darkTheme';

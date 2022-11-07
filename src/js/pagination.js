@@ -1,57 +1,46 @@
-const element = document.querySelector(".pagination ul");
-let totalPages = 20;
-let page = 10;
+import { movieAPI } from "./createMarkup";
+import { renderPageMovies } from "./createMarkup";
+import { createPagination } from "./createPagination";
+import { refs } from "./refs";
 
-element.innerHTML = createPagination(totalPages, page);
-function createPagination(totalPages, page) {
-    let liTag = '';
-    let active;
-    let beforePage = page - 1;
-    let afterPage = page + 1;
-    if (page > 1) {
-        liTag += `<li class="btn prev" onclick="createPagination(totalPages, ${page - 1})"><span><i class="fas fa-angle-left"></i> &#171;</span></li>`;
+
+let totalPages = 20;
+let page = movieAPI.page;
+refs.element.innerHTML = createPagination(totalPages, page);
+
+refs.element.addEventListener('click', async (event) => {
+    await movieAPI.getMovies();
+    totalPages = movieAPI.totalPages;
+    if (event.target === event.currentTarget || event.target.textContent === '...') {
+        return;
     }
-    if (page > 2) {
-        liTag += `<li class="first numb" onclick="createPagination(totalPages, 1)"><span>1</span></li>`;
-        if (page > 3) {
-            liTag += `<li class="dots"><span>...</span></li>`;
+
+    if (Number(event.target.textContent)) {
+        movieAPI.page = Number(event.target.textContent);
+    } else {
+        switch (event.target.textContent) {
+            case ' «':
+                movieAPI.decrementPage();
+                console.log(movieAPI.page);
+
+                break;
+            case '» ':
+                movieAPI.incrementPage();
+                console.log('-1', movieAPI.page);
+
+                break;
         }
     }
-    
-    if (page == totalPages) {
-        beforePage = beforePage - 2;
-    } else if (page == totalPages - 1) {
-        beforePage = beforePage - 1;
-    }
-    
-    if (page == 1) {
-        afterPage = afterPage + 2;
-    } else if (page == 2) {
-        afterPage = afterPage + 1;
-    }
-    for (let plength = beforePage; plength <= afterPage; plength++) {
-        if (plength > totalPages) {
-            continue;
-        }
-        if (plength == 0) {
-            plength = plength + 1;
-        }
-        if (page == plength) {
-            active = "active";
-        } else {
-            active = "";
-        }
-        liTag += `<li class="numb ${active}" onclick="createPagination(totalPages, ${plength})"><span>${plength}</span></li>`;
-    }
-    if (page < totalPages - 1) {
-        if (page < totalPages - 2) {
-            liTag += `<li class="dots"><span>...</span></li>`;
-        }
-        liTag += `<li class="last numb" onclick="createPagination(totalPages, ${totalPages})"><span>${totalPages}</span></li>`;
-    }
-    if (page < totalPages) {
-        liTag += `<li class="btn next" onclick="createPagination(totalPages, ${page + 1})"><span>&#187 <i class="fas fa-angle-right"></i></span></li>`;
-    }
-    element.innerHTML = liTag;
-    return liTag;
-}
+
+    page = movieAPI.page;
+    await renderPageMovies();
+    refs.element.innerHTML = createPagination(totalPages, page);
+})
+
+
+
+// if (movieAPI.page.totalPages) {
+//     movieAPI.page.paginationWrapperDiv.setAttribute('style', 'display: none');
+// } else {
+//     movieAPI.page.paginationWrapperDiv.removeAttribute('style');
+// }
