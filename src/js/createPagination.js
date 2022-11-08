@@ -1,4 +1,6 @@
-export function createPagination(totalPages, page) {
+import { refs } from "./refs";
+
+export default function createPagination(totalPages, page, ref) {
     let liTag = '';
     let active;
     let beforePage = page - 1;
@@ -47,6 +49,6 @@ export function createPagination(totalPages, page) {
     if (page < totalPages) { //показывает следующую кнопку если значени страницы меньше 20
         liTag += `<li class="btn next"><span>&#187 <i class="fas fa-angle-right"></i></span></li>`;
     }
-    // element.innerHTML = liTag; // добавляет все лишки в список разметки
+    ref.innerHTML = liTag; // добавляет все лишки в список разметки
     return liTag;
 }
