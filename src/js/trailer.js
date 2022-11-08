@@ -8,7 +8,7 @@ function findTrailer(idCard) {
 }
 
 const movieTrailer = () => {
-  const trailerBtn = document.querySelector('.trailer__btn');
+  const trailerBtn = document.querySelector('.trailer_btn');
 
   trailerBtn.addEventListener('click', function (e) {
     openTrailer(e.target.dataset.id);
