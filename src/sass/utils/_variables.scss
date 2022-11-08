@@ -48,6 +48,12 @@ $bg-primary-light-color: rgba(255, 255, 255, 1); // white
 
 $film-card-text-light-color: rgba(140, 140, 140, 1); // grey in card of film
 
+$bg-gradient: linear-gradient(
+  to right,
+  rgba(0, 0, 0, 0.56),
+  rgba(0, 0, 0, 0.56)
+);
+
 /*----------------------- btn colors -----------------------*/
 // $btn-primary-accent-color: ;
 // $btn-secondary-accent-color: ;
