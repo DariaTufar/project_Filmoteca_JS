@@ -45,8 +45,10 @@ function updateUser(currentUser) {
   user = currentUser;
   if (!user) {
     let currentURL = window.location.href;
-    currentURL = currentURL.replace('myLibrary', 'index');
-    window.location.replace(currentURL);
+    if (currentURL.includes('myLibrary')) {
+      currentURL = currentURL.replace('myLibrary', 'index');
+      window.location.replace(currentURL);
+    }
   }
   renderAuth();
 }
