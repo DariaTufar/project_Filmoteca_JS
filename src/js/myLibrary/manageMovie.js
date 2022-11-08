@@ -33,9 +33,10 @@ function onModalClick(event) {
     db.removeMovie({ id: db.cachedMovie.id });
     db.cachedMovie.isQueued = false;
     db.cachedMovie.isWatched = false;
-    updateBtnStatus();
+    // target.style.display = 'none';
     renderMovies();
   }
+  updateBtnStatus();
 }
 
 // ====================

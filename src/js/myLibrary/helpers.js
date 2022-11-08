@@ -36,8 +36,16 @@ export function updateBtnStatus() {
   const btnWatchedEl = document.querySelector(
     '.modal-form__input[value="isWatched"]'
   );
+
+  const btnRemoveEl = document.querySelector('.js-remove-button');
   btnQueuedEl.checked = db.cachedMovie.isQueued;
   btnWatchedEl.checked = db.cachedMovie.isWatched;
+
+  if (db.cachedMovie.isWatched || db.cachedMovie.isQueued) {
+    btnRemoveEl.style.display = 'inline-block';
+  } else {
+    btnRemoveEl.style.display = 'none';
+  }
 }
 
 export function cacheMovie(movieDetails) {
@@ -76,7 +84,7 @@ export function getModalCardMarkup({
             >Queued</span
           >
         </label>
-        <button type="button" class="js-remove-button button">Remove</button>
+        <button type="button" class="js-remove-button button ">Remove</button>
         </form>
   </div>`;
 
