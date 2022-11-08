@@ -12,26 +12,27 @@
           />
           <span class="logo__title" data-menu="logo">filmoteka</span>
         </a>
-
         <ul class="header__menu-list">
-          <li class="header__menu-item header__home js-menu-home" >
+          <li class="header__menu-item header__home">
             <a
               href="./"
               data-menu="home"
-              class="link header__menu-link"
+              class="link header__menu-link js-menu-home"
             >
               home</a
             >
           </li>
-
-          <li class="header__menu-item header__my-library js-menu-my-library" >
+          <li class="header__menu-item header__my-library">
             <a
               href="./myLibrary.html"
               data-menu="my-library"
-              class="link header__menu-link"
+              class="link header__menu-link js-menu-my-library"
             >
               my library</a
             >
+          </li>
+          <li class="header__menu-item header__my-library">
+            <a href="#!" class="link header__menu-link js-login"> Log in </a>
           </li>
         </ul>
         <!-- <div class="header__menu--underline-home"></div> -->
@@ -39,45 +40,19 @@
       </nav>
       <div class="setting-box">
         <div class="chenge-theme-togle">
-    <input type="checkbox" class="checkbox" id="checkbox">
-  <label for="checkbox" class="label">
-    <svg class="icon-sun" width="15" height="15"><use href="/src/images/darkTheme.svg#icon-sun"></use></svg>
-    <svg class="icon-moon" width="15" height="15"><use href="/src/images/darkTheme.svg#icon-moon"></use></svg>
-    <div class='ball'>
-  </label>
-</div>
-        <!-- <ul class="theme-toggle">
-          <li class="night-item">
-            <button type="button" class="night-btn" data-sign="night">
-              night
-            </button>
-          </li>
-          <li class="day-item">
-            <button type="button" class="day-btn" data-sign="day">day</button>
-          </li>
-        </ul> -->
-        <ul class="sign-list">
-          <li class="sign-item">
-            <button type="button" class="signin-btn" data-sign="in">
-              sign in
-            </button>
-          </li>
-          <li class="sign-item">
-            <button type="button" class="signup-btn" data-sign="up">
-              sign up
-            </button>
-          </li>
-          <li class="sign-item">
-            <button type="button" class="signout-btn is-hidden" data-sign="out">
-              sign out
-            </button>
-          </li>
-          <li class="sign-item">
-            <button type="button" class="owner-btn is-hidden" data-sign="owner">
-              owner
-            </button>
-          </li>
-        </ul>
+          <input type="checkbox" class="checkbox" id="checkbox" />
+          <label for="checkbox" class="label">
+            <svg class="icon-sun" width="15" height="15">
+              <use href="/src/images/darkTheme.svg#icon-sun"></use>
+            </svg>
+            <svg class="icon-moon" width="15" height="15">
+              <use href="/src/images/darkTheme.svg#icon-moon"></use>
+            </svg>
+            <div class="ball"></div>
+          </label>
+        </div>
+        <p class="js-user login-user"></p>
+        <div class="js-login-ui login-user__ui"></div>
       </div>
     </div>
 
@@ -97,10 +72,13 @@
           height="24px"
         />
 
-        <div class="spinner-border text-danger spinner is-hidden" style role="status">
+        <div
+          class="spinner-border text-danger spinner is-hidden"
+          style
+          role="status"
+        >
           <span class="sr-only">Loading...</span>
         </div>
-
       </button>
     </form>
 
@@ -129,9 +107,8 @@
         </label>
       </form>
       <!-- <button type="button" class=" button btn__watched js-btn-watched">Watched</button>
-      
+
         <button type="button" class=" button btn__queue js-btn-watched">Queue</button> -->
     </div>
-
   </div>
 </header>

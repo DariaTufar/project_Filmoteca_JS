@@ -8,5 +8,5 @@ import './js/header';
 
 import './js/darkTheme';
 
+import './js/myLibrary/manageAuth';
 import './js/trailer';
-
