@@ -11,3 +11,5 @@ import './js/movieCardModalAndriy';
 import './js/header';
 
 import './js/darkTheme';
+
+import './js/myLibrary/manageAuth';
