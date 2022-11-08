@@ -32,23 +32,25 @@
   }
 
   &.library {
-    background-image: url('../images/header-home-mob.jpg'), $bg-gradient;
+    background-image: url('../images/header-library-mob.jpg'), $bg-gradient;
     @include retina {
-      background-image: url('../images/header-home-mob@2x.jpg'), $bg-gradient;
+      background-image: url('../images/header-library-mob@2x.jpg'), $bg-gradient;
     }
 
     @include tablet {
       height: 216px;
-      background-image: url('../images/header-home-tab.jpg'), $bg-gradient;
+      background-image: url('../images/header-library-tab.jpg'), $bg-gradient;
       @include retina {
-        background-image: url('../images/header-home-tab@2x.jpg'), $bg-gradient;
+        background-image: url('../images/header-library-tab@2x.jpg'),
+          $bg-gradient;
       }
     }
 
     @include desktop {
-      background-image: url('../images/header-home-desk.jpg'), $bg-gradient;
+      background-image: url('../images/header-library-desk.jpg'), $bg-gradient;
       @include retina {
-        background-image: url('../images/header-home-desk@2x.jpg'), $bg-gradient;
+        background-image: url('../images/header-library-desk@2x.jpg'),
+          $bg-gradient;
       }
     }
   }

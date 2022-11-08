@@ -28,7 +28,7 @@ function ifLoaded(evt) {
       if (refLibraryBtn.classList.contains('is-hidden')) {
         refLibraryBtn.remove('is-hidden');
       }
-      refHeader.classList.add('.library');
+      refHeader.classList.add('library');
 
       break;
   }
@@ -36,6 +36,10 @@ function ifLoaded(evt) {
 
 function onClickHeaderMenu(evt) {
   if (
+    (evt.target.dataset.menu === 'logo' &&
+      document.location.pathname === '/') ||
+    (evt.target.dataset.menu === 'logo' &&
+      document.location.pathname === '/index.html') ||
     (evt.target.dataset.menu === 'home' &&
       document.location.pathname === '/') ||
     (evt.target.dataset.menu === 'home' &&
