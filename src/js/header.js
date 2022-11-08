@@ -1,11 +1,14 @@
 // import owner from './owner';
 document.addEventListener('DOMContentLoaded', ifLoaded);
 function ifLoaded(evt) {
-  refHeader = document.querySelector('.header');
-  refHeaderMenu = document.querySelector('.header__menu-list');
-  refHeaderMenu.addEventListener('click', onClickHeaderMenu);
-  refLibraryBtn = document.querySelector('.my-library-buttons');
+  const refHeader = document.querySelector('.header');
+  const refHeaderMenu = document.querySelector('.navigation');
+  const refLibraryBtn = document.querySelector('.my-library-buttons');
+
   const activeClass = refHeaderMenu.querySelector('.is-active');
+
+  refHeaderMenu.addEventListener('click', onClickHeaderMenu);
+
   if (activeClass) {
     activeClass.classList.remove('is-active');
   }
@@ -48,13 +51,7 @@ function onClickHeaderMenu(evt) {
       document.location.pathname === '/myLibrary.html')
   ) {
     evt.preventDefault();
-
-    console.log(evt);
-    console.log(document.location.pathname);
-
     return;
   }
-  console.log(evt);
-  console.log(document.location.pathname);
   evt.currentTarget.removeEventListener('click', onClickHeaderMenu);
 }
