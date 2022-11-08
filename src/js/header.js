@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', ifLoaded);
 function ifLoaded(evt) {
   const refHeader = document.querySelector('.header');
-  const refHeaderMenu = document.querySelector('.header__menu-list');
+  const refHeaderMenu = document.querySelector('.navigation');
   const refLibraryBtn = document.querySelector('.my-library-buttons');
 
   const activeClass = refHeaderMenu.querySelector('.is-active');
