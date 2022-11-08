@@ -13,9 +13,9 @@ function onModalClick(event) {
     // clicked outside card
     refs.modal.classList.remove('active');
   }
-  if (target.closest('.modal-form__label') && target.closest('input')) {
+  if (target.closest('.js-movie-buttons') && target.closest('input')) {
     // add to queued or watched
-    const formEl = target.closest('.js-modal-form');
+    const formEl = target.closest('.js-movie-buttons');
     const formData = new FormData(formEl);
     const status = formData.get('status');
     if (status === 'isWatched') {
