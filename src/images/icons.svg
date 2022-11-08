@@ -35,3 +35,6 @@
 <path fill="#000" style="fill: var(--color1, #000)" d="M0 0h48v32h-48z"></path>
 <path fill="#c00" style="fill: var(--color2, #c00)" d="M0 0h48v16h-48z"></path>
 </symbol>
+<symbol id="icon-arrow-up" viewBox="0 0 32 32">
+<path d="M16 1l-15 15h9v16h12v-16h9z"></path>
+</symbol>

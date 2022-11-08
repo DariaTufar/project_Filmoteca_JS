@@ -13,3 +13,5 @@ import './js/header';
 import './js/darkTheme';
 
 import './js/trailer';
+
+import './js/scroll-up-button';
