@@ -30,14 +30,22 @@ export function renderModalCard(id) {
 
 export function updateBtnStatus() {
   const btnQueuedEl = document.querySelector(
-    '.modal-form__input[value="isQueued"]'
+    '.js-movie-buttons input[value="isQueued"]'
   );
 
   const btnWatchedEl = document.querySelector(
-    '.modal-form__input[value="isWatched"]'
+    '.js-movie-buttons input[value="isWatched"]'
   );
+
+  const btnRemoveEl = document.querySelector('.js-remove-button');
   btnQueuedEl.checked = db.cachedMovie.isQueued;
   btnWatchedEl.checked = db.cachedMovie.isWatched;
+
+  if (db.cachedMovie.isWatched || db.cachedMovie.isQueued) {
+    btnRemoveEl.style.display = 'inline-block';
+  } else {
+    btnRemoveEl.style.display = 'none';
+  }
 }
 
 export function cacheMovie(movieDetails) {
@@ -64,26 +72,26 @@ export function getModalCardMarkup({
     <h2></h2>
     <p class="about-text">${overview}</p>
 
-    <form class="js-modal-form modal-form">
-        <label class="modal-form__label">
-          <input class="modal-form__input" type="radio" name="status" value="isWatched" />
-          <span class="modal-form__text button">Watched</span>
+    <form class="js-movie-buttons movie-buttons">
+        <label class="movie-buttons__label">
+          <input class="movie-buttons__input" type="radio" name="status" value="isWatched" />
+          <span class="movie-buttons__text button">Watched</span>
         </label>
 
-        <label class="modal-form__label">
-          <input class="modal-form__input" type="radio" name="status" value="isQueued" />
-          <span class="modal-form__text button"
+        <label class="movie-buttons__label">
+          <input class="movie-buttons__input" type="radio" name="status" value="isQueued" />
+          <span class="movie-buttons__text button"
             >Queued</span
           >
         </label>
-        <button type="button" class="js-remove-button button">Remove</button>
+        <button type="button" class="js-remove-button button ">Remove</button>
         </form>
   </div>`;
 
   return markup;
 }
 // *********************
-
+// js-modal-form= js-movie-buttons
 // ===========
 export function writeTestDataToDB() {
   const template = {

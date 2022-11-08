@@ -43,33 +43,39 @@
   background-color: white;
   padding: 40px;
 }
-.js-modal-form {
+
+.movie-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
   .button {
     display: inline-block;
-    min-width: 135px;
+    min-width: 110px;
     padding: 14px 10px;
-    background-color: white;
-    border: 1px solid #000000;
-    border-radius: 5px;
-    color: #000000;
+
     font-family: 'Roboto';
     text-align: center;
     text-transform: uppercase;
-    cursor: pointer;
-    user-select: none;
-
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
+
+    color: #000000;
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
   }
 
-  .modal-form__input:checked + .modal-form__text,
+  &__input:checked + &__text,
   .button:hover {
+    color: white;
     background-color: #ff6b01;
     border: 1px solid #ff6b01;
-    color: white;
   }
-  .modal-form__input {
+  &__input {
     display: none;
   }
 }
