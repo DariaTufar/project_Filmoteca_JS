@@ -3,3 +3,4 @@ import './js/myLibrary/manageFilters'; // файл для роботи філь�
 import './js/myLibrary/manageGallery'; // файл для обробки кліків по фільму в галереї myLibrary
 import './js/myLibrary/manageMovie'; // файл для обробки кліків по кнопка в модальному вікні фільму
 import './js/modalTeam';
+import './js/header';
