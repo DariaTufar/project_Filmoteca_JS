@@ -3,40 +3,55 @@ import { KEY } from './constants';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import movieTrailer from './trailer';
 
-/* const refs = {
-  galleryOnClick: document.querySelector('#data-movieid'),
-  formSearch: document.querySelector('#js-search-form')
+const refs = {
+  idgalery: document.querySelector('.gallery_main-page'),
+};
+
+refs.idgalery.addEventListener('click', onGalleryClick);
+
+function onGalleryClick(event) {
+  const target = event.target;
+  const movieCardEl = target.closest('.gallery__item');
+  if (!movieCardEl) {
+    return;
+  }
+  const id = movieCardEl.dataset.movieid;
+  findMovieByID(id);
 }
 
-console.log(refs.formSearch)
-console.log(refs.galleryOnClick)
-
-refs.galleryOnClick.addEventListener('click', IdMovie);
-const IdMovie = refs.galleryOnClick
-console.log(IdMovie) */
-
-
-async function findMovieByID() {
- const params = {
+async function findMovieByID(id) {
+  const params = {
     baseUrl: 'https://api.themoviedb.org/3/',
     fotoUrl: 'https://image.tmdb.org/t/p/w500',
-    movie_id: 89,
+    movie_id: id,
     language: 'en-US',
     api_key: KEY,
   };
 
-  await axios.get(
-    `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
-  ).then(response => {
-    const modal = response.data;
-    //console.log(modal)
+  await axios
+    .get(
+      `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
+    )
+    .then(response => {
+      const modal = response.data;
 
-   const  { title, vote_count, vote_average, popularity, original_title, overview, genres, poster_path } = modal;
-    const markup = 
-      `<div class="modal_description">
+      const {
+        title,
+        vote_count,
+        vote_average,
+        popularity,
+        original_title,
+        overview,
+        genres,
+        poster_path,
+      } = modal;
+      const markup = `<div class="modal_description">
       <div class="movie_div">
-          <img class="movie_foto" src="${params.fotoUrl}${poster_path}" alt="poster_foto ">
+          <img class="movie_foto" src="${
+            params.fotoUrl
+          }${poster_path}" alt="poster_foto ">
       </div>
       <div class="film_information">
           <h1 class="movie_title">${title}</h1>
@@ -45,7 +60,9 @@ async function findMovieByID() {
               <span class="movie_votes"> /  ${vote_count}</span></li>
               <li class="movie_description">Popularity<span class="movie_value">: ${popularity}</span></li>
               <li class="movie_description">Original Title<span class="movie_value">: ${original_title}</span></li>
-              <li class="movie_description">Genre<span class="movie_value">: ${Object.values(genres[0].name).join('')}</span></li>
+              <li class="movie_description">Genre<span class="movie_value">: ${Object.values(
+                genres[0].name
+              ).join('')}</span></li>
           </ul>
           <h2 class="movie_about">ABOUT</h2>
           <p class="about_text">${overview}</p>
@@ -74,30 +91,21 @@ async function findMovieByID() {
   <button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
 </form>
       </div>
-    </div>`
+    </div>`;
 
-      //console.log(markup)
       const gallery = document.querySelector('.modal_movie');
-      gallery.insertAdjacentHTML('beforeend', markup)
-      
+      gallery.insertAdjacentHTML('beforeend', markup);
+
       const instance = basicLightbox.create(
         document.querySelector('.modal_movie')
-      )
-      instance.show()
-    
-   return markup
-  }).catch(error => {
-    console.log(error)
-  });
+      );
+      instance.show();
 
-};
+      return markup;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
-
-findMovieByID()
 export { findMovieByID };
-
-/* <div class="movie_btn">
-          <button type="radio" name="add_watched_btn" class="film_btn">ADD TO WATCHED</button>
-          <button type="radio" name="add_to_queue_btn" class="film_btn">ADD TO QUEUE</button>
-          <button type="radio" name="trailer_btn" class="film_btn">TRAILER</button>
-      </div> */
