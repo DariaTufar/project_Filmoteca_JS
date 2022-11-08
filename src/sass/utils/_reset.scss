@@ -21,6 +21,7 @@ address {
   margin: 0;
   padding: 0;
 }
+
 .li {
   text-decoration: none;
 }
@@ -49,4 +50,15 @@ img {
   max-width: 100%;
   height: auto;
   width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  // overflow: hidden;
+}
+
+main {
+  flex: 1 1 auto;
 }

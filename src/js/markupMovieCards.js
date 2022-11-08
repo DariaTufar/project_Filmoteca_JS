@@ -9,7 +9,7 @@ export function markupMovieCards(movies, genres) {
         const releaseYear = release_date.split('').slice(0, 4).join(''); // Парсить дату релізу та повертає тільки рік
         const genresName = genresByMovies(genres, genre_ids); // Повертає жанри для конкретного фільму
 
-        return `<li class="gallery__item" data-movieID="${id}">
+        return `<li class="gallery__item" data-movieid="${id}">
               <img src="${poster}" alt="${title}" class="gallery__item-poster">
                <div class=" gallery__item-descr-wrap">
                  <h2 class="gallery__item-title">${title}</h2>
