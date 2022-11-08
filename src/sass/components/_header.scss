@@ -1,125 +1,225 @@
-.header__container {
-  padding: 0;
-  background-image: url('./../images/abstract-background-with-red-lines_1x_mob.png');
-
-  @include tablet {
-    background-image: url('./../images/abstract-background-with-red-lines_1x_tab.png');
-  }
-
-  @include desktop {
-    background-image: url('./../images/abstract-background-with-red-lines_1x_desktop.png');
-  }
-  display: flex;
-  flex-direction: column;
-}
-  .icon {
-  display: inline-block;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-
-.navigation {
-  display: flex;
-  flex-direction: row;
-  padding: 0 20px;
-
-  justify-content: space-between;
-}
-
-.header__logo{
-  margin-top: 45px;
-  margin-left: 12px;
-}
-
-.logo__icon {
-  flex-direction: row;
-  width: 20px;
-  height: 20px;
-  color: $bg-primary-light-color;
-  fill: none;
-  padding-top: 40px;
-  
-  .icon {
-  display: inline-block;
- 
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
-}
-
-.header__menu-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
- 
-  list-style: none
-}
-
-
-.li {
-  text-decoration: none;
- 
-}
-
-.header__menu-item {
+.header {
+  height: 230px;
   font-family: $font-primary;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  /* identical to box height */
+  color: $light-color-primary;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.9;
 
-  text-transform: uppercase;
-  color: $text-color-light;
+  background-image: url('../images/header-home-mob.jpg'), $bg-gradient;
+  @include retina {
+    background-image: url('../images/header-home-mob@2x.jpg'), $bg-gradient;
+  }
 
-  padding-top: 44px;
-   text-decoration: none;
+  @include tablet {
+    height: 216px;
+    background-image: url('../images/header-home-tab.jpg'), $bg-gradient;
+    @include retina {
+      background-image: url('../images/header-home-tab@2x.jpg'), $bg-gradient;
+    }
+  }
+
+  @include desktop {
+    background-image: url('../images/header-home-desk.jpg'), $bg-gradient;
+    @include retina {
+      background-image: url('../images/header-home-desk@2x.jpg'), $bg-gradient;
+    }
+  }
+
+  &.library {
+    background-image: url('../images/header-library-mob.jpg'), $bg-gradient;
+    @include retina {
+      background-image: url('../images/header-library-mob@2x.jpg'), $bg-gradient;
+    }
+
+    @include tablet {
+      height: 216px;
+      background-image: url('../images/header-library-tab.jpg'), $bg-gradient;
+      @include retina {
+        background-image: url('../images/header-library-tab@2x.jpg'),
+          $bg-gradient;
+      }
+    }
+
+    @include desktop {
+      background-image: url('../images/header-library-desk.jpg'), $bg-gradient;
+      @include retina {
+        background-image: url('../images/header-library-desk@2x.jpg'),
+          $bg-gradient;
+      }
+    }
+  }
 }
-.header__home {
-  margin-right: 40px;
+
+.header__container {
+  padding: 20px;
+  height: 100%;
+}
+
+.header a {
+  text-decoration: initial;
+  text-transform: uppercase;
+  &:focus,
+  &:hover {
+    color: aqua;
+  }
+}
+
+.header .header__menu-link.is-active {
+  text-decoration-line: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #ff001b;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  // gap: 20%;
+}
+
+.header__logo {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.logo__icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.logo__title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.67;
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.header__menu-list {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  white-space: nowrap;
+}
+
+.setting-box {
+  display: flex;
+  justify-content: space-between;
+}
+.sign-list {
+  display: flex;
+  align-items: center;
 }
 
 .movie-search__form {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin: 0 auto 20px;
+  width: 50%;
+  border-bottom: 1px solid $light-color-primary;
 }
-.search__form-input{
-background-color: transparent;
-    
-    
-    border: none;
-}
-.search__form-input::placeholder {
-  font-family: $font-primary;
+.search__form-input {
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.143;
-  color: $text-color-light;
-
-  padding-top: 56px;
+  line-height: 1.14;
+  color: $light-color-primary;
+  background-color: inherit;
+  outline: none;
+  border: 0 none;
 }
 
-.icon-search {
-  width: 8px;
-  height: 8px;
-  color: $bg-primary-light-color;
-   
-  padding-top: 40px;
-  
+.search__button {
+  width: 50px;
+  height: 50px;
 
+  background-color: inherit;
+  // background-color: rgba(29, 20, 20, 0.5);
+  border-radius: 50%;
+  border: 1px;
+  // opacity: 0.3;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: rgba(29, 20, 20, 0.5);
+  }
 }
-
 
 .form__search-not-succuessful {
-  font-family: $font-primary;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.143;
-  color: $accent-color-secondary;
+  text-align: center;
+  color: #ff001b;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+}
+
+//dark theme*****
+body.dark {
+  background-color: #292c35;
+}
+
+.chenge-theme-togle {
+  margin-right: 60px;
+  margin-top: 20px;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: #111;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: $accent-color-primary;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.icon-sun {
+  fill: yellow;
+}
+
+.icon-moon {
+  fill: $light-color-primary;
 }

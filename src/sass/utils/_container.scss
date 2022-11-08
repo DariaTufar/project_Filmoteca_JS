@@ -2,8 +2,8 @@
   width: 100%;
   margin: 0 auto;
 
-  @include minBreakpoints(320px) {
-    width: 320px;
+  @include minBreakpoints($mobile) {
+    width: $mobile;
   }
 
   @include minBreakpoints($tablet) {

@@ -1,0 +1,166 @@
+/* .modal{
+    background-color: azure;
+    border-color: crimson;
+} 
+ .modal_movie{
+    background-color: azure;
+    border-color: crimson;
+} */
+
+.modal_description {
+  background-color: floralwhite;
+   width: 882px;
+  /* height: 568px; */
+  display: flex;
+
+  padding: 40px 15px 40px 15px;
+
+  overflow-x: auto;
+
+  margin: auto;
+  /* background-color: #fff; */
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #000;
+}
+.movie_div {
+  margin-right: 30px;
+}
+
+/* width: 775px; */
+
+.movie_foto {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  /* max-width: 240px; */
+  /* height: 356px; */
+  border-radius: 5px;
+  /* margin-bottom: 30px; */
+}
+
+.movie_description {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: #8c8c8c;
+
+  display: flex;
+  margin-bottom: 10px;
+}
+
+/* .film_information{
+      display: block;
+  } */
+
+.movie_title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.movie_vote {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #fff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+}
+
+.movie_votes {
+  line-height: 1.17;
+  font-weight: 500;
+  font-size: 12px;
+  color: #000000;
+}
+
+.movie_value {
+  font-size: 12px;
+  line-height: 14px;
+
+  display: flex;
+  align-items: center;
+  /* text-transform: uppercase; */
+  color: #000000;
+}
+
+.movie_about{
+  font-size: 12px;
+line-height: 16px;
+font-weight: 500;
+text-transform: uppercase;
+color: #000000;
+}
+
+.movie_btn {
+  display: flex;
+}
+
+.about_text {
+  line-height: 1.67;
+  margin-bottom: 21px;
+}
+
+/* .film_btn:focus,
+.film_btn:hover {
+  background-color: #ff6b08;
+  color: #fff;
+  border: 1px solid #ff6b08;
+} */
+
+/* .film_btn:not(:last-child) {
+  margin-left: 15px;
+} */
+
+/* .film_btn {
+  width: 112px;
+  height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid #000;
+  line-height: 1.15;
+} */
+
+
+////Стили точек под модалкой////
+.movie-buttons {
+  /* display: flex;
+  gap: 10px; */
+  align-items: center;
+  
+  .button, .trailer_btn {
+    display: inline-block;
+    min-width: 110px;
+    padding: 14px 10px;
+
+    font-family: 'Roboto';
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+
+    color: #000000;
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__input:checked + &__text,
+  .button:hover {
+    color: white;
+    background-color: #ff6b01;
+    border: 1px solid #ff6b01;
+  }
+  &__input {
+    display: none;
+  }
+}

@@ -3,9 +3,9 @@
 @import './utils/common';
 @import './utils/container';
 @import './utils/reset';
+@import './utils/hidden';
 
 @import './components/header';
-@import './components/headerMyLibrary';
 
 @import './components/containerMainPage';
 @import './components/containerMyLibrary';
@@ -15,7 +15,9 @@
 
 @import './components/modalTeam';
 @import './components/movieCardModalAndriy';
+@import './components/scroll_up_button';
 
 @import './components/paginationPage';
 @import './components/spinner';
 @import './components/footer';
+@import './components/login-user';
