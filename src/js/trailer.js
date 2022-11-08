@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 
+const key = 'e994a62a86f0219af0993364e0b8b3fc';
+
 function findTrailer(idCard) {
   return fetch(
     `https://api.themoviedb.org/3/movie/${idCard}/videos?api_key=${key}&language=en-US`
