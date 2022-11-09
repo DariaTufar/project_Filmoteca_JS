@@ -56,59 +56,64 @@
       </div>
     </div>
 
-    <form class="movie-search__form js-search-form" id="js-search-form">
-      <input
-        class="search__form-input"
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Movie search"
-      />
-      <button type="submit" class="js-submit__search_btn search__button">
-        <img
-          src="./images/search.svg"
-          class="icon icon-search"
-          width="24px"
-          height="24px"
+    <div class="search-box">
+      <form class="movie-search__form js-search-form" id="js-search-form">
+        <input
+          class="search__form-input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Movie search"
         />
+        <button type="submit" class="js-submit__search_btn search__button">
+          <img
+            src="./images/search.svg"
+            class="icon icon-search"
+            width="24px"
+            height="24px"
+          />
 
-        <div
-          class="spinner-border text-danger spinner is-hidden"
-          style
-          role="status"
-        >
-          <span class="sr-only">Loading...</span>
-        </div>
-      </button>
-    </form>
-
+          <div
+            class="spinner-border text-danger spinner is-hidden"
+            style
+            role="status"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
+      </form>
+    </div>
     <!-- <div class="form__search-not-succuessful">
       <p>Search result not successful. Enter the correct movie name and</p>
     </div> -->
 
     <!-- radiobuttons for filter   -->
-    <div class="my-library-buttons">
-      <form class="js-filter-my-library my-library__filter">
-        <label class="my-library__filter-label">
-          <input type="radio" name="filter" value="all" checked />
-          <span class="my-library__filter-btn filter__btn-all">All</span>
-        </label>
+    <div class="radio-box">
+      <div class="my-library-buttons">
+        <form class="js-filter-my-library my-library__filter">
+          <label class="my-library__filter-label">
+            <input type="radio" name="filter" value="all" checked />
+            <span class="my-library__filter-btn filter__btn-all">All</span>
+          </label>
 
-        <label class="my-library__filter-label">
-          <input type="radio" name="filter" value="isWatched" />
-          <span class="my-library__filter-btn filter__btn-watched"
-            >Watched</span
-          >
-        </label>
+          <label class="my-library__filter-label">
+            <input type="radio" name="filter" value="isWatched" />
+            <span class="my-library__filter-btn filter__btn-watched"
+              >Watched</span
+            >
+          </label>
 
-        <label class="my-library__filter-label">
-          <input type="radio" name="filter" value="isQueued" />
-          <span class="my-library__filter-btn filter__btn-queued">Queued</span>
-        </label>
-      </form>
-      <!-- <button type="button" class=" button btn__watched js-btn-watched">Watched</button>
+          <label class="my-library__filter-label">
+            <input type="radio" name="filter" value="isQueued" />
+            <span class="my-library__filter-btn filter__btn-queued"
+              >Queued</span
+            >
+          </label>
+        </form>
+        <!-- <button type="button" class=" button btn__watched js-btn-watched">Watched</button>
 
         <button type="button" class=" button btn__queue js-btn-watched">Queue</button> -->
+      </div>
     </div>
   </div>
 </header>
