@@ -5,10 +5,14 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 const srcTrailer = 'https://www.youtube.com/embed/';
 
 const modal = basicLightbox.create(`
-  <iframe width="680" height="415" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="900" height="600" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <button class="close-modal__trailer">     
      </button>`);
 const iframeTrailer = modal.element().querySelector('iframe');
+
+const modal2 = basicLightbox.create(`
+    <iframe width="900" height="600" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
 
 export default function openTrailer(id) {
   findTrailer(id)
@@ -26,10 +30,10 @@ export default function openTrailer(id) {
       }
     })
     .catch(error => {
-      const modal = basicLightbox.create(`
-    <iframe width="860" height="615" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      `);
-      modal.show();
+      //   const modal = basicLightbox.create(`
+      // <iframe width="860" height="615" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      //   `);
+      modal2.show();
       console.log(error);
     });
 }
