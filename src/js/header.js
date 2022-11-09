@@ -1,9 +1,9 @@
-// import owner from './owner';
 document.addEventListener('DOMContentLoaded', ifLoaded);
 function ifLoaded(evt) {
   const refHeader = document.querySelector('.header');
   const refHeaderMenu = document.querySelector('.navigation');
-  const refLibraryBtn = document.querySelector('.my-library-buttons');
+  const refLibraryBtn = document.querySelector('.radio-box');
+  const refSearchForm = document.querySelector('.search-box');
 
   const activeClass = refHeaderMenu.querySelector('.is-active');
 
@@ -13,7 +13,7 @@ function ifLoaded(evt) {
     activeClass.classList.remove('is-active');
   }
 
-  switch (document.location.pathname) {
+  switch ('/' + document.location.pathname.split('/').pop()) {
     case '/':
       refHeaderMenu
         .querySelector("[data-menu='home']")
@@ -21,6 +21,9 @@ function ifLoaded(evt) {
       refLibraryBtn.classList.add('is-hidden');
       if (refHeader.classList.contains('library')) {
         refHeader.remove('library');
+      }
+      if (refSearchForm.classList.contains('is-hidden')) {
+        refSearchForm.remove('is-hidden');
       }
       break;
 
@@ -32,7 +35,7 @@ function ifLoaded(evt) {
         refLibraryBtn.remove('is-hidden');
       }
       refHeader.classList.add('library');
-
+      refSearchForm.classList.add('is-hidden');
       break;
   }
 }
