@@ -38,3 +38,8 @@
 <symbol id="icon-arrow-up" viewBox="0 0 32 32">
 <path d="M16 1l-15 15h9v16h12v-16h9z"></path>
 </symbol>
+
+<symbol id="icon-close-modal" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933"></path>
+<path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 23.467l14.933-14.933"></path>
+</symbol>

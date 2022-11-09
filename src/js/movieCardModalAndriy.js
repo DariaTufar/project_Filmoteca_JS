@@ -48,6 +48,11 @@ async function findMovieByID(id) {
         poster_path,
       } = modal;
       const markup = `<div class="modal_description">
+
+      <span class="icon-close-modal"> <svg class="icon-close-modal-svg" width="14px" height="14px">
+          <use href="/src/images/icons.svg#icon-close-modal"></use>
+        </svg></span>
+
       <div class="movie_div">
           <img class="movie_foto" src="${
             params.fotoUrl
@@ -58,15 +63,16 @@ async function findMovieByID(id) {
           <ul>
               <li class="movie_description">Vote / Votes<span class="movie_vote"> ${vote_average} </span>
               <span class="movie_votes"> /  ${vote_count}</span></li>
-              <li class="movie_description">Popularity<span class="movie_value">: ${popularity}</span></li>
-              <li class="movie_description">Original Title<span class="movie_value">: ${original_title}</span></li>
-              <li class="movie_description">Genre<span class="movie_value">: ${Object.values(
+              <li class="movie_description">Popularity: <span class="movie_value"> ${popularity}</span></li>
+              <li class="movie_description">Original Title: <span class="movie_value movie-value-title"> ${original_title}</span></li>
+              <li class="movie_description">Genre:<span class="movie_value"> ${Object.values(
                 genres[0].name
               ).join('')}</span></li>
           </ul>
           <h2 class="movie_about">ABOUT</h2>
           <p class="about_text">${overview}</p>
 
+        <div class="modal__buttons-wrap">
           <form class="js-movie-buttons movie-buttons">
   <label class="movie-buttons__label">
     <input
@@ -90,6 +96,7 @@ async function findMovieByID(id) {
   <button type="button" class="js-remove-button button">Remove</button>
   <button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
 </form>
+       </div>
       </div>
     </div>`;
 

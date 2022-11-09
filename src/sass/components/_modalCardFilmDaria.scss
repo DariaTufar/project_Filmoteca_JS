@@ -1,0 +1,184 @@
+.modal_description {
+  width: 280px;
+  height: 940px;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    width: 704px;
+    flex-direction: row;
+    height: 100%;
+    padding: 40px 36px;
+  }
+  @include desktop {
+    width: 806px;
+    padding: 40px 12px;
+    height: 100%;
+
+  }
+}
+.icon-close-modal {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.icon-close-modal-svg {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+
+  stroke-width: 0;
+
+  fill: black;
+}
+
+.movie_div {
+  margin: 0; // need reset other!!
+
+  
+  display: flex;
+  justify-content: center;
+}
+
+.movie_foto {
+  max-width: none;
+  margin-top: 48px;
+  width: 240px;
+//   height: 357px;
+  border-radius: 5px;
+    // align-items: flex-start;
+  @include tablet {
+    width: 264px;
+    margin-right: 0;
+    margin-top: 0;
+   
+    display: flex;
+    align-content: space-between;
+  
+  }
+  @include desktop {
+    width: 375px;
+    margin-left: 0;
+  }
+}
+.film_information {
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    margin-left: 68px;
+    padding-right: 36px;   
+  }
+  @include desktop {
+    margin-left: 16px;
+  }
+}
+.movie_title {
+  margin: 20px 0;
+
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+
+  @include tablet{
+     margin-top: 40px;
+  }
+}
+
+.movie_description {
+  position: relative;
+}
+.movie_vote {
+  position: absolute;
+  top: 0;
+  left: 108px;
+}
+.movie_votes {
+  position: absolute;
+  top: 0;
+  left: 159px;
+}
+.movie_value {
+  position: absolute;
+  top: 0;
+  left: 108px;
+}
+.movie-value-title {
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  /* identical to box height, or 133% */
+
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+.movie_about {
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+.about_text {
+    width: 240px;
+    @include tablet { 
+    width: 264px;
+    }
+    @include desktop{
+        width: 391px;
+    }
+}
+.modal__buttons-wrap {
+  display: flex;
+  flex-direction: row;
+
+  max-width: 100%;
+  justify-content: center;
+  @include desktop {
+    width: 400px;
+
+  }
+}
+
+.movie-buttons {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  @include  tablet {
+    margin-bottom: 34px;
+  }
+  @include desktop{
+        justify-content: center;
+        max-width: 300px;
+  }
+}
+
+.movie-buttons .button {
+  display: flex;
+
+  justify-content: center;
+}
+.movie-buttons__label {
+}
+.movie-buttons__input {
+}
+.movie-buttons__text {
+  max-width: 50px;
+  @include desktop {
+    max-width: 136px;
+  }
+
+}
+.button {
+}
+.js-remove-button {
+}
+.trailer_btn {
+}
