@@ -56,7 +56,11 @@
 }
 
 input[type='radio'] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
+  display: none;
+
+  // для застосування стиля до натиснутої кнопки фільтра
+  &:checked + span {
+    background-color: $accent-color-primary;
+    border-color: $accent-color-primary;
+  }
 }
