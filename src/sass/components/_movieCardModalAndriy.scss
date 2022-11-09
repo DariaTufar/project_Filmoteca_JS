@@ -7,41 +7,59 @@
     border-color: crimson;
 } */
 
-.modal_description {
-  background-color: floralwhite;
-   width: 882px;
-  /* height: 568px; */
-  display: flex;
-
+.modal_description_film {
+  /* max-width: 882px;
+   max-height: 568px; */
+  /* display: flex; */
+  /* align-items: center; */
   padding: 40px 15px 40px 15px;
-
   overflow-x: auto;
-
-  margin: auto;
-  /* background-color: #fff; */
+  /* margin: auto; */
   font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33333;
   color: #000;
+  background-color: #fff;
+
+  @include minBreakpoints($mobile) {
+    width: $mobile;
+  }
+
+  @include minBreakpoints($tablet) {
+    width: $tablet;
+    display: flex;
+  }
+
+  @include minBreakpoints($desktop) {
+    width: $desktop;
+    max-width: 882px;
+    max-height: 568px;
+    display: flex;
+  }
 }
-.movie_div {
-  margin-right: 30px;
+
+.movie_div_film {
+  @include minBreakpoints($mobile) {
+    /* width: $mobile; */
+    margin-bottom: 30px;
+  }
 }
 
 /* width: 775px; */
 
-.movie_foto {
-  margin-right: auto;
-  margin-left: auto;
+.movie_foto_film {
+  /* margin-right: auto;
+    margin-left: auto; */
   display: block;
-  /* max-width: 240px; */
-  /* height: 356px; */
+  min-width: 240px;
+  /* max-width: 500px; */
   border-radius: 5px;
+
   /* margin-bottom: 30px; */
 }
 
-.movie_description {
+.movie_description_film {
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -52,17 +70,17 @@
   margin-bottom: 10px;
 }
 
-/* .film_information{
-      display: block;
-  } */
+.film_information_film {
+  margin-left: 30px;
+}
 
-.movie_title {
+.movie_title_film {
   font-size: 20px;
   line-height: 1.15;
   margin-bottom: 20px;
 }
 
-.movie_vote {
+.movie_vote_film {
   padding-left: 10px;
   padding-right: 10px;
   color: #fff;
@@ -70,14 +88,14 @@
   border-radius: 5px;
 }
 
-.movie_votes {
+.movie_votes_film {
   line-height: 1.17;
   font-weight: 500;
   font-size: 12px;
   color: #000000;
 }
 
-.movie_value {
+.movie_value_film {
   font-size: 12px;
   line-height: 14px;
 
@@ -87,19 +105,19 @@
   color: #000000;
 }
 
-.movie_about{
+.movie_about_film {
   font-size: 12px;
-line-height: 16px;
-font-weight: 500;
-text-transform: uppercase;
-color: #000000;
+  line-height: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #000000;
 }
 
-.movie_btn {
+/* .movie_btn {
   display: flex;
-}
+} */
 
-.about_text {
+.about_text_film {
   line-height: 1.67;
   margin-bottom: 21px;
 }
@@ -127,14 +145,33 @@ color: #000000;
   line-height: 1.15;
 } */
 
-
 ////Стили точек под модалкой////
-.movie-buttons {
+.movie-buttons_film {
   /* display: flex;
   gap: 10px; */
-  align-items: center;
-  
-  .button, .trailer_btn {
+  /* align-items: center; */
+
+  @include minBreakpoints($mobile) {
+    align-items: center;
+    
+  }
+
+  @include minBreakpoints($tablet) {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+  }
+
+  @include minBreakpoints($desktop) {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+  }
+
+  .button_film,
+  .trailer_btn {
     display: inline-block;
     min-width: 110px;
     padding: 14px 10px;
@@ -155,7 +192,7 @@ color: #000000;
   }
 
   &__input:checked + &__text,
-  .button:hover {
+  .button_film:hover {
     color: white;
     background-color: #ff6b01;
     border: 1px solid #ff6b01;
@@ -163,4 +200,14 @@ color: #000000;
   &__input {
     display: none;
   }
+
+  
+}
+
+.trailer_btn{
+  margin-bottom: 0.5rem;
+}
+
+.button_film{
+  margin-bottom: 0.0rem;
 }

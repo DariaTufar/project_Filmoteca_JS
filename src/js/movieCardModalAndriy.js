@@ -3,8 +3,7 @@ import { KEY } from './constants';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
-import movieTrailer from './trailer';
-import { cacheMovie, updateBtnStatus } from './myLibrary/helpers.js';
+/* import movieTrailer from './trailer'; */
 
 const refs = {
   idgalery: document.querySelector('.gallery_main-page'),
@@ -37,6 +36,7 @@ async function findMovieByID(id) {
     )
     .then(response => {
       const modal = response.data;
+
       const {
         title,
         vote_count,
@@ -47,27 +47,27 @@ async function findMovieByID(id) {
         genres,
         poster_path,
       } = modal;
-      const markup = `<div class="modal_description">
-      <div class="movie_div">
-          <img class="movie_foto" src="${
+      const markup = `<div class="modal_description_film">
+      <div class="movie_div_film">
+          <img class="movie_foto_film" src="${
             params.fotoUrl
           }${poster_path}" alt="poster_foto ">
       </div>
-      <div class="film_information">
-          <h1 class="movie_title">${title}</h1>
+      <div class="film_information_film">
+          <h1 class="movie_title_film">${title}</h1>
           <ul>
-              <li class="movie_description">Vote / Votes<span class="movie_vote"> ${vote_average} </span>
-              <span class="movie_votes"> /  ${vote_count}</span></li>
-              <li class="movie_description">Popularity<span class="movie_value">: ${popularity}</span></li>
-              <li class="movie_description">Original Title<span class="movie_value">: ${original_title}</span></li>
-              <li class="movie_description">Genre<span class="movie_value">: ${Object.values(
+              <li class="movie_description_film">Vote / Votes<span class="movie_vote_film"> ${vote_average} </span>
+              <span class="movie_votes_film"> /  ${vote_count}</span></li>
+              <li class="movie_description_film">Popularity<span class="movie_value_film">: ${popularity}</span></li>
+              <li class="movie_description_film">Original Title<span class="movie_value_film">: ${original_title}</span></li>
+              <li class="movie_description_film>Genre<span class="movie_value_film">: ${Object.values(
                 genres[0].name
               ).join('')}</span></li>
           </ul>
-          <h2 class="movie_about">ABOUT</h2>
-          <p class="about_text">${overview}</p>
+          <h2 class="movie_about_film">ABOUT</h2>
+          <p class="about_text_film">${overview}</p>
 
-          <form class="js-movie-buttons movie-buttons">
+          <form class="js-movie-buttons movie-buttons_film">
   <label class="movie-buttons__label">
     <input
       class="movie-buttons__input"
@@ -75,7 +75,7 @@ async function findMovieByID(id) {
       name="status"
       value="isWatched"
     />
-    <span class="movie-buttons__text button">Watched</span>
+    <span class="movie-buttons__text button_film">Watched</span>
   </label>
 
   <label class="movie-buttons__label">
@@ -85,10 +85,10 @@ async function findMovieByID(id) {
       name="status"
       value="isQueued"
     />
-    <span class="movie-buttons__text button">Queued</span>
+    <span class="movie-buttons__text button_film">Queued</span>
   </label>
-  <button type="button" class="js-remove-button button">Remove</button>
-  <button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
+  <button type="button" class="js-remove-button button_film">Remove</button>
+  <button type="button" name="trailer_btn" class="button_film trailer_btn">TRAILER</button>
 </form>
       </div>
     </div>`;
@@ -100,8 +100,6 @@ async function findMovieByID(id) {
         document.querySelector('.modal_movie')
       );
       instance.show();
-      cacheMovie(modal);
-      updateBtnStatus();
 
       return markup;
     })
