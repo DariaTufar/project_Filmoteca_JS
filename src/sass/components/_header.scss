@@ -121,7 +121,9 @@
 
 .setting-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 10px;
   // position: absolute;
   // left: 10%;
 }
