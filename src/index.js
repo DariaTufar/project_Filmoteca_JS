@@ -14,3 +14,5 @@ import './js/myLibrary/manageAuth';
 import './js/trailer';
 
 import './js/scroll-up-button';
+
+import './js/myLibrary/manageMovie';

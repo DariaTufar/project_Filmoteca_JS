@@ -122,6 +122,10 @@
 .setting-box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  // position: absolute;
+  // left: 10%;
 }
 .sign-list {
   display: flex;

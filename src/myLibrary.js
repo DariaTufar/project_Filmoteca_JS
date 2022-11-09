@@ -5,3 +5,5 @@ import './js/myLibrary/manageMovie'; // файл для обробки клік�
 import './js/modalTeam';
 import './js/header';
 import './js/myLibrary/manageAuth';
+// import './js/btnAddRemoveClass'; // переключення кнопок фільтра працює на стилях без js
+import './js/darkTheme';

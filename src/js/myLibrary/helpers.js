@@ -2,6 +2,8 @@ import { markupMovieCards } from '../markupMovieCards';
 import { db } from './localDB';
 import { genres } from './genres';
 import { refs } from './refs';
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/dist/basicLightbox.min.css';
 
 // ====================
 
@@ -11,7 +13,12 @@ export function renderMovies() {
 
   const filteredMovies = db.getMovies({ [filterValue]: true });
   const moviesDetails = filteredMovies.map(item => item.movieDetails);
-  const markup = markupMovieCards(moviesDetails, genres).join('');
+
+  moviesDetails.forEach(element => {
+    const genres = element.genres;
+    element.genre_ids = genres.map(({ id }) => id);
+  });
+  const markup = markupMovieCards(moviesDetails, [...genres]).join('');
   refs.gallery.innerHTML = markup;
 }
 
@@ -19,11 +26,13 @@ export function renderMovies() {
 
 export function renderModalCard(id) {
   db.cachedMovie = db.getMovie({ id }).movieDetails;
-  const markup = getModalCardMarkup(db.cachedMovie.movieDetails, genres);
-  refs.modal.innerHTML = markup;
+  const markup = getModalCardMarkup(db.cachedMovie.movieDetails, [...genres]);
 
+  const gallery = document.querySelector('.modal_movie');
+  gallery.insertAdjacentHTML('beforeend', markup);
+  const instance = basicLightbox.create(document.querySelector('.modal_movie'));
+  instance.show();
   updateBtnStatus();
-  refs.modal.classList.add('active');
 }
 
 // ====================
@@ -49,47 +58,76 @@ export function updateBtnStatus() {
 }
 
 export function cacheMovie(movieDetails) {
-  db.cashedMovie = movieDetails;
+  db.cachedMovie = movieDetails;
 }
 // ************** TEMPORARY FUNCTIONS FOR TESTING *********************
-export function getModalCardMarkup({
-  title,
-  vote_count,
-  vote_average,
-  popularity,
-  original_title,
-  overview,
-}) {
+export function getModalCardMarkup(movieDetails, genres) {
+  const {
+    title,
+    vote_count,
+    vote_average,
+    popularity,
+    original_title,
+    overview,
+    // genres,
+    poster_path,
+  } = movieDetails;
+
   const markup = `<div class="modal_description">
-    <h1 class="movie_title">${title}</h1>
-    <ul>
-        <li class="movie_description">Vote / Votes<span class="movie_vote">${vote_count}</span>
-        <span class="movie_description">${vote_average}</span></li>
-        <li class="movie_description">Popularity<span class="movie_value">${popularity}</span></li>
-        <li class="movie_description">Original Title<span class="movie_value">${original_title}</span></li>
-        <li class="movie_description">Genre<span class="movie_value">${genres.name}</span></li>
-    </ul>
-    <h2></h2>
-    <p class="about-text">${overview}</p>
+  <div class="movie_div">
+      <img class="movie_foto" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="poster_foto ">
+  </div>
+  <div class="film_information">
+      <h1 class="movie_title">${title}</h1>
+      <ul>
+          <li class="movie_description">Vote / Votes<span class="movie_vote"> ${vote_average} </span>
+          <span class="movie_votes"> /  ${vote_count}</span></li>
+          <li class="movie_description">Popularity<span class="movie_value">: ${popularity}</span></li>
+          <li class="movie_description">Original Title<span class="movie_value">: ${original_title}</span></li>
+          <li class="movie_description">Genre<span class="movie_value">: ${Object.values(
+            genres[0].name
+          ).join('')}</span></li>
+      </ul>
+      <h2 class="movie_about">ABOUT</h2>
+      <p class="about_text">${overview}</p>
 
-    <form class="js-movie-buttons movie-buttons">
-        <label class="movie-buttons__label">
-          <input class="movie-buttons__input" type="radio" name="status" value="isWatched" />
-          <span class="movie-buttons__text button">Watched</span>
-        </label>
+      <form class="js-movie-buttons movie-buttons">
+<label class="movie-buttons__label">
+<input
+  class="movie-buttons__input"
+  type="radio"
+  name="status"
+  value="isWatched"
+/>
+<span class="movie-buttons__text button">Watched</span>
+</label>
 
-        <label class="movie-buttons__label">
-          <input class="movie-buttons__input" type="radio" name="status" value="isQueued" />
-          <span class="movie-buttons__text button"
-            >Queued</span
-          >
-        </label>
-        <button type="button" class="js-remove-button button ">Remove</button>
-        </form>
-  </div>`;
+<label class="movie-buttons__label">
+<input
+  class="movie-buttons__input"
+  type="radio"
+  name="status"
+  value="isQueued"
+/>
+<span class="movie-buttons__text button">Queued</span>
+</label>
+<button type="button" class="js-remove-button button">Remove</button>
+<button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
+</form>
+  </div>
+</div>`;
 
   return markup;
 }
+
+function showModalCard(markup) {
+  const gallery = document.querySelector('.modal_movie');
+  gallery.insertAdjacentHTML('beforeend', markup);
+
+  const instance = basicLightbox.create(document.querySelector('.modal_movie'));
+  instance.show();
+}
+
 // *********************
 // js-modal-form= js-movie-buttons
 // ===========

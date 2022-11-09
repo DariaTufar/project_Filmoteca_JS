@@ -1,0 +1,66 @@
+.my-library-buttons {
+  display: flex;
+  // flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-library__filter {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  @include tablet {
+    gap: 32px;
+  }
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.my-library__filter-label {
+  display: flex;
+}
+.my-library__filter-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 88px;
+  height: 44px;
+  font-family: $font-primary;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  border: 1px solid $light-color-primary;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  border-radius: 5px;
+  background-color: transparent;
+  color: $text-color-light;
+  @include tablet {
+    width: 152px;
+  }
+  @include desktop {
+    width: 147px;
+    height: 42px;
+  }
+}
+.my-library__filter-btn--active {
+  background-color: $accent-color-primary;
+}
+
+.filter__btn-all {
+}
+.filter__btn-watched {
+}
+.filter__btn-queued {
+}
+
+input[type='radio'] {
+  display: none;
+
+  // для застосування стиля до натиснутої кнопки фільтра
+  &:checked + span {
+    background-color: $accent-color-primary;
+    border-color: $accent-color-primary;
+  }
+}
