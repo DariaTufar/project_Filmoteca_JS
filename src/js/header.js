@@ -1,60 +1,54 @@
-document.addEventListener('DOMContentLoaded', ifLoaded);
+document.addEventListener('DOMContentLoaded', ifLoaded, { once: true });
+
 function ifLoaded(evt) {
   const refHeader = document.querySelector('.header');
-  const refHeaderMenu = document.querySelector('.navigation');
-  const refLibraryBtn = document.querySelector('.radio-box');
+  const refNavigation = document.querySelector('.navigation');
+  const refRadioBox = document.querySelector('.radio-box');
   const refSearchForm = document.querySelector('.search-box');
 
-  const activeClass = refHeaderMenu.querySelector('.is-active');
-
-  refHeaderMenu.addEventListener('click', onClickHeaderMenu);
-
-  if (activeClass) {
-    activeClass.classList.remove('is-active');
-  }
+  const activeClass = refNavigation.querySelector('.is-active');
+  if (activeClass) activeClass.classList.remove('is-active');
 
   switch ('/' + document.location.pathname.split('/').pop()) {
     case '/':
-      refHeaderMenu
+      refNavigation
         .querySelector("[data-menu='home']")
         .classList.add('is-active');
-      refLibraryBtn.classList.add('is-hidden');
-      if (refHeader.classList.contains('library')) {
-        refHeader.remove('library');
-      }
-      if (refSearchForm.classList.contains('is-hidden')) {
+
+      refRadioBox.classList.add('is-hidden');
+
+      if (refHeader.classList.contains('library')) refHeader.remove('library');
+
+      if (refSearchForm.classList.contains('is-hidden'))
         refSearchForm.remove('is-hidden');
-      }
+
       break;
 
     case '/myLibrary.html':
-      refHeaderMenu
+      refNavigation
         .querySelector("[data-menu='my-library']")
         .classList.add('is-active');
-      if (refLibraryBtn.classList.contains('is-hidden')) {
-        refLibraryBtn.remove('is-hidden');
-      }
+
       refHeader.classList.add('library');
+
       refSearchForm.classList.add('is-hidden');
+
+      if (refRadioBox.classList.contains('is-hidden'))
+        refRadioBox.remove('is-hidden');
+
       break;
   }
+
+  refNavigation.addEventListener('click', onNavigationClick);
 }
 
-function onClickHeaderMenu(evt) {
-  if (
-    (evt.target.dataset.menu === 'logo' &&
-      document.location.pathname === '/') ||
-    (evt.target.dataset.menu === 'logo' &&
-      document.location.pathname === '/index.html') ||
-    (evt.target.dataset.menu === 'home' &&
-      document.location.pathname === '/') ||
-    (evt.target.dataset.menu === 'home' &&
-      document.location.pathname === '/index.html') ||
-    (evt.target.dataset.menu === 'my-library' &&
-      document.location.pathname === '/myLibrary.html')
-  ) {
-    evt.preventDefault();
-    return;
-  }
-  evt.currentTarget.removeEventListener('click', onClickHeaderMenu);
+function onNavigationClick(evt) {
+  const btn = evt.target.dataset.menu;
+  const location = document.location.pathname;
+
+  (btn === 'logo' && location === '/') ||
+  (btn === 'home' && location === '/') ||
+  (btn === 'my-library' && location === '/myLibrary.html')
+    ? evt.preventDefault()
+    : evt.currentTarget.removeEventListener('click', onNavigationClick);
 }
