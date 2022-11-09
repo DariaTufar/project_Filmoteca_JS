@@ -2,17 +2,18 @@ import ServerRequest from './serverRequest';
 import { refs } from './refs';
 import axios from 'axios';
 import { KEY } from './constants';
+import { markupMovieCards } from './markupMovieCards';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const TRENDING_LIST = 'trending/movie/week'; // Уточнюючий шлях для запиту
 const GENRES_LIST = 'genre/movie/list';
-// let genre = [];
+let genres = [];
 
 export const genreAPI = new ServerRequest(TRENDING_LIST); // Ініціалізує екземпляр класу для запитів на АРІ. При ініціалізації потрібно передати детальний шлях який додається до базової урли АРІ (БАЗОВА УРЛА ВЖЕ ПРИСУТНЯ В КЛАСІ!!!!!!), та обєкт конфігурацій
 
-const button = document.querySelector('.dropbtn');
+// const button = document.querySelector('.dropbtn');
 const dropdownContent = document.querySelector('.dropdown-content');
-const dropdown = document.querySelector('.dropdown');
+// const dropdown = document.querySelector('.dropdown');
 
 window.addEventListener('click', onClick);
 
@@ -30,29 +31,47 @@ function onClick(event) {
 dropdownContent.addEventListener('click', onGenre);
 
 function onGenre(event) {
-  const genre = event.target.textContent;
-  console.log(genre);
-  searchGenres(genre);
+  const target = event.target;
+  const genreEl = target.closest('.genre-name');
+  console.log(genreEl);
+  if (!genreEl) {
+    return;
+  }
+  const genreId = genreEl.dataset.genreid;
+
+  searchGenres(genreId);
 }
 
-async function searchGenres(genre) {
-  const params = {
-    movie_genre: genre,
-    // language: 'en-US',
-    api_key: KEY,
-  };
-  const url =
-    BASE_URL +
-    `${params.movie_genre}/movie/list?api_key=${params.api_key}&language=en-US`; // Тут додає ться базова урла і більш детальний шлях
-  const response = await axios.get(url); // Запит на АРІ за жанрами
-  this.genres = response.data.genres.name;
-  console.log(response.data.genres.name);
-  return response.data.genres.name; // Повертає проміс із жанрами
+async function searchGenres(genreId) {
+  try {
+    const params = {
+      api_key: KEY,
+      genre_id: genreId,
+    };
+    const url =
+      BASE_URL +
+      `discover/movie?api_key=${params.api_key}&language=en-US&sort_by=popularity.desc&with_genre=${params.genre_id}`; // Тут додає ться базова урла і більш детальний шлях
+    const response = await axios.get(url);
+    const { results, total_pages, total_results } = response.data;
+
+    console.log(response.data.results);
+
+    genreAPI.totalPages = total_pages;
+    genreAPI.totalMovies = total_results;
+
+    const markup = markupMovieCards(results, genres); // Рендерить розмітку для карток
+    // console.log(markup);
+    refs.galleryList.innerHTML = markup.join(''); // Додає розмітку в DOM
+
+    // console.log(response);
+  } catch (error) {
+    error.message;
+  }
 }
 
 async function renderGenres() {
   try {
-    const genres = await genreAPI.getGenres();
+    genres = await genreAPI.getGenres();
     // console.log(genres);
     const markup = murkupFilterGenres(genres);
     dropdownContent.innerHTML = markup.join('');
@@ -63,8 +82,8 @@ async function renderGenres() {
 
 function murkupFilterGenres(genres) {
   return genres.map(genre => {
-    // console.log(genre.name);
+    // console.log(genre.name, genre.id);
 
-    return ` <li class ="genre-name">${genre.name}</li>`;
+    return ` <li class ="genre-name" data-genreid="${genre.id}" >${genre.name}</li>`;
   });
 }

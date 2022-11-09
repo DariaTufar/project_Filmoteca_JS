@@ -131,8 +131,9 @@
 .movie-search__form {
   display: flex;
   justify-content: space-between;
-  margin: 0 auto 20px;
+  margin: 0 auto;
   width: 50%;
+
   border-bottom: 1px solid $light-color-primary;
 }
 .search__form-input {

@@ -14,7 +14,7 @@ refs.idgalery.addEventListener('click', onGalleryClick);
 function onGalleryClick(event) {
   const target = event.target;
   const movieCardEl = target.closest('.gallery__item');
-  console.log(movieCardEl);
+
   if (!movieCardEl) {
     return;
   }

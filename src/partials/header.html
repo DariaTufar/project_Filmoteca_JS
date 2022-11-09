@@ -38,6 +38,33 @@
         <!-- <div class="header__menu--underline-home"></div> -->
         <!-- //red line under active home button -->
       </nav>
+
+      <form class="movie-search__form js-search-form" id="js-search-form">
+        <input
+          class="search__form-input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Movie search"
+        />
+        <button type="submit" class="js-submit__search_btn search__button">
+          <img
+            src="./images/search.svg"
+            class="icon icon-search"
+            width="24px"
+            height="24px"
+          />
+
+          <div
+            class="spinner-border text-danger spinner is-hidden"
+            style
+            role="status"
+          >
+            <span class="sr-only">Loading...</span>
+          </div>
+        </button>
+      </form>
+
       <div class="setting-box">
         <div class="chenge-theme-togle">
           <input type="checkbox" class="checkbox" id="checkbox" />
@@ -56,7 +83,7 @@
       </div>
     </div>
 
-    <form class="movie-search__form js-search-form" id="js-search-form">
+    <!-- <form class="movie-search__form js-search-form" id="js-search-form">
       <input
         class="search__form-input"
         type="text"
@@ -80,7 +107,14 @@
           <span class="sr-only">Loading...</span>
         </div>
       </button>
-    </form>
+    </form> -->
+
+    <!-- -----------------------button filter genres------------- -->
+
+    <div class="dropdown">
+      <button class="dropbtn">Genres</button>
+      <ul id="myDropdown" class="dropdown-content"></ul>
+    </div>
 
     <!-- <div class="form__search-not-succuessful">
       <p>Search result not successful. Enter the correct movie name and</p>
