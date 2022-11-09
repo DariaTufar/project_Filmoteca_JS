@@ -5,7 +5,7 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 const srcTrailer = 'https://www.youtube.com/embed/';
 
 const modal = basicLightbox.create(`
-  <iframe width="680" height="415" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="900" height="600" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <button class="close-modal__trailer">     
      </button>`);
 const iframeTrailer = modal.element().querySelector('iframe');
