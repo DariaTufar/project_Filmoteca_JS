@@ -1,4 +1,4 @@
-// import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import { getAuth, EmailAuthProvider } from 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
