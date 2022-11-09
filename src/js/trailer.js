@@ -10,6 +10,10 @@ const modal = basicLightbox.create(`
      </button>`);
 const iframeTrailer = modal.element().querySelector('iframe');
 
+const modal2 = basicLightbox.create(`
+    <iframe width="900" height="600" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      `);
+
 export default function openTrailer(id) {
   findTrailer(id)
     .then(data => {
@@ -26,10 +30,10 @@ export default function openTrailer(id) {
       }
     })
     .catch(error => {
-      const modal = basicLightbox.create(`
-    <iframe width="860" height="615" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      `);
-      modal.show();
+      //   const modal = basicLightbox.create(`
+      // <iframe width="860" height="615" src="${srcTrailer}6DhiiFGk4_s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      //   `);
+      modal2.show();
       console.log(error);
     });
 }
