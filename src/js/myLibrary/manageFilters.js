@@ -8,7 +8,7 @@ refs.filter.addEventListener('click', onFilterClick);
 init();
 async function init() {
   await initGenres();
-  writeTestDataToDB();
+  // writeTestDataToDB();
   renderMovies();
 }
 

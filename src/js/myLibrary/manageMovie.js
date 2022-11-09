@@ -12,6 +12,7 @@ function onModalClick(event) {
   if (!movieCardEl) {
     // clicked outside card
     refs.modal.classList.remove('active');
+    return;
   }
   if (target.closest('.js-movie-buttons') && target.closest('input')) {
     // add to queued or watched
@@ -25,15 +26,14 @@ function onModalClick(event) {
       db.cachedMovie.isQueued = true;
       db.cachedMovie.isWatched = false;
     }
-
     db.addMovie(db.cachedMovie);
-    renderMovies();
   }
   if (target.classList.contains('js-remove-button')) {
     db.removeMovie({ id: db.cachedMovie.id });
     db.cachedMovie.isQueued = false;
     db.cachedMovie.isWatched = false;
-    // target.style.display = 'none';
+  }
+  if (window.location.href.includes('myLibrary')) {
     renderMovies();
   }
   updateBtnStatus();

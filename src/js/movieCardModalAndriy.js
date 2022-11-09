@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import movieTrailer from './trailer';
+import { cacheMovie, updateBtnStatus } from './myLibrary/helpers.js';
 
 const refs = {
   idgalery: document.querySelector('.gallery_main-page'),
@@ -36,7 +37,6 @@ async function findMovieByID(id) {
     )
     .then(response => {
       const modal = response.data;
-
       const {
         title,
         vote_count,
@@ -100,6 +100,8 @@ async function findMovieByID(id) {
         document.querySelector('.modal_movie')
       );
       instance.show();
+      cacheMovie(modal);
+      updateBtnStatus();
 
       return markup;
     })
