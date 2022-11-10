@@ -29,7 +29,7 @@ export async function dataMovies(requestAPI) {
     Notify.failure(error.message);
   }
   const { movies, genres } = requestAPI;
-  const markup = markupMovieCards(movies, genres, true);
+  const markup = markupMovieCards(movies, genres);
 
   refs.galleryList.innerHTML = markup.join('');
 
