@@ -11,6 +11,7 @@ function ifLoaded(evt) {
 
   switch ('/' + document.location.pathname.split('/').pop()) {
     case '/':
+    case '/index.html':
       refNavigation
         .querySelector("[data-menu='home']")
         .classList.add('is-active');
@@ -48,7 +49,11 @@ function onNavigationClick(evt) {
 
   (btn === 'logo' && location === '/') ||
   (btn === 'home' && location === '/') ||
-  (btn === 'my-library' && location === '/myLibrary.html')
+  (btn === 'logo' && location === '/index.html') ||
+  (btn === 'home' && location === '/index.html') ||
+  (btn === 'my-library' && location === '/myLibrary.html') ||
+  location === '#' ||
+  location === '#!'
     ? evt.preventDefault()
     : evt.currentTarget.removeEventListener('click', onNavigationClick);
 }
