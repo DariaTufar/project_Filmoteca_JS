@@ -18,6 +18,9 @@ function ifLoaded(evt) {
 
       refRadioBox.classList.add('is-hidden');
 
+      if (document.querySelector('.dropdown').classList.contains('is-hidden'))
+        document.querySelector('.dropdown').remove('is-hidden');
+
       if (refHeader.classList.contains('library')) refHeader.remove('library');
 
       if (refSearchForm.classList.contains('is-hidden'))
@@ -34,6 +37,8 @@ function ifLoaded(evt) {
 
       refSearchForm.classList.add('is-hidden');
 
+      document.querySelector('.dropdown').classList.add('is-hidden');
+
       if (refRadioBox.classList.contains('is-hidden'))
         refRadioBox.remove('is-hidden');
 
@@ -47,13 +52,9 @@ function onNavigationClick(evt) {
   const btn = evt.target.dataset.menu;
   const location = document.location.pathname;
 
-  // (btn === 'logo' && location === '/') ||
   (btn === 'home' && location === '/') ||
-  // (btn === 'logo' && location === '/index.html') ||
   (btn === 'home' && location === '/index.html') ||
-  (btn === 'my-library' && location === '/myLibrary.html') ||
-  location === '#' ||
-  location === '#!'
+  (btn === 'my-library' && location === '/myLibrary.html')
     ? evt.preventDefault()
     : evt.currentTarget.removeEventListener('click', onNavigationClick);
 }
