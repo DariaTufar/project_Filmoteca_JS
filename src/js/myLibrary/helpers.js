@@ -18,7 +18,7 @@ export function renderMovies() {
     const genres = element.genres;
     element.genre_ids = genres.map(({ id }) => id);
   });
-  const markup = markupMovieCards(moviesDetails, [...genres]).join('');
+  const markup = markupMovieCards(moviesDetails, [...genres], true).join('');
   refs.gallery.innerHTML = markup;
 }
 
@@ -47,13 +47,35 @@ export function updateBtnStatus() {
   );
 
   const btnRemoveEl = document.querySelector('.js-remove-button');
+
+  const btnWatchedText = document.querySelector(
+    '.js-movie-buttons input[value="isWatched"] + span'
+  );
+  const btnQueuedText = document.querySelector(
+    '.js-movie-buttons input[value="isQueued"] + span'
+  );
+  // console.log(btnWatchedText);
+  // console.log(btnQueuedText);
+
   btnQueuedEl.checked = db.cachedMovie.isQueued;
   btnWatchedEl.checked = db.cachedMovie.isWatched;
+
+  if (db.cachedMovie.isWatched) {
+    btnWatchedText.innerHTML = 'Watched';
+    btnQueuedText.innerHTML = 'Add to queued';
+  }
+
+  if (db.cachedMovie.isQueued) {
+    btnWatchedText.innerHTML = 'Add to watched';
+    btnQueuedText.innerHTML = 'Queued';
+  }
 
   if (db.cachedMovie.isWatched || db.cachedMovie.isQueued) {
     btnRemoveEl.style.display = 'inline-block';
   } else {
     btnRemoveEl.style.display = 'none';
+    btnWatchedText.innerHTML = 'Add to watched';
+    btnQueuedText.innerHTML = 'Add to queued';
   }
 }
 
@@ -76,6 +98,10 @@ export function getModalCardMarkup(movieDetails, genres) {
   const markup = `<div class="modal_description">
   <div class="movie_div">
       <img class="movie_foto" src="https://image.tmdb.org/t/p/w500${poster_path}" alt="poster_foto ">
+
+      <div class="movie-buttons">
+<button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
+</div>
   </div>
   <div class="film_information">
       <h1 class="movie_title">${title}</h1>
@@ -88,6 +114,7 @@ export function getModalCardMarkup(movieDetails, genres) {
             genres[0].name
           ).join('')}</span></li>
       </ul>
+
       <h2 class="movie_about">ABOUT</h2>
       <p class="about_text">${overview}</p>
 
@@ -112,7 +139,6 @@ export function getModalCardMarkup(movieDetails, genres) {
 <span class="movie-buttons__text button">Queued</span>
 </label>
 <button type="button" class="js-remove-button button">Remove</button>
-<button type="button" name="trailer_btn" class="button trailer_btn">TRAILER</button>
 </form>
   </div>
 </div>`;
