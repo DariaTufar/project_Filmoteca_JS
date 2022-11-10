@@ -1,3 +1,4 @@
+import { cacheMovie, updateBtnStatus } from './myLibrary/helpers.js'; // НЕ УДАЛЯТЬ !!! импорт функций, необходимых для обновления статуса кнопок в модальном окне
 import { KEY } from './constants';
 //import { refs } from './refs';
 import axios from 'axios';
@@ -47,8 +48,9 @@ function markupValera(data) {
   } = data;
   return `<div class="modal_description_film">
       <div class="movie_div_film">
-          <img class="movie_foto_film" src="${params.fotoUrl
-    }${poster_path}" alt="poster_foto ">
+          <img class="movie_foto_film" src="${
+            params.fotoUrl
+          }${poster_path}" alt="poster_foto ">
       </div>
       <div class="film_information_film">
           <h1 class="movie_title_film">${title}</h1>
@@ -58,8 +60,8 @@ function markupValera(data) {
               <li class="movie_description_film">Popularity<span class="movie_value_film">: ${popularity}</span></li>
               <li class="movie_description_film">Original Title<span class="movie_value_film">: ${original_title}</span></li>
               <li class="movie_description_film">Genre<span class="movie_value_film">: ${Object.values(
-      genres[0].name
-    ).join('')}</span></li>
+                genres[0].name
+              ).join('')}</span></li>
           </ul>
           <h2 class="movie_about_film">ABOUT</h2>
           <p class="about_text_film">${overview}</p>
@@ -85,37 +87,48 @@ function markupValera(data) {
     <span class="movie-buttons__text button_film">Queued</span>
   </label>
   <button type="button" class="js-remove-button button_film">Remove</button>
-  <button type="button" name="trailer_btn" class="button_film trailer_btn" data-id ="${params.movie_id}">TRAILER</button>
+  <button type="button" name="trailer_btn" class="button_film trailer_btn" data-id ="${
+    params.movie_id
+  }">TRAILER</button>
 </form>
       </div>
     </div>`;
 }
 
 function findMovieByID() {
-  axios.get(`${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`).then(response => {
-    const modal = response.data;
-    const markup = markupValera(modal);
+  axios
+    .get(
+      `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
+    )
+    .then(response => {
+      const modal = response.data;
+      const markup = markupValera(modal);
 
-    refs.gallery.innerHTML = markup;
+      refs.gallery.innerHTML = markup;
 
-    const instance = basicLightbox.create(
-      document.querySelector('.modal_movie'),
-      {
-        onShow: (instance) => {
-          document.addEventListener('click', (evt) => {
-            if (!evt.target.className.includes('trailer_btn')) {
-              return;
-            }
-            openTrailer(evt.target.dataset.id);
+      const instance = basicLightbox.create(
+        document.querySelector('.modal_movie'),
+        {
+          onShow: instance => {
+            document.addEventListener('click', evt => {
+              if (!evt.target.className.includes('trailer_btn')) {
+                return;
+              }
+              openTrailer(evt.target.dataset.id);
 
-            // console.dir(instance.classList);
-          });
+              // console.dir(instance.classList);
+            });
+          },
         }
-      }
-    );
+      );
 
-    instance.show();
+      instance.show();
+      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне >>>>>
+      cacheMovie(modal);
+      updateBtnStatus();
+      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне <<<<<
 
-    return markup;
-  }).catch(console.log);
+      return markup;
+    })
+    .catch(console.log);
 }
