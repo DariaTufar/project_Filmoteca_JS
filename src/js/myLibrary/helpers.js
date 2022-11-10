@@ -13,9 +13,9 @@ export function renderMovies() {
 
   const filteredMovies = db.getMovies({ [filterValue]: true });
   const moviesDetails = filteredMovies.map(item => item.movieDetails);
-
   moviesDetails.forEach(element => {
-    const genres = element.genres;
+    const genres = element.genres ?? [];
+
     element.genre_ids = genres.map(({ id }) => id);
   });
   const markup = markupMovieCards(moviesDetails, [...genres], true).join('');
@@ -145,42 +145,4 @@ function showModalCard(markup) {
 
   const instance = basicLightbox.create(document.querySelector('.modal_movie'));
   instance.show();
-}
-
-// *********************
-// js-modal-form= js-movie-buttons
-// ===========
-export function writeTestDataToDB() {
-  const template = {
-    adult: false,
-    backdrop_path: '/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg',
-    id: 1,
-    title: 'Black Adam',
-    original_language: 'en',
-    original_title: 'Black Adam',
-    overview:
-      'Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.',
-    poster_path: '/3zXceNTtyj5FLjwQXuPvLYK5YYL.jpg',
-    media_type: 'movie',
-    genre_ids: [28, 14, 878],
-    popularity: 4085.77,
-    release_date: '2022-10-19',
-    video: false,
-    vote_average: 6.937,
-    vote_count: 803,
-  };
-
-  for (let i = 0; i < 6; i++) {
-    const movieDetails = {
-      ...template,
-      id: i + 1,
-      title: `${template.title} - ${i + 1}`,
-    };
-    db.addMovie({
-      id: movieDetails.id,
-      isQueued: true,
-      isWatched: false,
-      movieDetails,
-    });
-  }
 }
