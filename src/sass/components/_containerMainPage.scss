@@ -1,11 +1,10 @@
 .gallery_main-page {
   display: grid;
   width: 100%;
-  // grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
+
   grid-template-columns: repeat(1, 280px);
   grid-auto-rows: 443px;
-  // margin-bottom: 20px;
-  // grid-column-gap: 16px;
+
   grid-row-gap: 20px;
   justify-content: center;
   padding-top: 20px;
@@ -22,9 +21,6 @@
   }
 
   @include desktop {
-    display: grid;
-    width: 100%;
-    // grid-template-columns: repeat(auto-fit, minmax(395px, 1fr));
     grid-template-columns: repeat(3, 395px);
     grid-auto-rows: 634px;
     grid-column-gap: 16px;
@@ -100,7 +96,8 @@
 
   &:hover,
   &:focus {
-    box-shadow: (15px -15px 15px rgba(247, 69, 69, 0.6));
+    box-shadow: 3px 3px 10px 5px rgb(248, 139, 5),
+      0 0 4px $accent-color-primary inset;
 
     transform: scale(1.02);
   }
@@ -119,4 +116,10 @@
   display: block;
   text-decoration: none;
   height: 100%;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: currentColor;
+  }
 }
