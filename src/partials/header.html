@@ -39,18 +39,6 @@
         <!-- //red line under active home button -->
       </nav>
       <div class="setting-box">
-        <div class="chenge-theme-togle">
-          <input type="checkbox" class="checkbox" id="checkbox" />
-          <label for="checkbox" class="label">
-            <svg class="icon-sun" width="15" height="15">
-              <use href="/src/images/darkTheme.svg#icon-sun"></use>
-            </svg>
-            <svg class="icon-moon" width="15" height="15">
-              <use href="/src/images/darkTheme.svg#icon-moon"></use>
-            </svg>
-            <div class="ball"></div>
-          </label>
-        </div>
         <p class="js-user login-user"></p>
         <div class="js-login-ui login-user__ui"></div>
       </div>
@@ -110,9 +98,26 @@
             >
           </label>
         </form>
-        <!-- <button type="button" class=" button btn__watched js-btn-watched">Watched</button>
-
-        <button type="button" class=" button btn__queue js-btn-watched">Queue</button> -->
+      </div>
+    </div>
+    <div class="header__filter-box">
+      <!-- button genres -->
+      <div class="dropdown">
+        <button class="dropbtn">Genres</button>
+        <ul id="myDropdown" class="dropdown-content"></ul>
+      </div>
+      <!--  -->
+      <div class="chenge-theme-togle">
+        <input type="checkbox" class="checkbox" id="checkbox" />
+        <label for="checkbox" class="label">
+          <svg class="icon-sun" width="15" height="15">
+            <use href="/src/images/darkTheme.svg#icon-sun"></use>
+          </svg>
+          <svg class="icon-moon" width="15" height="15">
+            <use href="/src/images/darkTheme.svg#icon-moon"></use>
+          </svg>
+          <div class="ball"></div>
+        </label>
       </div>
     </div>
   </div>
