@@ -141,11 +141,11 @@ export default class ServerRequest {
     let afterPage = this.page + 1;
     if (this.page > 1) {
       //показывает следующую страницу если значение пейдж больше чем один
-      liTag += `<li class="btn prev"><span><i class="fas fa-angle-left"></i> &#171;</span></li>`;
+      liTag += `<li class="btn prev"><a href="#"><i class="fas fa-angle-left"></i> &#171;</a></li>`;
     }
     if (this.page > 2) {
       //если значение пейдж меньше чем 2 - тогда добавь один после предыдущей кнопки
-      liTag += `<li class="first numb"><span>1</span></li>`;
+      liTag += `<li class="first numb"><a href="#">1</a></li>`;
       if (this.page > 3) {
         //если значение пейдж больше чем 3 - тогда добавь ... полсе первой лишки или пейдж
         liTag += `<li class="dots"><span>...</span></li>`;
@@ -178,7 +178,7 @@ export default class ServerRequest {
       } else {
         active = '';
       }
-      liTag += `<li class="numb ${active}"><span>${plength}</span></li>`; //рендэрит разметку строки с текущим активным номером страници
+      liTag += `<li class="numb ${active}"><a href="#">${plength}</a></li>`; //рендэрит разметку строки с текущим активным номером страници
       // this.page = plength;
     }
     if (this.page < this.totalPages - 1) {
@@ -186,11 +186,11 @@ export default class ServerRequest {
         //рендерит разметку троиточие если страниц меньше чем две
         liTag += `<li class="dots"><span>...</span></li>`;
       }
-      liTag += `<li class="last numb"><span>${this.totalPages}</span></li>`;
+      liTag += `<li class="last numb"><a href="#">${this.totalPages}</a></li>`;
     }
     if (this.page < this.totalPages) {
       //показывает следующую кнопку если значени страницы меньше 20
-      liTag += `<li class="btn next"><span>&#187 <i class="fas fa-angle-right"></i></span></li>`;
+      liTag += `<li class="btn next"><a href="#">&#187 <i class="fas fa-angle-right"></i></a></li>`;
     }
 
     this.renderPaginationBtn(liTag, ref); // добавляет все лишки в список разметки
