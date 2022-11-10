@@ -11,11 +11,15 @@ function ifLoaded(evt) {
 
   switch ('/' + document.location.pathname.split('/').pop()) {
     case '/':
+    case '/index.html':
       refNavigation
         .querySelector("[data-menu='home']")
         .classList.add('is-active');
 
       refRadioBox.classList.add('is-hidden');
+
+      if (document.querySelector('.dropdown').classList.contains('is-hidden'))
+        document.querySelector('.dropdown').remove('is-hidden');
 
       if (refHeader.classList.contains('library')) refHeader.remove('library');
 
@@ -33,6 +37,8 @@ function ifLoaded(evt) {
 
       refSearchForm.classList.add('is-hidden');
 
+      document.querySelector('.dropdown').classList.add('is-hidden');
+
       if (refRadioBox.classList.contains('is-hidden'))
         refRadioBox.remove('is-hidden');
 
@@ -46,8 +52,8 @@ function onNavigationClick(evt) {
   const btn = evt.target.dataset.menu;
   const location = document.location.pathname;
 
-  (btn === 'logo' && location === '/') ||
   (btn === 'home' && location === '/') ||
+  (btn === 'home' && location === '/index.html') ||
   (btn === 'my-library' && location === '/myLibrary.html')
     ? evt.preventDefault()
     : evt.currentTarget.removeEventListener('click', onNavigationClick);
