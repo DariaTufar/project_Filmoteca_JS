@@ -1,4 +1,4 @@
-import { renderMovies, writeTestDataToDB } from './helpers';
+import { renderMovies } from './helpers';
 import { initGenres } from './genres';
 import { refs } from './refs';
 
@@ -8,7 +8,6 @@ refs.filter.addEventListener('click', onFilterClick);
 init();
 async function init() {
   await initGenres();
-  // writeTestDataToDB();
   renderMovies();
 }
 
