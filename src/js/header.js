@@ -47,9 +47,9 @@ function onNavigationClick(evt) {
   const btn = evt.target.dataset.menu;
   const location = document.location.pathname;
 
-  (btn === 'logo' && location === '/') ||
+  // (btn === 'logo' && location === '/') ||
   (btn === 'home' && location === '/') ||
-  (btn === 'logo' && location === '/index.html') ||
+  // (btn === 'logo' && location === '/index.html') ||
   (btn === 'home' && location === '/index.html') ||
   (btn === 'my-library' && location === '/myLibrary.html') ||
   location === '#' ||
