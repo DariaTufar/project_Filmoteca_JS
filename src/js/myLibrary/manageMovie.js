@@ -8,10 +8,7 @@ refs.modal.addEventListener('click', onModalClick);
 
 function onModalClick(event) {
   const target = event.target;
-  const movieCardEl = target.closest('.modal_description');
-  if (!movieCardEl) {
-    // clicked outside card
-    refs.modal.classList.remove('active');
+  if (!target.closest('.modal_description_film')) {
     return;
   }
   if (target.closest('.js-movie-buttons') && target.closest('input')) {

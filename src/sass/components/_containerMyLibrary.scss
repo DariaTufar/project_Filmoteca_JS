@@ -79,3 +79,33 @@
     display: none;
   }
 }
+
+// --------------temporary
+.modal_description {
+  max-width: 700px;
+}
+
+.movie_div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.film_information {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-buttons {
+  margin-top: auto;
+
+  label {
+    margin-bottom: 0;
+  }
+}
+
+.firebaseui-form-action
+  .firebaseui-id-submit.firebaseui-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored {
+  background-color: #ff6b01 !important;
+}
