@@ -11,13 +11,13 @@ export function markupMovieCards(movies, genres, rating = false) {
       const releaseYear = release_date ? release_date.slice(0, 4) : ' No year'; // Парсить дату релізу та повертає тільки рік
       const genresName = genresByMovies(genres, genre_ids); // Повертає жанри для конкретного фільму
       return `<li class="gallery__item" data-movieid="${id}">
+              <a href="#" gallery__item-link>
               <img src="${poster}" alt="${title}" class="gallery__item-poster">
                <div class=" gallery__item-descr-wrap">
                  <h2 class="gallery__item-title">${title}</h2>
-                 <p class="gallery__item-genre">${genresName} <span class="gallery__item-date">| ${releaseYear}</span> ${
-        rating ? `<span class="rating">${vote_average.toFixed(1)}</span>` : ''
-      }</p>
+                 <p class="gallery__item-genre">${genresName} <span class="gallery__item-date">| ${releaseYear}</span> ${rating ? `<span class="rating">${vote_average.toFixed(1)}</span>` : ''}</p>
               </div>
+              </a>
             </li>`;
     }
   );
