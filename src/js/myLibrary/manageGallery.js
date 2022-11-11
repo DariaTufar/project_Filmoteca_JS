@@ -1,4 +1,4 @@
-import { renderModalCard } from './helpers';
+import { renderModalCard } from './firebaseHelpers';
 import { refs } from './refs';
 
 refs.gallery.addEventListener('click', onGalleryClick);

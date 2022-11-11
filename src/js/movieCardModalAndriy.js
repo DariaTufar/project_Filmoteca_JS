@@ -1,4 +1,4 @@
-import { cacheMovie, updateBtnStatus } from './myLibrary/helpers.js'; // НЕ УДАЛЯТЬ !!! импорт функций, необходимых для обновления статуса кнопок в модальном окне
+import { cacheMovie, updateBtnStatus } from './myLibrary/firebaseHelpers.js'; // НЕ УДАЛЯТЬ !!! импорт функций, необходимых для обновления статуса кнопок в модальном окне
 import { KEY } from './constants';
 //import { refs } from './refs';
 import axios from 'axios';
@@ -124,8 +124,8 @@ function findMovieByID() {
 
       instance.show();
       // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне >>>>>
-      cacheMovie(modal);
-      updateBtnStatus();
+      cacheMovie(modal).then(() => updateBtnStatus());
+
       // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне <<<<<
 
       return markup;

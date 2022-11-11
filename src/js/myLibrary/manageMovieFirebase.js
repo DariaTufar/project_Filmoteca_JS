@@ -1,12 +1,10 @@
-import { db } from './localDB';
+import { dbFirebase } from './firebaseDB';
 import { renderMovies, updateBtnStatus } from './firebaseHelpers';
 import { refs } from './refs';
 
 refs.modal.addEventListener('click', onModalClick);
-
 // ====================
-
-function onModalClick(event) {
+async function onModalClick(event) {
   const target = event.target;
   if (!target.closest('.modal_description_film')) {
     return;
@@ -16,24 +14,31 @@ function onModalClick(event) {
     const formEl = target.closest('.js-movie-buttons');
     const formData = new FormData(formEl);
     const status = formData.get('status');
+
+    // ========== click "Watched" ==========
     if (status === 'isWatched') {
-      db.cachedMovie.isQueued = false;
-      db.cachedMovie.isWatched = true;
+      dbFirebase.cachedMovie.isQueued = false;
+      dbFirebase.cachedMovie.isWatched = true;
+
+      // ========== click "Queued" ==========
     } else if (status === 'isQueued') {
-      db.cachedMovie.isQueued = true;
-      db.cachedMovie.isWatched = false;
+      dbFirebase.cachedMovie.isQueued = true;
+      dbFirebase.cachedMovie.isWatched = false;
     }
-    db.addMovie(db.cachedMovie);
+    await dbFirebase.addMovie(dbFirebase.cachedMovie);
   }
+
+  // ========== click "Remove" ==========
   if (target.classList.contains('js-remove-button')) {
-    db.removeMovie({ id: db.cachedMovie.id });
-    db.cachedMovie.isQueued = false;
-    db.cachedMovie.isWatched = false;
+    dbFirebase.removeMovie({
+      userId: dbFirebase.cachedMovie.userId,
+      movieId: dbFirebase.cachedMovie.movieDetails.id,
+    });
+    dbFirebase.cachedMovie.isQueued = false;
+    dbFirebase.cachedMovie.isWatched = false;
   }
   if (window.location.href.includes('myLibrary')) {
     renderMovies();
   }
   updateBtnStatus();
 }
-
-// ====================
