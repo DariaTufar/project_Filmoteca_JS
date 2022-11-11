@@ -26,7 +26,7 @@ export function renderMovies() {
 
 export function renderModalCard(id) {
   db.cachedMovie = db.getMovie({ id }).movieDetails;
-  const markup = markupValera(db.cachedMovie.movieDetails, [...genres]);
+  const markup = markupOnModal(db.cachedMovie.movieDetails, [...genres]);
 
   const gallery = document.querySelector('.modal_movie');
   gallery.insertAdjacentHTML('beforeend', markup);
@@ -81,7 +81,7 @@ export function cacheMovie(movieDetails) {
   db.cachedMovie = movieDetails;
 }
 // ************** TEMPORARY FUNCTIONS FOR TESTING *********************
-export function markupValera(data) {
+export function markupOnModal(data) {
   const {
     title,
     vote_count,
@@ -91,23 +91,39 @@ export function markupValera(data) {
     overview,
     genres,
     poster_path,
-    id,
   } = data;
   return `<div class="modal_description_film">
       <div class="movie_div_film">
           <img class="movie_foto_film" src="
             https://image.tmdb.org/t/p/w500${poster_path}" alt="poster_foto ">
+    <button type="button" name="trailer_btn" class="button_film button_film_rem trailer_btn" data-id ="${
+      params.movie_id
+    }">
+      <svg class="icon play-treiler" width="50" height="50">
+        <use xlink:href="${icons}#play-treiler"></use>
+      </svg>
+    </button>
       </div>
       <div class="film_information_film">
           <h1 class="movie_title_film">${title}</h1>
-          <ul>
-              <li class="movie_description_film">Vote / Votes<span class="movie_vote_film"> ${vote_average} </span>
-              <span class="movie_votes_film"> /  ${vote_count}</span></li>
-              <li class="movie_description_film">Popularity<span class="movie_value_film">: ${popularity}</span></li>
-              <li class="movie_description_film">Original Title<span class="movie_value_film">: ${original_title}</span></li>
-              <li class="movie_description_film">Genre<span class="movie_value_film">: ${Object.values(
+          <ul class="movie_test">
+              <li class="movie_description_film">Vote / Votes
+              <p class="movie_vote_film">${vote_average.toFixed(1)}</p>
+              <p class="movie_votes_film">/ ${vote_count}</p></li>
+
+              <li class="movie_description_film">Popularity
+              <p class="movie_value_film movie_popularity_film">${popularity.toFixed(
+                1
+              )}</p></li>
+
+              <li class="movie_description_film">Original Title
+              <p class="movie_value_film movie_original_title_film">${original_title}</p></li>
+
+              <li class="movie_description_film">Genre
+              <p class="movie_value_film movie_genre_film">${Object.values(
                 genres[0].name
-              ).join('')}</span></li>
+              ).join('')}</p></li>
+
           </ul>
           <h2 class="movie_about_film">ABOUT</h2>
           <p class="about_text_film">${overview}</p>
@@ -132,8 +148,7 @@ export function markupValera(data) {
     />
     <span class="movie-buttons__text button_film">Queued</span>
   </label>
-  <button type="button" class="js-remove-button button_film">Remove</button>
-  <button type="button" name="trailer_btn" class="button_film trailer_btn" data-id ="${id}">TRAILER</button>
+  <button type="button" class="js-remove-button button_film button_film_rem">Remove</button>
 </form>
       </div>
     </div>`;
