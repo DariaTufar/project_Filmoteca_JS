@@ -83,7 +83,7 @@ async function searchGenres() {
   }
 }
 
-function onPagination(event) {
+export function onPagination(event) {
   if (
     event.target === event.currentTarget ||
     event.target.textContent === '...'

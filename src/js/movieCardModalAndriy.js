@@ -1,14 +1,11 @@
 import { KEY } from './constants';
-//import { refs } from './refs';
+import { refs } from './refs';
 import axios from 'axios';
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import openTrailer from './trailer';
 
-const refs = {
-  idgalery: document.querySelector('.gallery_main-page'),
-  gallery: document.querySelector('.modal_movie'),
-};
+import icons from "../images/icons.svg";
 
 const params = {
   baseUrl: 'https://api.themoviedb.org/3/',
@@ -20,6 +17,7 @@ const params = {
 refs.idgalery.addEventListener('click', onGalleryClick);
 
 function onGalleryClick(event) {
+  event.preventDefault();
   const target = event.target;
   const movieCardEl = target.closest('.gallery__item');
   if (!movieCardEl && event.target === document.querySelector('button')) {
@@ -29,9 +27,9 @@ function onGalleryClick(event) {
   const id = movieCardEl.dataset.movieid;
   params.movie_id = id;
   findMovieByID();
- 
+
 }
- function markupOnModal(data) {
+function markupOnModal(data) {
   const {
     title,
     vote_count,
@@ -46,24 +44,29 @@ function onGalleryClick(event) {
       <div class="movie_div_film">
           <img class="movie_foto_film" src="${params.fotoUrl
     }${poster_path}" alt="poster_foto ">
+    <button type="button" name="trailer_btn" class="button_film button_film_rem trailer_btn" data-id ="${params.movie_id}">
+      <svg class="icon play-treiler" width="50" height="50">
+        <use xlink:href="${icons}#play-treiler"></use>
+      </svg>
+    </button>
       </div>
       <div class="film_information_film">
           <h1 class="movie_title_film">${title}</h1>
           <ul class="movie_test">
               <li class="movie_description_film">Vote / Votes
-              <p class="movie_vote_film">${vote_average.toFixed(2)}</p>
+              <p class="movie_vote_film">${vote_average.toFixed(1)}</p>
               <p class="movie_votes_film">/ ${vote_count}</p></li>
               
               <li class="movie_description_film">Popularity
-              <p class="movie_value_film movie_popularity_film">${popularity.toFixed(2)}</p></li>
+              <p class="movie_value_film movie_popularity_film">${popularity.toFixed(1)}</p></li>
               
               <li class="movie_description_film">Original Title
               <p class="movie_value_film movie_original_title_film">${original_title}</p></li>
               
               <li class="movie_description_film">Genre
               <p class="movie_value_film movie_genre_film">${Object.values(
-                genres[0].name
-              ).join('')}</p></li>
+      genres[0].name
+    ).join('')}</p></li>
               
           </ul>
           <h2 class="movie_about_film">ABOUT</h2>
@@ -90,7 +93,6 @@ function onGalleryClick(event) {
     <span class="movie-buttons__text button_film">Queued</span>
   </label>
   <button type="button" class="js-remove-button button_film button_film_rem">Remove</button>
-  <button type="button" name="trailer_btn" class="button_film button_film_rem trailer_btn" data-id ="${params.movie_id}">TRAILER</button>
 </form>
       </div>
     </div>`;
@@ -108,14 +110,15 @@ function findMovieByID() {
         onShow: (instance) => {
           document.body.style.overflow = "hidden";
           document.addEventListener('click', (evt) => {
-            if (!evt.target.className.includes('trailer_btn')) {
+            if (evt.target.closest('.trailer_btn')) {
+              openTrailer(document.querySelector('.trailer_btn').dataset.id);
+            } else {
               return;
             }
-            openTrailer(evt.target.dataset.id);
           });
         },
-        onClose: (instance) => {document.body.style.overflow = ""}
-      } 
+        onClose: (instance) => { document.body.style.overflow = "" }
+      }
     );
     instance.show();
 

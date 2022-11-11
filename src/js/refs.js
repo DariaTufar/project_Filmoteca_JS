@@ -11,4 +11,7 @@ export const refs = {
   buttonSearch: document.querySelector('.search__button'),
   spinner: document.querySelector('.spinner'),
   iconSearch: document.querySelector('.icon-search'),
+  idgalery: document.querySelector('.gallery_main-page'),
+  gallery: document.querySelector('.modal_movie'),
+  trailer: document.querySelector('.trailer_btn'),
 };
