@@ -1,18 +1,24 @@
-.container {
+.gallery__container {
   width: 100%;
   margin: 0 auto;
 
   @include minBreakpoints($mobile) {
     width: $mobile;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   @include minBreakpoints($tablet) {
     width: $tablet;
-    // padding: 0 32px;
+
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @include minBreakpoints($desktop) {
     width: $desktop;
-    // padding: 0 16px;
+
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }

@@ -2,13 +2,15 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { refs } from './refs';
 import { markupMovieCards } from './markupMovieCards';
 import ServerRequest from './serverRequest';
-import { showSpinner, hideSpinner } from "./spinner";
+import { showSpinner, hideSpinner } from './spinner';
+import { onPagination } from './filterGenreMainPage';
 
 // import createPagination from './createPagination';
 
 const TRENDING_LIST = 'trending/movie/week'; // Уточнюючий шлях для запиту
 const MESSAGE_INFO = 'Please, enter key word for search!';
-const MESSAGE_ERROR = 'Sorry, there are no movies matching your search query. Please try again.';
+const MESSAGE_ERROR =
+  'Sorry, there are no movies matching your search query. Please try again.';
 
 const movieAPI = new ServerRequest(TRENDING_LIST);
 
@@ -29,7 +31,7 @@ export async function dataMovies(requestAPI) {
     Notify.failure(error.message);
   }
   const { movies, genres } = requestAPI;
-  const markup = markupMovieCards(movies, genres, true);
+  const markup = markupMovieCards(movies, genres);
 
   refs.galleryList.innerHTML = markup.join('');
 
@@ -42,8 +44,11 @@ export async function dataMovies(requestAPI) {
   }
 }
 
-function onClickPagination(event) {
-  if (event.target === event.currentTarget || event.target.textContent === '...') {
+export function onClickPagination(event) {
+  if (
+    event.target === event.currentTarget ||
+    event.target.textContent === '...'
+  ) {
     return;
   }
 
@@ -80,7 +85,7 @@ async function onSearchForm(evt) {
   }
 
   showSpinner(refs.iconSearch, refs.spinner);
-
+  refs.element.removeEventListener('click', onPagination)
   refs.element.removeEventListener('click', onClickPagination);
 
   movieAPI.reset();
@@ -90,7 +95,6 @@ async function onSearchForm(evt) {
 
   hideSpinner(refs.spinner, refs.iconSearch);
 }
-
 
 //======================================================================================================//
 // export async function renderPageMovies(requestAPI) { // Робить запит та рендерить розмітку даних
@@ -112,9 +116,7 @@ async function onSearchForm(evt) {
 //     console.log(requestAPI.page);
 //     console.log('query >>', requestAPI.query);
 
-
 //     requestAPI.createPagination(refs.element);
-
 
 //     if (requestAPI.page === 1) {
 //       addListner(requestAPI);
