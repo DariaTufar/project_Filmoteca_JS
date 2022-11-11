@@ -8,6 +8,9 @@
 </symbol>
 
 </symbol>
+<symbol id="play-treiler" viewBox="0 0 28 32">
+<path d="M26.526 13.083c2.246 1.296 2.246 4.538 0 5.834l-21.474 12.398c-2.246 1.297-5.053-0.324-5.053-2.917v-24.796c0-2.593 2.807-4.214 5.053-2.917l21.474 12.398z"></path>
+</symbol>
 
 
 <symbol id="icon-film" viewBox="0 0 32 32">
@@ -38,3 +41,5 @@
 <symbol id="icon-arrow-up" viewBox="0 0 32 32">
 <path d="M16 1l-15 15h9v16h12v-16h9z"></path>
 </symbol>
+</defs>
+</svg>

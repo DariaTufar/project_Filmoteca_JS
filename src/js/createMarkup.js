@@ -3,6 +3,7 @@ import { refs } from './refs';
 import { markupMovieCards } from './markupMovieCards';
 import ServerRequest from './serverRequest';
 import { showSpinner, hideSpinner } from './spinner';
+import { onPagination } from './filterGenreMainPage';
 
 // import createPagination from './createPagination';
 
@@ -84,7 +85,7 @@ async function onSearchForm(evt) {
   }
 
   showSpinner(refs.iconSearch, refs.spinner);
-
+  refs.element.removeEventListener('click', onPagination)
   refs.element.removeEventListener('click', onClickPagination);
 
   movieAPI.reset();

@@ -1,12 +1,3 @@
-/* .modal{
-    background-color: azure;
-    border-color: crimson;
-} 
- .modal_movie{
-    background-color: azure;
-    border-color: crimson;
-} */
-
 .modal_description_film {
   /* max-width: 882px;
    max-height: 568px; */
@@ -24,11 +15,13 @@
 
   @include minBreakpoints($mobile) {
     width: $mobile;
+    max-height: 568px;
   }
 
   @include minBreakpoints($tablet) {
     width: $tablet;
     display: flex;
+    max-height: 568px;
   }
 
   @include minBreakpoints($desktop) {
@@ -40,6 +33,8 @@
 }
 
 .movie_div_film {
+  position: relative;
+
   @include minBreakpoints($mobile) {
     /* width: $mobile; */
     margin-bottom: 30px;
@@ -49,15 +44,12 @@
 /* width: 775px; */
 
 .movie_foto_film {
-  /* margin-right: auto;
-    margin-left: auto; */
   display: block;
   min-width: 240px;
-  /* max-width: 500px; */
+  max-width: 340px;
   border-radius: 5px;
-
-  /* margin-bottom: 30px; */
 }
+
 
 .movie_description_film {
   font-weight: 500;
@@ -68,16 +60,39 @@
 
   display: flex;
   margin-bottom: 10px;
+
+  /* display: inline; */
 }
 
+/* p{
+  display: inline;
+} */
+
+/* .movie_test{
+  display: inline-flex;
+} */
+
 .film_information_film {
-  margin-left: 30px;
+  /* margin-left: 30px; */
+
+  @include minBreakpoints($mobile) {
+    margin-left: 15px;
+  }
+
+  @include minBreakpoints($tablet) {
+    margin-left: 30px;
+  }
+
+  @include minBreakpoints($desktop) {
+    margin-left: 30px;
+  }
 }
 
 .movie_title_film {
   font-size: 20px;
   line-height: 1.15;
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 
 .movie_vote_film {
@@ -86,6 +101,9 @@
   color: #fff;
   background-color: #ff6b01;
   border-radius: 5px;
+  display: inline;
+  margin-left: 50px;
+
 }
 
 .movie_votes_film {
@@ -93,17 +111,33 @@
   font-weight: 500;
   font-size: 12px;
   color: #000000;
+  /* display: inline; */
+  /* display: block; */
+
 }
 
 .movie_value_film {
   font-size: 12px;
-  line-height: 14px;
-
-  display: flex;
+  /* line-height: 17px; */
+  display: inline;
   align-items: center;
   /* text-transform: uppercase; */
   color: #000000;
+
 }
+
+.movie_popularity_film {
+  margin-left: 61px;
+}
+
+.movie_original_title_film {
+  margin-left: 47px;
+}
+
+.movie_genre_film {
+  margin-left: 84px;
+}
+
 
 .movie_about_film {
   font-size: 12px;
@@ -111,67 +145,40 @@
   font-weight: 500;
   text-transform: uppercase;
   color: #000000;
+  margin-bottom: 8px;
 }
 
-/* .movie_btn {
-  display: flex;
-} */
 
 .about_text_film {
   line-height: 1.67;
   margin-bottom: 21px;
 }
 
-/* .film_btn:focus,
-.film_btn:hover {
-  background-color: #ff6b08;
-  color: #fff;
-  border: 1px solid #ff6b08;
-} */
-
-/* .film_btn:not(:last-child) {
-  margin-left: 15px;
-} */
-
-/* .film_btn {
-  width: 112px;
-  height: 44px;
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 5px;
-  background-color: #fff;
-  cursor: pointer;
-  border: 1px solid #000;
-  line-height: 1.15;
-} */
 
 ////Стили точек под модалкой////
 .movie-buttons_film {
-  /* display: flex;
-  gap: 10px; */
+  /* gap: 10px; */
   /* align-items: center; */
 
   @include minBreakpoints($mobile) {
-    align-items: center;
-    
+    /* align-items: center; */
+    display: block;
+
   }
 
   @include minBreakpoints($tablet) {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
-    
   }
 
   @include minBreakpoints($desktop) {
     display: flex;
     gap: 10px;
     align-items: center;
-    
   }
 
-  .button_film,
-  .trailer_btn {
+  .button_film {
     display: inline-block;
     min-width: 110px;
     padding: 14px 10px;
@@ -189,25 +196,79 @@
     border-radius: 5px;
     cursor: pointer;
     user-select: none;
+
+    transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1), background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  &__input:checked + &__text,
+  &__input:checked+&__text,
   .button_film:hover {
     color: white;
     background-color: #ff6b01;
     border: 1px solid #ff6b01;
   }
+
   &__input {
     display: none;
   }
-
-  
 }
 
-.trailer_btn{
+.basicLightbox:after {
+  content: '';
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  width: 2em;
+  height: 2em;
+  background: url(https://basiclightbox.electerious.com/assets/images/close.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  @include minBreakpoints($mobile) {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  @include minBreakpoints($tablet) {
+    top: 1.8rem;
+    right: 1.8rem;
+  }
+
+  @include minBreakpoints($desktop) {
+    top: 1.8rem;
+    right: 1.8rem;
+  }
+}
+
+.button_film_rem {
   margin-bottom: 0.5rem;
 }
 
-.button_film{
-  margin-bottom: 0.0rem;
+.trailer_btn {
+  position: absolute;
+  background-color: rgb(3 3 3 / 40%);
+  display: flex;
+  border-radius: 50%;
+  width: 100px;
+  padding-left: 10px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(255 107 1 / 40%);
+  transition: color 350ms cubic-bezier(0.4, 0, 0.2, 1), background-color 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  & .play-treiler {
+    fill: currentColor;
+  }
+}
+
+.movie_foto_film:hover+.trailer_btn,
+.movie_foto_film:focus+.trailer_btn,
+.trailer_btn:hover,
+.trailer_btn:focus {
+  color: rgb(255 107 1);
+  background-color: rgb(3 3 3 / 60%);
 }
