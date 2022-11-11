@@ -74,19 +74,23 @@
   white-space: nowrap;
 }
 
-.header a {
+.header .header__menu-link {
+  display: block;
   text-decoration: initial;
   text-transform: uppercase;
+  color: $bg-primary-light-color;
   &:focus,
   &:hover {
-    color: aqua;
+    border: 1px solid $accent-color-primary;
+    background: $accent-color-primary;
+    box-shadow: 0px 8px 43px $accent-color-primary;
+    border-radius: 5px;
   }
-}
-
-.header .header__menu-link.is-active {
-  text-decoration-line: underline;
-  text-decoration-thickness: 3px;
-  text-decoration-color: #ff001b;
+  &.is-active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #ff001b;
+  }
 }
 
 .navigation {
@@ -99,6 +103,12 @@
   display: flex;
   gap: 5%;
   align-items: center;
+  text-decoration: none;
+  &:focus,
+  &:hover {
+    color: $accent-color-primary;
+    text-decoration: none;
+  }
 }
 
 .logo__icon {
@@ -113,7 +123,13 @@
   font-weight: 500;
   font-size: 30px;
   line-height: 1.67;
+  text-transform: uppercase;
   display: none;
+  &:focus,
+  &:hover {
+    box-shadow: inset 0px 8px 43px $accent-color-primary;
+    border-radius: 5px;
+  }
   @include tablet {
     display: block;
   }
@@ -155,17 +171,15 @@
 
 .search__button {
   width: 50px;
-  height: 50px;
-
   background-color: inherit;
-  // background-color: rgba(29, 20, 20, 0.5);
-  border-radius: 50%;
+  border-radius: 25%;
   border: 1px;
-  // opacity: 0.3;
   cursor: pointer;
   &:hover,
   &:focus {
-    background-color: rgba(29, 20, 20, 0.5);
+    // border: 1px solid $accent-color-primary;
+    // background: $accent-color-primary;
+    box-shadow: 0px 8px 43px $accent-color-primary;
   }
 }
 
@@ -179,8 +193,9 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  // position: absolute;
-  // left: 10%;
+}
+.header.library .header__filter-box {
+  justify-content: end;
 }
 
 .theme-toggle {
@@ -237,4 +252,15 @@ body.dark {
 
 .icon-moon {
   fill: $light-color-primary;
+}
+
+.my-library__filter-label {
+  cursor: pointer;
+  &:focus,
+  &:hover {
+    // border: 1px solid $accent-color-primary;
+    background: $accent-color-primary;
+    box-shadow: 0px 8px 43px $accent-color-primary;
+    border-radius: 5px;
+  }
 }
