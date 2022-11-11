@@ -63,14 +63,27 @@
 }
 
 .header__container {
-  padding: 20px;
   height: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  @include tablet {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  @include desktop {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 }
 
 .header__menu-list {
   display: flex;
   align-items: center;
   gap: 10%;
+  margin-right: 20px;
 
   font-family: 'Roboto';
   font-style: normal;
@@ -225,6 +238,7 @@ body.dark {
 .chenge-theme-togle {
   margin-right: 60px;
   margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .checkbox {
@@ -235,6 +249,7 @@ body.dark {
 .label {
   width: 40px;
   height: 21px;
+
   background-color: #111;
   display: flex;
   border-radius: 50px;
