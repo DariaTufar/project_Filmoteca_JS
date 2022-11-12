@@ -101,6 +101,7 @@
 
     transform: scale(1.02);
   }
+
   @include tablet {
     height: 455;
     width: 336;
@@ -116,10 +117,4 @@
   display: block;
   text-decoration: none;
   height: 100%;
-
-  &:focus,
-  &:hover {
-    text-decoration: none;
-    color: currentColor;
-  }
 }
