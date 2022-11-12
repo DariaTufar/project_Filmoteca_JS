@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, EmailAuthProvider } from 'firebase/auth';
+import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { getDatabase, get, set, remove, ref } from 'firebase/database';
 import { Notify } from 'notiflix';
 import * as firebaseui from 'firebaseui';
@@ -21,11 +21,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getDatabase(app);
+const provider = new GoogleAuthProvider();
 
 // Initialize FirebaseUI
 const ui = new firebaseui.auth.AuthUI(auth);
 const uiOptions = {
   signInOptions: [
+    {
+      provider: GoogleAuthProvider.PROVIDER_ID,
+    },
     {
       provider: EmailAuthProvider.PROVIDER_ID,
       requireDisplayName: false,
@@ -34,6 +38,7 @@ const uiOptions = {
   callbacks: {
     signInSuccessWithAuthResult: authResult => {},
   },
+  signInFlow: 'popup',
 };
 
 // --- Auth UI helpers ---
