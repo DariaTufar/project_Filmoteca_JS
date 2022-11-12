@@ -43,19 +43,6 @@ function onClick(event) {
 
 refs.dropdownContent.addEventListener('click', onGenre);
 
-// function onGenre(event) {
-//   const target = event.target;
-//   const genreEl = target.closest('.genre-name');
-//   console.log(genreEl);
-//   if (!genreEl) {
-//     return;
-//   }
-
-//   genreAPI.idGenre = genreEl.dataset.genreid;
-
-//   searchGenres();
-// }
-
 function onGenre(event) {
   const target = event.target;
   const genreEl = target.closest('.genre-name');
