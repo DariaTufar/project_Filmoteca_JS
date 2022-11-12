@@ -1,4 +1,3 @@
-import { cacheMovie, updateBtnStatus } from './myLibrary/firebaseHelpers.js'; // НЕ УДАЛЯТЬ !!! импорт функций, необходимых для обновления статуса кнопок в модальном окне
 import { KEY } from './constants';
 import { refs } from './refs';
 import axios from 'axios';
@@ -6,7 +5,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import openTrailer from './trailer';
 
-import icons from '../images/icons.svg';
+import icons from "../images/icons.svg";
 
 const params = {
   baseUrl: 'https://api.themoviedb.org/3/',
@@ -28,6 +27,7 @@ function onGalleryClick(event) {
   const id = movieCardEl.dataset.movieid;
   params.movie_id = id;
   findMovieByID();
+
 }
 function markupOnModal(data) {
   const {
@@ -40,15 +40,11 @@ function markupOnModal(data) {
     genres,
     poster_path,
   } = data;
-
   return `<div class="modal_description_film">
       <div class="movie_div_film">
-          <img class="movie_foto_film" src="${
-            params.fotoUrl
-          }${poster_path}" alt="poster_foto ">
-    <button type="button" name="trailer_btn" class="button_film button_film_rem trailer_btn" data-id ="${
-      params.movie_id
-    }">
+          <img class="movie_foto_film" src="${params.fotoUrl
+    }${poster_path}" alt="poster_foto ">
+    <button type="button" name="trailer_btn" class="button_film button_film_rem trailer_btn" data-id ="${params.movie_id}">
       <svg class="icon play-treiler" width="50" height="50">
         <use xlink:href="${icons}#play-treiler"></use>
       </svg>
@@ -60,20 +56,18 @@ function markupOnModal(data) {
               <li class="movie_description_film">Vote / Votes
               <p class="movie_vote_film">${vote_average.toFixed(1)}</p>
               <p class="movie_votes_film">/ ${vote_count}</p></li>
-
+              
               <li class="movie_description_film">Popularity
-              <p class="movie_value_film movie_popularity_film">${popularity.toFixed(
-                1
-              )}</p></li>
-
+              <p class="movie_value_film movie_popularity_film">${popularity.toFixed(1)}</p></li>
+              
               <li class="movie_description_film">Original Title
               <p class="movie_value_film movie_original_title_film">${original_title}</p></li>
-
+              
               <li class="movie_description_film">Genre
               <p class="movie_value_film movie_genre_film">${Object.values(
-                genres[0].name
-              ).join('')}</p></li>
-
+      genres[0].name
+    ).join('')}</p></li>
+              
           </ul>
           <h2 class="movie_about_film">ABOUT</h2>
           <p class="about_text_film">${overview}</p>
@@ -105,42 +99,31 @@ function markupOnModal(data) {
 }
 
 function findMovieByID() {
-  axios
-    .get(
-      `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
-    )
-    .then(response => {
-      const modal = response.data;
-      const markup = markupOnModal(modal);
-      refs.gallery.innerHTML = markup;
+  axios.get(`${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`).then(response => {
+    const modal = response.data;
+    const markup = markupOnModal(modal);
+    refs.gallery.innerHTML = markup;
 
-      const instance = basicLightbox.create(
-        document.querySelector('.modal_movie'),
-        {
-          onShow: instance => {
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('click', evt => {
-              if (evt.target.closest('.trailer_btn')) {
-                openTrailer(document.querySelector('.trailer_btn').dataset.id);
-              } else {
-                return;
-              }
-            });
-          },
-          onClose: instance => {
-            document.body.style.overflow = '';
-          },
-        }
-      );
-      instance.show();
+    const instance = basicLightbox.create(
+      document.querySelector('.modal_movie'),
+      {
+        onShow: (instance) => {
+          document.body.style.overflow = "hidden";
+          document.addEventListener('click', (evt) => {
+            if (evt.target.closest('.trailer_btn')) {
+              openTrailer(document.querySelector('.trailer_btn').dataset.id);
+            } else {
+              return;
+            }
+          });
+        },
+        onClose: (instance) => { document.body.style.overflow = "" }
+      }
+    );
+    instance.show();
 
-      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне >>>>>
-      cacheMovie(modal).then(() => updateBtnStatus());
-      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне <<<<<
-
-      return markup;
-    })
-    .catch(console.log);
+    return markup;
+  }).catch(console.log);
 }
 
 //document.body.style.overflow = "hidden"; //выключает скролл

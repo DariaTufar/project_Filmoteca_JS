@@ -13,4 +13,4 @@ import './js/trailer';
 
 import './js/scroll-up-button';
 
-import './js/myLibrary/manageMovieFirebase';
+import './js/myLibrary/manageMovie';
