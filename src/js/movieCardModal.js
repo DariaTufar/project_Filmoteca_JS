@@ -1,11 +1,9 @@
+import axios from 'axios';
 import { KEY } from './constants';
 import { refs } from './refs';
-import axios from 'axios';
-import { openModal } from './modalCardHelpers.js';
+import { openModal } from './modalCardHelpers';
 
-// import icons from '../images/icons.svg';
-
-export const params = {
+const params = {
   baseUrl: 'https://api.themoviedb.org/3/',
   fotoUrl: 'https://image.tmdb.org/t/p/w500',
   movie_id: 0,
@@ -22,8 +20,7 @@ function onGalleryClick(event) {
     return;
   }
 
-  const id = movieCardEl.dataset.movieid;
-  params.movie_id = id;
+  params.movie_id = movieCardEl.dataset.movieid;
 
   findMovieByID(params).then(movie => {
     openModal(movie, params);
