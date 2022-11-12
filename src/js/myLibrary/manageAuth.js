@@ -22,6 +22,8 @@ auth.onAuthStateChanged(updateUser);
 function renderAuth() {
   if (user) {
     refs.myLibrary.style.display = 'block';
+    refs.myLibrary.classList.add('myLib-is-shown');
+    refs.myLibrary.classList.remove('myLib-is-hidden');
 
     //  ========== icons attribute manage ==========
     refs.iconSignIn.style.display = 'none';
@@ -32,21 +34,16 @@ function renderAuth() {
       `${user.displayName ?? ''} <${user.email}>`
     );
     refs.logBtn.setAttribute('title', 'Sign out');
-
-    // refs.logBtn.innerHTML = 'Log out';
-    // refs.user.innerHTML = user.email;
-    // refs.user.innerHTML = user.displayName;
   } else {
     refs.myLibrary.style.display = 'none';
+    refs.myLibrary.classList.add('myLib-is-hidden');
+    refs.myLibrary.classList.remove('myLib-is-shown');
 
     //  ========== icons attribute manage ==========
     refs.iconSignIn.style.display = 'inline-block';
     refs.iconSignOut.style.display = 'none';
     refs.iconFace.style.display = 'none';
     refs.logBtn.setAttribute('title', 'Sign in');
-
-    // refs.logBtn.innerHTML = 'Log in';
-    // refs.user.innerHTML = '';
   }
   refs.loginUi.classList.remove('active');
 }
