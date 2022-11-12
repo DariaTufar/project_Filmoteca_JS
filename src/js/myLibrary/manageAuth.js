@@ -21,7 +21,6 @@ auth.onAuthStateChanged(updateUser);
 
 function renderAuth() {
   if (user) {
-    console.log(user);
     refs.myLibrary.style.display = 'block';
 
     //  ========== icons attribute manage ==========
