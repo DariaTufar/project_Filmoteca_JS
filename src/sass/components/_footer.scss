@@ -13,15 +13,14 @@
   font-weight: 400;
   text-align: center;
 
-
-@include tablet {
+  @include tablet {
     display: flex;
 
     justify-content: center;
     font-size: 16px;
     line-height: 1.17;
   }
-  
+
   @include desktop {
     display: flex;
 
@@ -33,7 +32,7 @@
 
 .footer-section__text {
   display: block;
-  @include maxBreakpoints (tablet) {
+  @include maxBreakpoints(tablet) {
     margin-bottom: 10px;
   }
 }
@@ -59,9 +58,9 @@
   transform-origin: center;
 }
 @keyframes beat {
-    to {
-        transform: scale(1.3);
-    }
+  to {
+    transform: scale(1.3);
+  }
 }
 
 .footer-section__secondary {
