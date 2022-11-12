@@ -1,4 +1,5 @@
 .header {
+  min-width: 230px;
   height: 230px;
   padding-top: 40px;
   font-family: $font-primary;
@@ -20,7 +21,7 @@
 
   @include tablet {
     height: 216px;
-    // padding-top: 45px;
+    padding-top: 35px;
     background-image: url('../images/header-home-tab.jpg'), $bg-gradient;
 
     @include retina {
@@ -64,13 +65,6 @@
   }
 }
 
-// .header__container {
-//   @include desktop {
-//     padding-left: 60px;
-//     padding-right: 60px;
-//   }
-// }
-
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -85,6 +79,7 @@
   gap: 5%;
   align-items: center;
   text-decoration: none;
+  transition: color 0.3s ease;
 
   &:focus,
   &:hover {
@@ -95,8 +90,34 @@
 
 .logo__icon {
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 35px;
+  height: 35px;
+  // fill: #ff001b;
+  animation: film 4s infinite alternate;
+}
+
+@keyframes film {
+  0.00% {
+    fill: #ff001b;
+  }
+  16.67% {
+    fill: #ff001b;
+  }
+  33.33% {
+    fill: orange;
+  }
+  50.00% {
+    fill: $text-color-accent;
+  }
+  66.67% {
+    fill: orange;
+  }
+  83.33% {
+    fill: #ff001b;
+  }
+  100.00% {
+    fill: #ff001b;
+  }
 }
 
 .logo__title {
@@ -109,11 +130,6 @@
   text-transform: uppercase;
   display: none;
 
-  &:focus,
-  &:hover {
-    // box-shadow: inset 0px 8px 43px $accent-color-primary;
-    // border-radius: 5px;
-  }
   @include tablet {
     display: block;
   }
@@ -123,13 +139,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // gap: 10%;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
-  // white-space: nowrap;
+
   @include tablet {
     font-size: 14px;
   }
@@ -142,6 +157,10 @@
   }
 }
 
+// .header .header__my-library {
+//   width: 0;
+// }
+
 .header .header__menu-link {
   display: block;
   padding: 0 5px;
@@ -149,16 +168,12 @@
   text-decoration: initial;
   text-transform: uppercase;
   color: $bg-primary-light-color;
+  transition: color 0.3s ease;
 
   &:not(.is-active):focus,
   &:not(.is-active):hover {
     color: $accent-color-primary;
     text-decoration: none;
-
-    // border: 1px solid $accent-color-primary;
-    // background: $accent-color-primary;
-    // box-shadow: 0px 8px 43px $accent-color-primary;
-    // border-radius: 5px;
   }
 
   &.is-active {
@@ -171,10 +186,10 @@
 
 .header .js-login {
   text-transform: capitalize;
+  text-align: end;
 }
 
 .login-user {
-  min-width: 80px;
   font-size: 14px;
 }
 
@@ -187,11 +202,6 @@
     margin: 0;
   }
 }
-
-// .sign-list {
-//   display: flex;
-//   align-items: center;
-// }
 
 .movie-search__form {
   display: flex;
@@ -218,25 +228,23 @@
 }
 
 .search__button {
-  width: 30px;
+  width: 40px;
   background-color: inherit;
   border-radius: 50%;
   border: 1px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 
   &:hover,
   &:focus {
-    // border: 1px solid $accent-color-primary;
-    // background: $accent-color-primary;
-    // box-shadow: 0px 8px 43px $accent-color-primary;
     background-color: #111;
   }
 }
 
-// .form__search-not-succuessful {
-//   text-align: center;
-//   color: #ff001b;
-// }
+.icon-search {
+  width: 35px;
+  height: 35px;
+}
 
 .header__filter-box {
   display: flex;
@@ -250,10 +258,6 @@
   align-items: center;
 }
 
-// .header.library .header__filter-box {
-//   justify-content: center;
-// }
-
 //=======================
 
 .theme-toggle {
@@ -265,12 +269,6 @@
 body.dark {
   background-color: #292c35;
 }
-
-// .chenge-theme-togle {
-//   margin-right: 60px;
-//   margin-top: 20px;
-//   margin-bottom: 15px;
-// }
 
 .checkbox {
   opacity: 0;
@@ -320,6 +318,7 @@ body.dark {
 //=====================
 .my-library__filter-label {
   cursor: pointer;
+  transition: background-color, box-shadow 0.3s ease;
 
   &:focus,
   &:hover {
@@ -328,4 +327,8 @@ body.dark {
     box-shadow: 0px 8px 43px $accent-color-primary;
     border-radius: 5px;
   }
+}
+
+.text-danger {
+  color: $accent-color-primary !important;
 }
