@@ -1,4 +1,3 @@
-// import { markupOnModal } from './helpers';
 import icons from '../../images/icons.svg';
 import { markupMovieCards } from '../markupMovieCards';
 import { dbFirebase } from './firebaseDB';

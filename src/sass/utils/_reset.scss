@@ -10,6 +10,13 @@ h6 {
 
 a {
   color: currentColor;
+  // color: currentColor;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: currentColor;
+  }
 }
 
 address {
@@ -69,4 +76,8 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+svg {
+  fill: currentColor;
 }
