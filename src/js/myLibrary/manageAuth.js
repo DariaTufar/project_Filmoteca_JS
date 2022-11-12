@@ -27,7 +27,10 @@ function renderAuth() {
     refs.iconSignIn.style.display = 'none';
     refs.iconSignOut.style.display = 'inline-block';
     refs.iconFace.style.display = 'inline-block';
-    refs.iconFace.setAttribute('title', `${user.displayName} <${user.email}>`);
+    refs.iconFace.setAttribute(
+      'title',
+      `${user.displayName ?? ''} <${user.email}>`
+    );
     refs.logBtn.setAttribute('title', 'Sign out');
 
     // refs.logBtn.innerHTML = 'Log out';
