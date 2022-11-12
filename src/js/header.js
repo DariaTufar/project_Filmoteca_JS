@@ -5,7 +5,7 @@ function ifLoaded(evt) {
   const refNavigation = document.querySelector('.navigation');
   const refRadioBox = document.querySelector('.radio-box');
   const refSearchForm = document.querySelector('.search-box');
-  const refGenreBtn = document.querySelector('.genre-btn');
+  const refGenreBtn = document.querySelector('.dropbtn');
 
   const activeClass = refNavigation.querySelector('.is-active');
   if (activeClass) activeClass.classList.remove('is-active');
