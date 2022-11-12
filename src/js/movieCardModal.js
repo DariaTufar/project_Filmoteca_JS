@@ -58,7 +58,7 @@ function markupOnModal(data) {
           <ul class="movie_test">
               <li class="movie_description_film">Vote / Votes
               <p class="movie_vote_film">${vote_average.toFixed(1)}</p>
-              <p class="movie_votes_film">/ ${vote_count}</p></li>
+              <p class="movie_votes_film"><span class="movie_backslash">/</span><span class="movie_votes">${vote_count}</span></p></li>
 
               <li class="movie_description_film">Popularity
               <p class="movie_value_film movie_popularity_film">${popularity.toFixed(
@@ -142,7 +142,6 @@ function findMovieByID() {
       function closeModal(e) {
         if (e.key === 'Escape') {
           instance.close();
-          console.log(e.key);
         }
       }
 
