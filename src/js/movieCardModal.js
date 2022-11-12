@@ -2,6 +2,9 @@ import axios from 'axios';
 import { KEY } from './constants';
 import { refs } from './refs';
 import { openModal } from './modalCardHelpers';
+import { user } from './myLibrary/manageAuth';
+import { dbFirebase } from './myLibrary/firebaseDB';
+import { updateBtnStatus } from './myLibrary/firebaseHelpers';
 
 const params = {
   baseUrl: 'https://api.themoviedb.org/3/',
@@ -12,7 +15,7 @@ const params = {
 };
 refs.idgalery.addEventListener('click', onGalleryClick);
 
-function onGalleryClick(event) {
+async function onGalleryClick(event) {
   event.preventDefault();
   const target = event.target;
   const movieCardEl = target.closest('.gallery__item');
@@ -20,12 +23,28 @@ function onGalleryClick(event) {
     return;
   }
 
+  // ========== get movie from server =========
   params.movie_id = movieCardEl.dataset.movieid;
+  const movieDetails = await findMovieByID(params);
 
-  findMovieByID(params).then(movie => {
-    openModal(movie, params);
+  // ========= cache movie ===========
+  const { isWatched, isQueued } = await dbFirebase.getMovie({
+    userId: user?.uid,
+    movieId: params.movie_id,
   });
+
+  dbFirebase.cachedMovie = {
+    userId: user?.uid,
+    isWatched,
+    isQueued,
+    movieDetails,
+  };
+
+  // ========= open modal ===========
+  openModal(movieDetails, params);
+  updateBtnStatus();
 }
+
 //---------------------
 function findMovieByID(params) {
   return axios

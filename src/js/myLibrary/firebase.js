@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { getDatabase, get, set, remove, ref } from 'firebase/database';
-import { Notify } from 'notiflix';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
 
@@ -21,7 +20,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const db = getDatabase(app);
-// const provider = new GoogleAuthProvider();
 
 // Initialize FirebaseUI
 const ui = new firebaseui.auth.AuthUI(auth);

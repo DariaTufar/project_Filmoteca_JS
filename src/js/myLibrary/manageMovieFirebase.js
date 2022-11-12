@@ -3,12 +3,14 @@ import { renderMovies, updateBtnStatus } from './firebaseHelpers';
 import { refs } from './refs';
 
 refs.modal.addEventListener('click', onModalClick);
+
 // ====================
 async function onModalClick(event) {
   const target = event.target;
   if (!target.closest('.modal_description_film')) {
     return;
   }
+
   if (target.closest('.js-movie-buttons') && target.closest('input')) {
     // add to queued or watched
     const formEl = target.closest('.js-movie-buttons');
@@ -37,6 +39,7 @@ async function onModalClick(event) {
     dbFirebase.cachedMovie.isQueued = false;
     dbFirebase.cachedMovie.isWatched = false;
   }
+
   if (window.location.href.includes('myLibrary')) {
     renderMovies();
   }

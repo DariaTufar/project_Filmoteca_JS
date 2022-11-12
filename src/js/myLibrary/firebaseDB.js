@@ -1,39 +1,25 @@
 import { readDB, writeDB, removeDB } from './firebase';
 import { writeDB } from './firebase';
 
-export let dbFirebase;
-
 class FirebaseDB {
   #cachedMovie;
 
   // ========== отримати данні з кеша ===========
-
   get cachedMovie() {
     return this.#cachedMovie;
   }
 
   // ========== записати данні у кеш ===========
-
-  async writeCachedMovie({ userId, movieDetails }) {
-    const foundMovie = await this.getMovie({
-      userId,
-      movieId: movieDetails.id,
-    });
-
+  set cachedMovie({ userId, isWatched, isQueued, movieDetails }) {
     this.#cachedMovie = {
       userId,
-      isWatched: false,
-      isQueued: false,
+      isWatched,
+      isQueued,
       movieDetails,
     };
-    if (foundMovie) {
-      this.#cachedMovie.isQueued = foundMovie.isQueued;
-      this.#cachedMovie.isWatched = foundMovie.isWatched;
-    }
   }
 
   // ========== додати фільм до бази даних Firebase ===========
-
   async addMovie({ userId, isQueued, isWatched, movieDetails }) {
     if (!userId || !movieDetails.id) {
       return null;
@@ -60,20 +46,18 @@ class FirebaseDB {
   }
 
   // ========== видалити фільм з бази даних Firebase ===========
-
   async removeMovie({ userId, movieId }) {
     const path = `${userId}/${movieId}`;
     await removeDB(path);
   }
-  // =========== отримати фільм з бази даних Firebase за ID фільму ===========
 
+  // =========== отримати фільм з бази даних Firebase за ID фільму ===========
   async getMovie({ userId, movieId }) {
     const path = `${userId}/${movieId}`;
-    return await readDB(path);
+    return (await readDB(path)) ?? {};
   }
 
   // ========== отримати фільми з бази даних Firebase за фільтром ===========
-
   async getMovies({ userId, isWatched, isQueued }) {
     let result = [];
     const path = `${userId}`;
@@ -112,8 +96,6 @@ class FirebaseDB {
     }
     return result;
   }
-
-  // =====================
 }
 
-dbFirebase = new FirebaseDB();
+export const dbFirebase = new FirebaseDB();

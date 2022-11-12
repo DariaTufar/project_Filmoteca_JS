@@ -56,22 +56,22 @@ function getModalCardMarkup(data, params) {
           <form class="js-movie-buttons movie-buttons_film">
   <label class="movie-buttons__label">
     <input
-      class="movie-buttons__input"
+      class="movie-buttons_film__input"
       type="radio"
       name="status"
       value="isWatched"
     />
-    <span class="movie-buttons__text button_film">Watched</span>
+    <span class="movie-buttons_film__text button_film">Watched</span>
   </label>
 
   <label class="movie-buttons__label">
     <input
-      class="movie-buttons__input"
+      class="movie-buttons_film__input"
       type="radio"
       name="status"
       value="isQueued"
     />
-    <span class="movie-buttons__text button_film">Queued</span>
+    <span class="movie-buttons_film__text button_film">Queued</span>
   </label>
   <button type="button" class="js-remove-button button_film button_film_rem">Remove</button>
 </form>
@@ -106,7 +106,6 @@ export function openModal(movie, params) {
   );
 
   instance.show();
-  cacheMovie(movie).then(() => updateBtnStatus());
 
   function closeModal(e) {
     if (e.key === 'Escape') {
