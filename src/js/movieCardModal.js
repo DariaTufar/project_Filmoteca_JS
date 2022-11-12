@@ -109,6 +109,7 @@ function findMovieByID() {
       {
         onShow: (instance) => {
           document.body.style.overflow = "hidden";
+          document.addEventListener('keydown', closeModal);
           document.addEventListener('click', (evt) => {
             if (evt.target.closest('.trailer_btn')) {
               openTrailer(document.querySelector('.trailer_btn').dataset.id);
@@ -117,10 +118,19 @@ function findMovieByID() {
             }
           });
         },
-        onClose: (instance) => { document.body.style.overflow = "" }
+        onClose: (instance) => {
+          document.body.style.overflow = ""
+      document.removeEventListener('keydown', closeModal);  }
+        
       }
     );
     instance.show();
+    function closeModal(e) {
+      if (e.key === 'Escape') {
+        instance.close();
+        console.log(e.key);
+      }
+    }
 
     return markup;
   }).catch(console.log);
