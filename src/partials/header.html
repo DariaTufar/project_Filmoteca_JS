@@ -79,7 +79,9 @@
     </div>
 
     <div class="search-box">
-      <form class="movie-search__form js-search-form" id="js-search-form">
+      <!-- TODO: повичищати класі які не використовуєте для CSS/JS  -->
+      <!-- TODO: юзати методологію неймінгу BEM  -->
+      <form class="movie-search__form" id="js-search-form">
         <input
           class="search__form-input"
           type="text"
@@ -87,7 +89,7 @@
           autocomplete="off"
           placeholder="Movie search"
         />
-        <button type="submit" class="js-submit__search_btn search__button">
+        <button type="submit" class="search__button">
           <svg class="icon icon-search" width="20px" height="20px">
             <use href="/src/images/icons.svg#icon-search"></use>
           </svg>

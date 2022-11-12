@@ -7,16 +7,19 @@ import { onPagination } from './filterGenreMainPage';
 
 // import createPagination from './createPagination';
 
-const TRENDING_LIST = 'trending/movie/week'; // Уточнюючий шлях для запиту
+const TRENDING_LIST = 'trending/movie/week'; // Уточнюючий шлях для запиту - do we need it exactly? We alerady have `const TRENDING_LIST = 'trending/movie/week';` in ServerRequest class
 const MESSAGE_INFO = 'Please, enter key word for search!';
 const MESSAGE_ERROR =
   'Sorry, there are no movies matching your search query. Please try again.';
 
+refs.formSearch.addEventListener('submit', onSearchForm);
+
 const movieAPI = new ServerRequest(TRENDING_LIST);
 
-dataMovies(movieAPI);
+getMoviesFromServer(movieAPI);
 
-export async function dataMovies(requestAPI) {
+// functions:
+export async function getMoviesFromServer(requestAPI) {
   try {
     await requestAPI.dataMovies();
 
@@ -30,6 +33,11 @@ export async function dataMovies(requestAPI) {
   } catch (error) {
     Notify.failure(error.message);
   }
+
+  setMoviesInMarkup(requestAPI)
+}
+
+function setMoviesInMarkup(requestAPI) {
   const { movies, genres } = requestAPI;
   const markup = markupMovieCards(movies, genres);
 
@@ -45,26 +53,27 @@ export async function dataMovies(requestAPI) {
 }
 
 export function onClickPagination(event) {
+  const content = event.target.textContent
   if (
     event.target === event.currentTarget ||
-    event.target.textContent === '...'
+    content === '...'
   ) {
     return;
   }
 
-  if (Number(event.target.textContent)) {
-    movieAPI.page = Number(event.target.textContent);
+  if (Number(content)) {
+    movieAPI.page = Number(content);
   }
 
-  if (event.target.textContent) {
-    switch (event.target.textContent) {
+  if (content) {
+    switch (content) {
       case ' «':
         movieAPI.decrementPage();
-        console.log(event.target.textContent);
+        console.log(content);
         break;
       case '» ':
         movieAPI.incrementPage();
-        console.log(event.target.textContent);
+        console.log(content);
         break;
     }
   }
@@ -72,8 +81,6 @@ export function onClickPagination(event) {
   dataMovies(movieAPI);
   movieAPI.createPagination(refs.element);
 }
-////////////////////////////////////////////////////////////////////
-refs.formSearch.addEventListener('submit', onSearchForm);
 
 async function onSearchForm(evt) {
   evt.preventDefault();
@@ -91,131 +98,7 @@ async function onSearchForm(evt) {
   movieAPI.reset();
   movieAPI.query = inputText;
 
-  await dataMovies(movieAPI);
+  await getMoviesFromServer(movieAPI);
 
   hideSpinner(refs.spinner, refs.iconSearch);
 }
-
-//======================================================================================================//
-// export async function renderPageMovies(requestAPI) { // Робить запит та рендерить розмітку даних
-
-//   const genres = await requestAPI.getGenres(); // Повертає жанри з АРІ
-
-//   try {
-//     const { results, total_pages, total_results } = await requestAPI.getMovies(); // Повертає масив фільмів з АРІ
-
-//     requestAPI.totalPages = total_pages;
-//     requestAPI.totalMovies = total_results;
-
-//     // const genres = await requestAPI.getGenres(); // Повертає жанри з АРІ
-//     const markup = markupMovieCards(results, genres); // Рендерить розмітку для карток
-
-//     refs.galleryList.innerHTML = markup.join(''); // Додає розмітку в DOM
-
-//     console.log(requestAPI.totalPages);
-//     console.log(requestAPI.page);
-//     console.log('query >>', requestAPI.query);
-
-//     requestAPI.createPagination(refs.element);
-
-//     if (requestAPI.page === 1) {
-//       addListner(requestAPI);
-//       // refs.element.addEventListener('click', onClickPagination);
-//     }
-//   } catch (error) {
-//     Notify.failure(error.message);
-//   }
-// }
-
-// export function addListner(requestAPI) {
-//   refs.element.addEventListener('click', onClickPagination);
-
-//   function onClickPagination(event) {
-//     // if (requestAPI.totalPages === 1) {
-//     //   refs.element.removeEventListener('click', onClickPagination);
-//     // }
-
-//     if (event.target === event.currentTarget || event.target.textContent === '...') {
-//       return;
-//     }
-
-//     if (Number(event.target.textContent)) {
-//       requestAPI.page = Number(event.target.textContent);
-//     }
-//     if (event.target.textContent) {
-//       switch (event.target.textContent) {
-//         case ' «':
-//           requestAPI.decrementPage();
-//           // console.log(requestAPI.page);
-//           console.log(event.target.textContent);
-//           break;
-//         case '» ':
-//           requestAPI.incrementPage();
-//           // console.log('-1', requestAPI.page);
-//           console.log(event.target.textContent);
-
-//           break;
-//       }
-//     }
-//     // console.log(renderPageMovies(requestAPI));
-//     // renderPageMovies(requestAPI).then(console.log);
-//     remout(requestAPI);
-
-//     requestAPI.createPagination(refs.element);
-//   }
-// }
-
-// // export function onClickPagination(event) {
-// //   // if (requestAPI.totalPages === 1) {
-// //   //   refs.element.removeEventListener('click', onClickPagination);
-// //   // }
-
-// //   if (event.target === event.currentTarget || event.target.textContent === '...') {
-// //     return;
-// //   }
-
-// //   if (Number(event.target.textContent)) {
-// //     requestAPI.page = Number(event.target.textContent);
-// //   }
-// //   if (event.target.textContent) {
-// //     switch (event.target.textContent) {
-// //       case ' «':
-// //         requestAPI.decrementPage();
-// //         // console.log(requestAPI.page);
-// //         console.log(event.target.textContent);
-// //         break;
-// //       case '» ':
-// //         requestAPI.incrementPage();
-// //         // console.log('-1', requestAPI.page);
-// //         console.log(event.target.textContent);
-
-// //         break;
-// //     }
-// //   }
-// //   // console.log(renderPageMovies(requestAPI));
-// //   // renderPageMovies(requestAPI).then(console.log);
-// //   remout(requestAPI);
-
-// //   requestAPI.createPagination(refs.element);
-// // }
-
-// async function remout(requestAPI) {
-//   // if (requestAPI.query) {
-//   //   refs.element.removeEventListener('click', onClickPagination);
-//   //   return;
-//   // }
-//   try {
-//     // if (requestAPI.query) {
-//     // }
-//     const { results } = await requestAPI.getMovies();
-//     const genres = await requestAPI.getGenres(); // Повертає жанри з АРІ
-//     console.log('results :>> ', results);
-//     const markup = markupMovieCards(results, genres);
-//     refs.galleryList.innerHTML = markup.join(''); // Додає розмітку в DOM
-//     refs.element.removeEventListener('click', onClickPagination);
-//   } catch (error) {
-
-//   }
-
-//   // await renderPageMovies(requestAPI);
-// }
