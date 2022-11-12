@@ -1,4 +1,5 @@
 import { closeAuth, openAuth, auth } from './firebase';
+import { renderMovies } from './firebaseHelpers';
 
 const refs = {
   myLibrary: document.querySelector('.js-menu-my-library'),
@@ -6,7 +7,7 @@ const refs = {
   user: document.querySelector('.js-user'),
   loginUi: document.querySelector('.js-login-ui'),
 };
-let user = '';
+export let user = '';
 
 refs.logBtn.addEventListener('click', onClickLogIn);
 refs.loginUi.addEventListener('click', onClickLoginUi);
@@ -51,4 +52,7 @@ function updateUser(currentUser) {
     }
   }
   renderAuth();
+  if (window.location.href.includes('myLibrary')) {
+    renderMovies();
+  }
 }
