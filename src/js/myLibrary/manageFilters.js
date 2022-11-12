@@ -1,4 +1,4 @@
-import { renderMovies } from './helpers';
+import { renderMovies } from './firebaseHelpers';
 import { initGenres } from './genres';
 import { refs } from './refs';
 
@@ -8,7 +8,6 @@ refs.filter.addEventListener('click', onFilterClick);
 init();
 async function init() {
   await initGenres();
-  renderMovies();
 }
 
 // ====================
