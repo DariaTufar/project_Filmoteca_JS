@@ -1,16 +1,18 @@
 .gallery_main-page {
   display: grid;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 
   grid-template-columns: repeat(1, 280px);
   grid-auto-rows: 443px;
 
   grid-row-gap: 20px;
   justify-content: center;
-  padding-top: 20px;
+
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
 
   @include tablet {
     grid-template-columns: repeat(2, 336px);
@@ -18,6 +20,9 @@
     grid-column-gap: 32px;
     grid-row-gap: 32px;
     padding-top: 60px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @include desktop {
@@ -26,10 +31,7 @@
     grid-column-gap: 16px;
     grid-row-gap: 32px;
     justify-content: center;
-    padding-top: 60px;
     list-style: none;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
@@ -70,6 +72,26 @@
   }
 }
 
+.gallery__item-title--isDarkTheme {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  color: $light-color-primary;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.16;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  @include desktop {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
 .gallery__item-genre {
   font-size: 12px;
   color: $accent-color-primary;
@@ -92,14 +114,17 @@
   object-fit: cover;
   border-radius: 5px;
 
-  transition: transform $animation;
+  transition: transform $animation, box-shadow $animation;
 
   &:hover,
   &:focus {
-    box-shadow: 3px 3px 10px 5px rgb(248, 139, 5),
-      0 0 4px $accent-color-primary inset;
+    // box-shadow: 3px 3px 10px 5px rgb(248, 139, 5),
+    //   0 0 4px $accent-color-primary inset;
 
-    transform: scale(1.02);
+    // transform: scale(1.02);
+
+    box-shadow: rgb(255 107 8 / 42%) 0px 2px 4px 0px, rgb(255 107 8 / 62%) 0px 2px 16px 0px;
+    transform: scale(1.01);
   }
 
   @include tablet {
@@ -112,7 +137,6 @@
     width: 395;
   }
 }
-
 .gallery__item-link {
   display: block;
   text-decoration: none;
