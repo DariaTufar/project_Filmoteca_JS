@@ -31,9 +31,37 @@
               my library</a
             >
           </li>
-          <li class="header__menu-item header__my-library">
-            <a href="#!" class="link header__menu-link js-login"> Log in </a>
+
+          <!--  ========== Auth buttons ========== -->
+          <li> <span class="link header__menu-link js-icon-face">
+            <svg
+              class="icon-sign "
+              width="24"
+              height="24"
+            >
+              <use class="js-face" href="/src/images/icons.svg#face"></use>
+            </svg>
+          </spa>
           </li>
+          <li>
+            <!-- <a href="#!" class="link header__menu-link js-login"> Log in </a> -->
+
+            <a class="link header__menu-link js-login">
+              <svg class="icon-sign" width="26" height="26">
+                <use
+                  class="js-sign-in"
+                  href="/src/images/icons.svg#sign-in"
+                ></use>
+
+                <use
+                  class="js-sign-out"
+                  href="/src/images/icons.svg#sign-out"
+                ></use>
+              </svg>
+            </a>
+          </li>
+          <!--  ========== Auth buttons ========== -->
+
         </ul>
       </nav>
       <div class="setting-box">
@@ -50,7 +78,7 @@
           </label>
         </div>
 
-        <p class="js-user login-user"></p>
+        <!-- <p class="js-user login-user"></p> -->
         <div class="js-login-ui login-user__ui"></div>
       </div>
     </div>

@@ -6,25 +6,50 @@ const refs = {
   logBtn: document.querySelector('.js-login'),
   user: document.querySelector('.js-user'),
   loginUi: document.querySelector('.js-login-ui'),
+  iconSignIn: document.querySelector('.js-sign-in'),
+  iconSignOut: document.querySelector('.js-sign-out'),
+  iconFace: document.querySelector('.js-icon-face'),
 };
 export let user = '';
 
 refs.logBtn.addEventListener('click', onClickLogIn);
 refs.loginUi.addEventListener('click', onClickLoginUi);
+
 auth.onAuthStateChanged(updateUser);
+
+// =====================
 
 function renderAuth() {
   if (user) {
+    console.log(user);
     refs.myLibrary.style.display = 'block';
-    refs.logBtn.innerHTML = 'Log out';
-    refs.user.innerHTML = user.email;
+
+    //  ========== icons attribute manage ==========
+    refs.iconSignIn.style.display = 'none';
+    refs.iconSignOut.style.display = 'inline-block';
+    refs.iconFace.style.display = 'inline-block';
+    refs.iconFace.setAttribute('title', `${user.displayName} <${user.email}>`);
+    refs.logBtn.setAttribute('title', 'Sign out');
+
+    // refs.logBtn.innerHTML = 'Log out';
+    // refs.user.innerHTML = user.email;
+    // refs.user.innerHTML = user.displayName;
   } else {
     refs.myLibrary.style.display = 'none';
-    refs.logBtn.innerHTML = 'Log in';
-    refs.user.innerHTML = '';
+
+    //  ========== icons attribute manage ==========
+    refs.iconSignIn.style.display = 'inline-block';
+    refs.iconSignOut.style.display = 'none';
+    refs.iconFace.style.display = 'none';
+    refs.logBtn.setAttribute('title', 'Sign in');
+
+    // refs.logBtn.innerHTML = 'Log in';
+    // refs.user.innerHTML = '';
   }
   refs.loginUi.classList.remove('active');
 }
+
+// =====================
 
 function onClickLogIn() {
   if (user) {
@@ -35,12 +60,16 @@ function onClickLogIn() {
   }
 }
 
+// =====================
+
 function onClickLoginUi(event) {
   if (event.target.classList.contains('js-login-ui')) {
     refs.loginUi.classList.remove('active');
     closeAuth();
   }
 }
+
+// =====================
 
 function updateUser(currentUser) {
   user = currentUser;
