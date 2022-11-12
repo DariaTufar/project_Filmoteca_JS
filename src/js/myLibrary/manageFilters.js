@@ -11,7 +11,6 @@ async function init() {
 }
 
 // ====================
-
 function onFilterClick(event) {
   const target = event.target;
   if (!target.closest('input')) {
@@ -19,4 +18,3 @@ function onFilterClick(event) {
   }
   renderMovies();
 }
-// ====================

@@ -18,7 +18,6 @@ refs.loginUi.addEventListener('click', onClickLoginUi);
 auth.onAuthStateChanged(updateUser);
 
 // =====================
-
 function renderAuth() {
   if (user) {
     refs.myLibrary.style.display = 'block';
@@ -49,7 +48,6 @@ function renderAuth() {
 }
 
 // =====================
-
 function onClickLogIn() {
   if (user) {
     auth.signOut();
@@ -60,7 +58,6 @@ function onClickLogIn() {
 }
 
 // =====================
-
 function onClickLoginUi(event) {
   if (event.target.classList.contains('js-login-ui')) {
     refs.loginUi.classList.remove('active');
@@ -69,7 +66,6 @@ function onClickLoginUi(event) {
 }
 
 // =====================
-
 function updateUser(currentUser) {
   user = currentUser;
   if (!user) {
