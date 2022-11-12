@@ -105,42 +105,40 @@ function markupOnModal(data) {
 }
 
 function findMovieByID() {
-  axios
-    .get(
-      `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
-    )
-    .then(response => {
-      const modal = response.data;
-      const markup = markupOnModal(modal);
-      refs.gallery.innerHTML = markup;
+/// changes commit update Esc   
+  axios.get(`${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`).then(response => {
+    const modal = response.data;
+    const markup = markupOnModal(modal);
+    refs.gallery.innerHTML = markup;
 
-      const instance = basicLightbox.create(
-        document.querySelector('.modal_movie'),
-        {
-          onShow: instance => {
-            document.body.style.overflow = 'hidden';
-            document.addEventListener('click', evt => {
-              if (evt.target.closest('.trailer_btn')) {
-                openTrailer(document.querySelector('.trailer_btn').dataset.id);
-              } else {
-                return;
-              }
-            });
-          },
-          onClose: instance => {
-            document.body.style.overflow = '';
-          },
-        }
-      );
-      instance.show();
+    const instance = basicLightbox.create(
+      document.querySelector('.modal_movie'),
+      {
+        onShow: (instance) => {
+          document.body.style.overflow = "hidden";
+          document.addEventListener('keydown', closeModal);
+          document.addEventListener('click', (evt) => {
+            if (evt.target.closest('.trailer_btn')) {
+              openTrailer(document.querySelector('.trailer_btn').dataset.id);
+            } else {
+              return;
+            }
+          });
+        },
+        onClose: (instance) => { document.body.style.overflow = "" 
+        document.removeEventListener('keydown', closeModal);}
+      }
+    );
+    instance.show();
+    function closeModal(e) {
+      if (e.key === 'Escape') {
+        instance.close();
+        console.log(e.key);
+      }
+    }
 
-      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне >>>>>
-      cacheMovie(modal).then(() => updateBtnStatus());
-      // =========  НЕ УДАЛЯТЬ - Вызов функций, обновляющих статус кнопок в модальном окне <<<<<
-
-      return markup;
-    })
-    .catch(console.log);
+    return markup;
+  }).catch(console.log);
 }
 
 //document.body.style.overflow = "hidden"; //выключает скролл
