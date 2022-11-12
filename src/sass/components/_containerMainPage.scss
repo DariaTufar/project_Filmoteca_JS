@@ -92,14 +92,17 @@
   object-fit: cover;
   border-radius: 5px;
 
-  transition: transform $animation;
+  transition: transform $animation, box-shadow $animation;
 
   &:hover,
   &:focus {
-    box-shadow: 3px 3px 10px 5px rgb(248, 139, 5),
-      0 0 4px $accent-color-primary inset;
+    // box-shadow: 3px 3px 10px 5px rgb(248, 139, 5),
+    //   0 0 4px $accent-color-primary inset;
 
-    transform: scale(1.02);
+    // transform: scale(1.02);
+
+    box-shadow: rgb(255 107 8 / 42%) 0px 2px 4px 0px, rgb(255 107 8 / 62%) 0px 2px 16px 0px;
+    transform: scale(1.01);
   }
 
   @include tablet {
