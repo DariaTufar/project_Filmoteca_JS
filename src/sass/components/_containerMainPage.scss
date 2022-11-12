@@ -1,16 +1,18 @@
 .gallery_main-page {
   display: grid;
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 
   grid-template-columns: repeat(1, 280px);
   grid-auto-rows: 443px;
 
   grid-row-gap: 20px;
   justify-content: center;
-  padding-top: 20px;
+
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
 
   @include tablet {
     grid-template-columns: repeat(2, 336px);
@@ -18,6 +20,9 @@
     grid-column-gap: 32px;
     grid-row-gap: 32px;
     padding-top: 60px;
+    padding-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @include desktop {
@@ -26,10 +31,7 @@
     grid-column-gap: 16px;
     grid-row-gap: 32px;
     justify-content: center;
-    padding-top: 60px;
     list-style: none;
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 
@@ -55,6 +57,26 @@
   font-family: inherit;
   font-style: normal;
   font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.16;
+
+  @include tablet {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  @include desktop {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.gallery__item-title--isDarkTheme {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  color: $light-color-primary;
   font-size: 12px;
   text-transform: uppercase;
   line-height: 1.16;
@@ -112,7 +134,6 @@
     width: 395;
   }
 }
-
 .gallery__item-link {
   display: block;
   text-decoration: none;
