@@ -1,5 +1,6 @@
 .header {
   height: 230px;
+  padding-top: 40px;
   font-family: $font-primary;
   font-style: normal;
   font-weight: 500;
@@ -19,6 +20,7 @@
 
   @include tablet {
     height: 216px;
+    // padding-top: 45px;
     background-image: url('../images/header-home-tab.jpg'), $bg-gradient;
 
     @include retina {
@@ -62,62 +64,20 @@
   }
 }
 
-.header__container {
-  height: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  @include tablet {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-  @include desktop {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-}
-
-.header__menu-list {
-  display: flex;
-  align-items: center;
-  gap: 10%;
-  margin-right: 20px;
-
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.67;
-  white-space: nowrap;
-}
-
-.header .header__menu-link {
-  display: block;
-  text-decoration: initial;
-  text-transform: uppercase;
-  color: $bg-primary-light-color;
-
-  &:focus,
-  &:hover {
-    border: 1px solid $accent-color-primary;
-    background: $accent-color-primary;
-    box-shadow: 0px 8px 43px $accent-color-primary;
-    border-radius: 5px;
-  }
-
-  &.is-active {
-    text-decoration-line: underline;
-    text-decoration-thickness: 3px;
-    text-decoration-color: #ff001b;
-  }
-}
+// .header__container {
+//   @include desktop {
+//     padding-left: 60px;
+//     padding-right: 60px;
+//   }
+// }
 
 .navigation {
   display: flex;
   justify-content: space-between;
-  // gap: 20%;
+  margin-bottom: 10px;
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .header__logo {
@@ -140,6 +100,7 @@
 }
 
 .logo__title {
+  display: block;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -150,35 +111,97 @@
 
   &:focus,
   &:hover {
-    box-shadow: inset 0px 8px 43px $accent-color-primary;
-    border-radius: 5px;
+    // box-shadow: inset 0px 8px 43px $accent-color-primary;
+    // border-radius: 5px;
   }
-
   @include tablet {
     display: block;
   }
 }
 
-.setting-box {
+.header__menu-list {
   display: flex;
-  justify-content: end;
   align-items: center;
-  // margin-bottom: 10px;
-  // position: absolute;
-  // left: 10%;
+  justify-content: space-between;
+  // gap: 10%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  // white-space: nowrap;
+  @include tablet {
+    font-size: 14px;
+  }
 }
 
-.sign-list {
-  display: flex;
-  align-items: center;
+.header .header__menu-item {
+  width: 80px;
+  @include tablet {
+    width: 130px;
+  }
 }
+
+.header .header__menu-link {
+  display: block;
+  padding: 0 5px;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  color: $bg-primary-light-color;
+
+  &:not(.is-active):focus,
+  &:not(.is-active):hover {
+    color: $accent-color-primary;
+    text-decoration: none;
+
+    // border: 1px solid $accent-color-primary;
+    // background: $accent-color-primary;
+    // box-shadow: 0px 8px 43px $accent-color-primary;
+    // border-radius: 5px;
+  }
+
+  &.is-active {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #ff001b;
+    cursor: auto;
+  }
+}
+
+.header .js-login {
+  text-transform: capitalize;
+}
+
+.login-user {
+  min-width: 80px;
+  font-size: 14px;
+}
+
+.setting-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  @include tablet {
+    margin: 0;
+  }
+}
+
+// .sign-list {
+//   display: flex;
+//   align-items: center;
+// }
 
 .movie-search__form {
   display: flex;
   justify-content: space-between;
   margin: 0 auto 20px;
-  width: 50%;
+  width: 100%;
   border-bottom: 1px solid $light-color-primary;
+  @include tablet {
+    width: 50%;
+  }
 }
 
 .search__form-input {
@@ -195,9 +218,9 @@
 }
 
 .search__button {
-  width: 50px;
+  width: 30px;
   background-color: inherit;
-  border-radius: 25%;
+  border-radius: 50%;
   border: 1px;
   cursor: pointer;
 
@@ -205,25 +228,33 @@
   &:focus {
     // border: 1px solid $accent-color-primary;
     // background: $accent-color-primary;
-    box-shadow: 0px 8px 43px $accent-color-primary;
+    // box-shadow: 0px 8px 43px $accent-color-primary;
+    background-color: #111;
   }
 }
 
-.form__search-not-succuessful {
-  text-align: center;
-  color: #ff001b;
-}
+// .form__search-not-succuessful {
+//   text-align: center;
+//   color: #ff001b;
+// }
 
 .header__filter-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.header.library .header__filter-box {
-  justify-content: end;
+.genre-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+// .header.library .header__filter-box {
+//   justify-content: center;
+// }
+
+//=======================
 
 .theme-toggle {
   display: flex;
@@ -235,11 +266,11 @@ body.dark {
   background-color: #292c35;
 }
 
-.chenge-theme-togle {
-  margin-right: 60px;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
+// .chenge-theme-togle {
+//   margin-right: 60px;
+//   margin-top: 20px;
+//   margin-bottom: 15px;
+// }
 
 .checkbox {
   opacity: 0;
@@ -247,24 +278,24 @@ body.dark {
 }
 
 .label {
-  width: 40px;
-  height: 21px;
+  // width: 40px;
+  // height: 21px;
 
   background-color: #111;
   display: flex;
   border-radius: 50px;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 2px;
   position: relative;
-  transform: scale(1.5);
+  // transform: scale(1.5);
 
   cursor: pointer;
 }
 
 .ball {
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   background-color: $accent-color-primary;
   position: absolute;
   top: 2px;
@@ -274,7 +305,7 @@ body.dark {
 }
 
 /*  target the elemenent after the label*/
-.checkbox:checked+.label .ball {
+.checkbox:checked + .label .ball {
   transform: translateX(19px);
 }
 
@@ -286,6 +317,7 @@ body.dark {
   fill: $light-color-primary;
 }
 
+//=====================
 .my-library__filter-label {
   cursor: pointer;
 
