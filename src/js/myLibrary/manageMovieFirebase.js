@@ -1,6 +1,7 @@
 import { dbFirebase } from './firebaseDB';
 import { renderMovies, updateBtnStatus } from './firebaseHelpers';
 import { refs } from './refs';
+import { showSpinner, hideSpinner } from '../spinner';
 
 refs.modal.addEventListener('click', onModalClick);
 
@@ -41,7 +42,13 @@ async function onModalClick(event) {
   }
 
   if (window.location.href.includes('myLibrary')) {
-    renderMovies();
+    showSpinner(refs.spinner);
+    try {
+      await renderMovies();
+      hideSpinner(refs.spinner);
+    } catch (error) {
+      console.error(error);
+    }
   }
   updateBtnStatus();
 }
