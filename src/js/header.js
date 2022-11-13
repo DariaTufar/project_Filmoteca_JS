@@ -51,7 +51,7 @@ function ifLoaded(evt) {
 
 function onNavigationClick(evt) {
   const btn = evt.target.dataset.menu;
-  const location = document.location.pathname;
+  const location = '/' + document.location.pathname.split('/').pop();
 
   (btn === 'home' && location === '/') ||
   (btn === 'home' && location === '/index.html') ||
