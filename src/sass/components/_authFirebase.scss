@@ -24,3 +24,51 @@
 .firebaseui-link.firebaseui-id-secondary-link {
   color: $accent-color-primary;
 }
+
+.header__menu-list {
+  position: relative;
+}
+
+.icon-face {
+  .header__user-info {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: min-content;
+    max-width: 100%;
+    transform: translateY(100%);
+    padding: 10px;
+
+    font-family: $font-primary;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.17;
+    text-transform: none;
+
+    color: $light-color-primary;
+    background-color: $bg-auth-color;
+
+    border: 1px solid $light-color-primary;
+    border-radius: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-46px, -100%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 6px 6px 6px;
+      border-color: transparent transparent $light-color-primary transparent;
+    }
+  }
+
+  &:hover {
+    .header__user-info {
+      display: block;
+    }
+  }
+}
