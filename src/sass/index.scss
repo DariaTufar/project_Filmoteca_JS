@@ -1,22 +1,4 @@
-@import './utils/variables';
-@import './utils/mixins';
-@import './utils/common';
-@import './utils/container';
-@import './utils/reset';
-@import './utils/hidden';
+@import './utils/utils';
+ 
+@import './components/сomponents';
 
-@import './components/buttonsMyLibrary';
-@import './components/header';
-@import './components/buttonGenre';
-
-@import './components/containerMainPage';
-
-@import './components/modalTeam';
-@import './components/movieCardModalAndriy';
-@import './components/scroll_up_button';
-
-@import './components/paginationPage';
-@import './components/spinner';
-@import './components/footer';
-@import './components/login-user';
-@import './components/authFirebase';
