@@ -10,11 +10,11 @@ h6 {
 
 a {
   color: currentColor;
- 
+  text-decoration: none;
 
   &:focus,
   &:hover {
-    text-decoration: none;
+    // text-decoration: none;
     color: currentColor;
   }
 }
