@@ -199,32 +199,24 @@ export default class ServerRequest {
     ref.innerHTML = btn;
     // this.addListener();
   }
-  // addListener(ref) {
-  //     ref.addEventListener('click', this.onClickPagination)
-  // }
 
-  // onClickPagination(event) {
-  //     if (event.target === event.currentTarget || event.target.textContent === '...') {
-  //         return;
-  //     }
+  findMovieByID(id) {
+    //
+    // const params = {
+    //   baseUrl: 'https://api.themoviedb.org/3/',
+    //   fotoUrl: 'https://image.tmdb.org/t/p/w500',
+    //   movie_id: id,
+    //   language: 'en-US',
+    //   api_key: KEY,
+    // };
 
-  //     if (Number(event.target.textContent)) {
-  //         this.page = Number(event.target.textContent);
-  //     } else {
-  //         switch (event.target.textContent) {
-  //             case ' «':
-  //                 this.decrementPage();
-  //                 console.log(this.page);
-
-  //                 break;
-  //             case '» ':
-  //                 this.incrementPage();
-  //                 console.log('-1', this.page);
-
-  //                 break;
-  //         }
-  //     }
-
-  //     createPagination(ref);
-  // }
+    return axios
+      .get(
+        `${BASE_URL}/movie/${id}?api_key=${params.api_key}&language=${params.language}`
+      )
+      .then(response => response.data)
+      .catch(console.error);
+  }
 }
+
+

@@ -5,14 +5,10 @@ import { openModal } from './modalCardHelpers';
 import { user } from './myLibrary/manageAuth';
 import { dbFirebase } from './myLibrary/firebaseDB';
 import { updateBtnStatus } from './myLibrary/firebaseHelpers';
+import ServerRequest from './serverRequest';
 
-const params = {
-  baseUrl: 'https://api.themoviedb.org/3/',
-  fotoUrl: 'https://image.tmdb.org/t/p/w500',
-  movie_id: 0,
-  language: 'en-US',
-  api_key: KEY,
-};
+const instance = new ServerRequest()
+
 refs.idgalery.addEventListener('click', onGalleryClick);
 
 async function onGalleryClick(event) {
@@ -24,8 +20,8 @@ async function onGalleryClick(event) {
   }
 
   // ========== get movie from server =========
-  params.movie_id = movieCardEl.dataset.movieid;
-  const movieDetails = await findMovieByID(params);
+  const id = movieCardEl.dataset.movieid;
+  const movieDetails = await instance.findMovieByID(id);
 
   // ========= cache movie ===========
   const { isWatched, isQueued } = await dbFirebase.getMovie({
@@ -45,15 +41,6 @@ async function onGalleryClick(event) {
   updateBtnStatus();
 }
 
-//---------------------
-function findMovieByID(params) {
-  return axios
-    .get(
-      `${params.baseUrl}/movie/${params.movie_id}?api_key=${params.api_key}&language=${params.language}`
-    )
-    .then(response => response.data)
-    .catch(console.log);
-}
 
 //document.body.style.overflow = "hidden"; //выключает скролл
 //document.body.style.overflow = "";      // включает скролл
