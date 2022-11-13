@@ -39,6 +39,13 @@
   margin-top: 5px;
 }
 
+.command-touch {
+  fill: orange;
+  &:hover {
+    fill: yellow;
+  }
+}
+
 .command-list {
   padding: 0;
   display: flex;
