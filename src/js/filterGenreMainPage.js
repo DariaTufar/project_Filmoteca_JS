@@ -68,7 +68,7 @@ async function searchGenres() {
     const markup = markupMovieCards(results, genreAPI.genres); // Рендерить розмітку для карток
     refs.galleryList.innerHTML = markup.join(''); // Додає розмітку в DOM
 
-    console.log('genreAPI.genres :>> ', genreAPI.totalPages);
+    // console.log('genreAPI.genres :>> ', genreAPI.totalPages);
 
     if (genreAPI.totalPages > 1) {
       genreAPI.createPagination(refs.element);
