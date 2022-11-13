@@ -73,7 +73,7 @@
 }
 
 .gallery__item-title--isDarkTheme {
-  // font-family: inherit;
+  font-family: $font-primary;
   // font-style: normal;
   font-weight: 500;
   color: $light-color-primary;
@@ -123,7 +123,8 @@
 
     // transform: scale(1.02);
 
-    box-shadow: rgb(255 107 8 / 42%) 0px 2px 4px 0px, rgb(255 107 8 / 62%) 0px 2px 16px 0px;
+    box-shadow: rgb(255 107 8 / 42%) 0px 2px 4px 0px,
+      rgb(255 107 8 / 62%) 0px 2px 16px 0px;
     transform: scale(1.01);
   }
 
