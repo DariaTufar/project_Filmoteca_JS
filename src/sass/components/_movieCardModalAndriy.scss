@@ -1,11 +1,6 @@
 .modal_description_film {
-  /* max-width: 882px;
-   max-height: 568px; */
-  /* display: flex; */
-  /* align-items: center; */
   padding: 40px 15px 40px 15px;
   overflow-x: auto;
-  /* margin: auto; */
   font-family: Roboto, sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -46,12 +41,9 @@
   position: relative;
 
   @include minBreakpoints($mobile) {
-    /* width: $mobile; */
     margin-bottom: 30px;
   }
 }
-
-/* width: 775px; */
 
 .movie_foto_film {
   display: block;
@@ -69,23 +61,11 @@
 
   display: flex;
   margin-bottom: 10px;
-
-  /* display: inline; */
 }
 
-/* p{
-  display: inline;
-} */
-
-/* .movie_test{
-  display: inline-flex;
-} */
-
 .film_information_film {
-  /* margin-left: 30px; */
-
   @include minBreakpoints($mobile) {
-    margin-left: 15px;
+    margin-left: 5px;
   }
 
   @include minBreakpoints($tablet) {
@@ -130,10 +110,8 @@
 
 .movie_value_film {
   font-size: 12px;
-  /* line-height: 17px; */
   display: inline;
   align-items: center;
-  /* text-transform: uppercase; */
   color: #000000;
 }
 
@@ -163,15 +141,16 @@
   margin-bottom: 21px;
 }
 
-////Стили точек под модалкой////
+////Стили кнопок под модалкой////
 
 .movie-buttons_film {
-
+  @include minBreakpoints($mobile) {
+    margin-top: 0rem;
+  }
 
   @include minBreakpoints($tablet) {
     display: flex;
     gap: 8px;
-    align-items: center;
   }
 
   @include minBreakpoints($desktop) {
@@ -215,6 +194,41 @@
   }
 }
 
+.button_film_rem {
+
+  @include minBreakpoints($mobile) {
+    margin-top: 0.5rem;
+  }
+
+  @include minBreakpoints($tablet) {
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+  }
+
+  @include minBreakpoints($desktop) {
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+  }
+}
+
+.movie-buttons__label {
+
+  @include minBreakpoints($mobile) {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+
+  @include minBreakpoints($tablet) {
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+  }
+
+  @include minBreakpoints($desktop) {
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+  }
+}
+
 .basicLightbox:after {
   content: '';
   position: absolute;
@@ -241,10 +255,6 @@
     top: 1.8rem;
     right: 1.8rem;
   }
-}
-
-.button_film_rem {
-  margin-bottom: 0.5rem;
 }
 
 .trailer_btn {
