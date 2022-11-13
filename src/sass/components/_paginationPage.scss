@@ -1,10 +1,24 @@
 .pagination-section {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
-.pagination ul{
+.pagination a {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: currentColor;
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: currentColor;
+  }
+}
+
+.pagination ul {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -13,9 +27,9 @@
   margin-top: 60px;
   margin-bottom: 60px;
   border-radius: 5px;
-  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
-.pagination ul li{
+.pagination ul li {
   color: $text-color-primary;
   list-style: none;
   line-height: 45px;
@@ -26,7 +40,7 @@
   user-select: none;
   transition: all 0.3s ease;
 }
-.pagination ul li.numb{
+.pagination ul li.numb {
   list-style: none;
   height: 45px;
   width: 45px;
@@ -34,20 +48,21 @@
   line-height: 45px;
   border-radius: 7px;
 }
-.pagination ul li.numb.first{
+.pagination ul li.numb.first {
   margin: 0px 3px 0 -5px;
 }
-.pagination ul li.numb.last{
+.pagination ul li.numb.last {
   margin: 0px -5px 0 3px;
 }
-.pagination ul li.dots{
+.pagination ul li.dots {
   font-size: 22px;
   cursor: default;
 }
-.pagination ul li.btn{
+.pagination ul li.btn {
   padding: 0 20px;
   border-radius: 8px;
 }
+
 .pagination li.active,
 .pagination ul li.numb:hover,
 .pagination ul li:first-child:hover,
@@ -56,4 +71,15 @@
   background: $accent-color-primary;
 }
 
-
+// .pagination li.active,
+// .pagination ul li.numb:hover,
+// .pagination ul li.numb:focus,
+// .pagination ul li:first-child:hover,
+// .pagination ul li:last-child:hover {
+//   .pagination ul li:first-child:focus,
+//   .pagination ul li:last-child:hover,
+//   .pagination ul li:last-child:focus {
+//     color: $light-color-primary;
+//     background: $accent-color-primary;
+//   }
+// }
