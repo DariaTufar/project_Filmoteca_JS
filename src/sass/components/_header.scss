@@ -222,7 +222,6 @@
   border-radius: 50%;
   border: 1px;
   cursor: pointer;
-  // transform: scale(1);
   transition: transform 0.3s ease;
 
   &:hover,
@@ -256,8 +255,11 @@
 }
 
 //dark theme*****
-body.dark {
-  background-color: #292c35;
+body {
+  transition: background-color 0.3s ease;
+  &.dark {
+    background-color: #292c35;
+  }
 }
 
 .checkbox {
@@ -286,7 +288,7 @@ body.dark {
   top: 2px;
   left: 2px;
   border-radius: 50%;
-  transition: transform 0.2s linear;
+  transition: transform 0.3s ease;
 }
 
 /*  target the elemenent after the label*/
