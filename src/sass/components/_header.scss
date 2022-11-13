@@ -159,13 +159,13 @@
   color: $bg-primary-light-color;
   transition: color 0.3s ease;
 
-  &:not(.is-active):focus,
-  &:not(.is-active):hover {
+  &:not(.active):focus,
+  &:not(.active):hover {
     color: $accent-color-primary;
     text-decoration: none;
   }
 
-  &.is-active {
+  &.active {
     text-decoration-line: underline;
     text-decoration-thickness: 3px;
     text-decoration-color: #ff001b;
