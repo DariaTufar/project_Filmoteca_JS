@@ -30,6 +30,7 @@ export const genreAPI = new ServerRequest('discover/movie', config); // Ініц
 window.addEventListener('click', onClick);
 
 function onClick(event) {
+  console.log('onClick - handled by cliking on .chenge-theme-togle')
   if (!event.target.classList.contains('dropbtn')) {
     refs.dropdownContent.classList.remove('show');
     return;

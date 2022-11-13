@@ -6,6 +6,7 @@ refs.modal.addEventListener('click', onModalClick);
 
 // ====================
 async function onModalClick(event) {
+  console.log('onModalClick - handled by cliking on .chenge-theme-togle')
   const target = event.target;
   if (!target.closest('.modal_description_film')) {
     return;

@@ -59,7 +59,9 @@
           <!--  ========== Auth buttons ========== -->
         </ul>
       </nav>
+
       <div class="setting-box">
+        <!-- by a click on '.chenge-theme-togle' you run 2 functions - filterGenreMainPage.js:onClick and manageMovieFirebase.js:onModalClick, it's not look good-->
         <div class="chenge-theme-togle">
           <input type="checkbox" class="checkbox" id="checkbox" />
           <label for="checkbox" class="label">
@@ -73,14 +75,13 @@
           </label>
         </div>
 
+        <!-- 2 lines below are necessary? -->
         <!-- <p class="js-user login-user"></p> -->
         <div class="js-login-ui login-user__ui"></div>
       </div>
     </div>
 
     <div class="search-box">
-      <!-- TODO: повичищати класі які не використовуєте для CSS/JS  -->
-      <!-- TODO: юзати методологію неймінгу BEM  -->
       <form class="movie-search__form" id="js-search-form">
         <input
           class="search__form-input"
@@ -96,7 +97,6 @@
 
           <div
             class="spinner-border text-danger spinner is-hidden"
-            style
             role="status"
           >
             <!-- <span class="sr-only">Loading...</span> -->

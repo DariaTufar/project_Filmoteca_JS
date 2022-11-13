@@ -47,12 +47,13 @@ function ifLoaded() {
 }
 
 function onNavigationClick(evt) {
+  // what problem resolves this function?
   const btn = evt.target.dataset.menu;
   const location = `/${document.location.pathname.split('/').pop()}`;
 
   (btn === 'home' && location === '/') ||
-  (btn === 'home' && location === '/index.html') ||
-  (btn === 'my-library' && location === '/myLibrary.html')
+    (btn === 'home' && location === '/index.html') ||
+    (btn === 'my-library' && location === '/myLibrary.html')
     ? evt.preventDefault()
     : evt.currentTarget.removeEventListener('click', onNavigationClick);
 }
