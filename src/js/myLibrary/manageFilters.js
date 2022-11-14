@@ -1,6 +1,7 @@
 import { renderMovies } from './firebaseHelpers';
 import { initGenres } from './genres';
 import { refs } from './refs';
+import { showSpinner, hideSpinner } from '../spinner';
 
 refs.filter.addEventListener('click', onFilterClick);
 
@@ -11,10 +12,17 @@ async function init() {
 }
 
 // ====================
-function onFilterClick(event) {
+async function onFilterClick(event) {
   const target = event.target;
   if (!target.closest('input')) {
     return;
   }
-  renderMovies();
+  showSpinner(refs.spinner);
+  try {
+    await renderMovies();
+  } catch (error) {
+    console.error(error);
+  } finally {
+    hideSpinner(refs.spinner);
+  }
 }

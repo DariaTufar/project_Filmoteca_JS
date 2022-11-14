@@ -1,16 +1,8 @@
 import { closeAuth, openAuth, auth } from './firebase';
 import { renderMovies } from './firebaseHelpers';
-
-const refs = {
-  myLibrary: document.querySelector('.js-menu-my-library'),
-  logBtn: document.querySelector('.js-login'),
-  user: document.querySelector('.js-user'),
-  loginUi: document.querySelector('.js-login-ui'),
-  iconSignIn: document.querySelector('.js-sign-in'),
-  iconSignOut: document.querySelector('.js-sign-out'),
-  iconFace: document.querySelector('.js-icon-face'),
-  userInfo: document.querySelector('.js-user-info'),
-};
+import { showSpinner, hideSpinner } from '../spinner';
+import { refs } from './refs';
+// const refs = {};
 export let user = '';
 
 refs.logBtn.addEventListener('click', onClickLogIn);
@@ -47,6 +39,7 @@ function renderAuth() {
 
 // =====================
 function onClickLogIn() {
+  closeAuth();
   if (user) {
     auth.signOut();
   } else {
@@ -64,7 +57,7 @@ function onClickLoginUi(event) {
 }
 
 // =====================
-function updateUser(currentUser) {
+async function updateUser(currentUser) {
   user = currentUser;
   if (!user) {
     let currentURL = window.location.href;
@@ -75,6 +68,12 @@ function updateUser(currentUser) {
   }
   renderAuth();
   if (window.location.href.includes('myLibrary')) {
-    renderMovies();
+    showSpinner(refs.spinner);
+    try {
+      await renderMovies();
+      hideSpinner(refs.spinner);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

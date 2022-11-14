@@ -83,9 +83,8 @@ async function onSearchForm(evt) {
     Notify.info(MESSAGE_INFO);
     return;
   }
-
-  showSpinner(refs.iconSearch, refs.spinner);
-  refs.element.removeEventListener('click', onPagination)
+  showSpinner(refs.spinner, refs.iconSearch);
+  refs.element.removeEventListener('click', onPagination);
   refs.element.removeEventListener('click', onClickPagination);
 
   movieAPI.reset();

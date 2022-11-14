@@ -4,6 +4,7 @@ import { refs } from './refs';
 import { KEY } from './constants';
 import { markupMovieCards } from './markupMovieCards';
 import { onClickPagination } from './createMarkup';
+import { showSpinner, hideSpinner } from './spinner';
 
 // const BASE_URL = 'https://api.themoviedb.org/3/';
 // const TRENDING_LIST = 'trending/movie/week'; // Уточнюючий шлях для запиту
@@ -59,6 +60,7 @@ function onGenre(event) {
 }
 
 async function searchGenres() {
+  showSpinner(refs.spinnerGallery);
   try {
     const { results, total_pages, total_results } = await genreAPI.getMovies();
 
@@ -79,6 +81,8 @@ async function searchGenres() {
     }
   } catch (error) {
     error.message;
+  } finally {
+    hideSpinner(refs.spinnerGallery);
   }
 }
 
@@ -112,6 +116,7 @@ export function onPagination(event) {
 }
 
 async function renderGenres() {
+  showSpinner(refs.spinnerGallery);
   try {
     const genres = await genreAPI.getGenres();
     // console.log(genres);
@@ -119,6 +124,8 @@ async function renderGenres() {
     refs.dropdownContent.innerHTML = markup.join('');
   } catch (error) {
     error.message;
+  } finally {
+    hideSpinner(refs.spinnerGallery);
   }
 }
 

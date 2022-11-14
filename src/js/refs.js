@@ -14,4 +14,5 @@ export const refs = {
   idgalery: document.querySelector('.gallery_main-page'),
   gallery: document.querySelector('.modal_movie'),
   trailer: document.querySelector('.trailer_btn'),
+  spinnerGallery: document.querySelector('.js-spinner-gallery'),
 };
