@@ -8,19 +8,21 @@ import { user } from './manageAuth';
 export async function renderMovies() {
   const formData = new FormData(refs.filter);
   const filterValue = formData.get('filter');
+  try {
+    const filteredMovies = await dbFirebase.getMovies({
+      userId: user.uid,
+      [filterValue]: true,
+    });
+    filteredMovies.forEach(element => {
+      const genres = element.genres ?? [];
+      element.genre_ids = genres.map(({ id }) => id);
+    });
 
-  const filteredMovies = await dbFirebase.getMovies({
-    userId: user.uid,
-    [filterValue]: true,
-  });
-
-  filteredMovies.forEach(element => {
-    const genres = element.genres ?? [];
-    element.genre_ids = genres.map(({ id }) => id);
-  });
-
-  const markup = markupMovieCards(filteredMovies, [...genres], true).join('');
-  refs.gallery.innerHTML = markup;
+    const markup = markupMovieCards(filteredMovies, [...genres], true).join('');
+    refs.gallery.innerHTML = markup;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // ====================

@@ -14,23 +14,26 @@ async function onGalleryClick(event) {
   }
   const id = movieCardEl.dataset.movieid;
 
-  //  ========= cache movie ===========
-  const { isWatched, isQueued, movieDetails } = await dbFirebase.getMovie({
-    userId: user.uid,
-    movieId: id,
-  });
+  try {
+    //  ========= cache movie ===========
+    const { isWatched, isQueued, movieDetails } = await dbFirebase.getMovie({
+      userId: user.uid,
+      movieId: id,
+    });
+    dbFirebase.cachedMovie = {
+      userId: user.uid,
+      isWatched,
+      isQueued,
+      movieDetails,
+    };
 
-  dbFirebase.cachedMovie = {
-    userId: user.uid,
-    isWatched,
-    isQueued,
-    movieDetails,
-  };
-
-  // ========= open modal ===========
-  openModal(movieDetails, {
-    movie_id: movieDetails.id,
-    fotoUrl: 'https://image.tmdb.org/t/p/w500',
-  });
-  updateBtnStatus();
+    // ========= open modal ===========
+    openModal(movieDetails, {
+      movie_id: movieDetails.id,
+      fotoUrl: 'https://image.tmdb.org/t/p/w500',
+    });
+    updateBtnStatus();
+  } catch (error) {
+    console.error(error);
+  }
 }

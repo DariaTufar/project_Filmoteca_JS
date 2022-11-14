@@ -8,7 +8,11 @@ refs.filter.addEventListener('click', onFilterClick);
 // Initial render
 init();
 async function init() {
-  await initGenres();
+  try {
+    await initGenres();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // ====================

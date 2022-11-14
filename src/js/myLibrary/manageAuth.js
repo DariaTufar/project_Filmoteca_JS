@@ -71,9 +71,10 @@ async function updateUser(currentUser) {
     showSpinner(refs.spinner);
     try {
       await renderMovies();
-      hideSpinner(refs.spinner);
     } catch (error) {
       console.error(error);
+    } finally {
+      hideSpinner(refs.spinner);
     }
   }
 }
