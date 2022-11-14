@@ -39,6 +39,7 @@ function renderAuth() {
 
 // =====================
 function onClickLogIn() {
+  closeAuth();
   if (user) {
     auth.signOut();
   } else {
