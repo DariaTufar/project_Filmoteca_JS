@@ -28,7 +28,11 @@ async function onModalClick(event) {
       dbFirebase.cachedMovie.isQueued = true;
       dbFirebase.cachedMovie.isWatched = false;
     }
-    await dbFirebase.addMovie(dbFirebase.cachedMovie);
+    try {
+      await dbFirebase.addMovie(dbFirebase.cachedMovie);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // ========== click "Remove" ==========
@@ -45,9 +49,10 @@ async function onModalClick(event) {
     showSpinner(refs.spinner);
     try {
       await renderMovies();
-      hideSpinner(refs.spinner);
     } catch (error) {
       console.error(error);
+    } finally {
+      hideSpinner(refs.spinner);
     }
   }
   updateBtnStatus();
