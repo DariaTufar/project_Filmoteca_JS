@@ -2,9 +2,7 @@ export const refs = {
   filter: document.querySelector('.js-filter-my-library'),
   gallery: document.querySelector('.gallery_main-page'),
   modal: document.body,
-  // spinnerWrap:document.querySelector(".gallery__spinner-wrap")
   spinner: document.querySelector('.js-spinner-gallery'),
-
   // refs from manageAuth
   myLibrary: document.querySelector('.js-menu-my-library'),
   logBtn: document.querySelector('.js-login'),

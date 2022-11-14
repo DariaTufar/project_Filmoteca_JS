@@ -83,7 +83,6 @@ async function onSearchForm(evt) {
     Notify.info(MESSAGE_INFO);
     return;
   }
-
   showSpinner(refs.spinner, refs.iconSearch);
   refs.element.removeEventListener('click', onPagination);
   refs.element.removeEventListener('click', onClickPagination);
