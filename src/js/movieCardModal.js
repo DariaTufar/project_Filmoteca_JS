@@ -28,18 +28,19 @@ async function onGalleryClick(event) {
   const movieDetails = await findMovieByID(params);
 
   // ========= cache movie ===========
-  const { isWatched, isQueued } = await dbFirebase.getMovie({
-    userId: user?.uid,
-    movieId: params.movie_id,
-  });
+  if (user) {
+    const { isWatched, isQueued } = await dbFirebase.getMovie({
+      userId: user?.uid,
+      movieId: params.movie_id,
+    });
 
-  dbFirebase.cachedMovie = {
-    userId: user?.uid,
-    isWatched,
-    isQueued,
-    movieDetails,
-  };
-
+    dbFirebase.cachedMovie = {
+      userId: user?.uid,
+      isWatched,
+      isQueued,
+      movieDetails,
+    };
+  }
   // ========= open modal ===========
   openModal(movieDetails, params);
   updateBtnStatus();
